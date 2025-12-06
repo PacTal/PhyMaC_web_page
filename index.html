@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PhyMaC - Para entender el mundo tecnológico, resuelve retos reales. Aprendizaje por retos en STEM.">
+  <title>PhyMaC - Aprendizaje por Retos en STEM</title>
+  
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Estilos personalizados -->
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    .scroll-animate {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50 font-sans text-gray-800">
+  
+  <!-- HEADER CONTAINER (se llena dinámicamente) -->
+  <div id="header-container"></div>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-28 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-indigo-900 text-white text-center">
+    <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')]"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-indigo-900/90"></div>
+    
+    <div class="max-w-5xl mx-auto px-4 relative z-10 scroll-animate">
+      <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight mb-6">
+        Para entender el mundo tecnológico,<br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+          resuelve retos reales
+        </span>
+      </h1>
+      
+      <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-indigo-100/90 leading-relaxed mb-10">
+        Siempre hay algo por descubrir, para hacerlo tú pones el ingenio, nosotros, la lúdica y los retos.
+      </p>
+      
+      <!-- CTAs PROMINENTES MEJORADOS -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a 
+          id="hero-whatsapp-cta"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          ¡Acepta el reto!
+        </a>
+        <a 
+          href="#metodo"
+          class="bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-full border-2 border-white/30 hover:border-white/50 transition backdrop-blur-sm"
+        >
+          Conoce nuestro método
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN MÉTODO -->
+  <section id="metodo" class="py-20 bg-white relative scroll-animate">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Aprendizaje por retos</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto">
+          Descubre la ciencia construyendo artefactos para resolver problemas. Nuestro ciclo STEM de tres fases —lo que quiero, lo que haré y lo que necesito— asegura un aprendizaje práctico en cualquier nivel educativo.
+        </p>
+      </div>
+
+      <!-- CTA en sección método -->
+      <div class="text-center mt-12">
+        <a 
+          id="metodo-whatsapp-cta"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-indigo-900 hover:bg-indigo-800 text-white font-bold px-6 py-3 rounded-full transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          Quiero saber más
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN PROYECTOS -->
+  <section id="proyectos" class="py-20 bg-gray-900 text-white scroll-animate">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+        <div>
+          <h2 class="text-3xl font-bold mb-2">Así luce la ciencia en acción.</h2>
+        </div>
+        <a 
+          href="blog.html"
+          class="hidden md:flex text-green-400 font-semibold items-center hover:text-green-300 mt-4 md:mt-0 text-sm transition"
+        >
+          Ver más casos de éxito
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <div id="proyectos-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Los proyectos se cargarán dinámicamente desde CONFIG -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CONTAINER (se llena dinámicamente) -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="blog-data.js"></script>
+  <script src="blog.js"></script>
+  <script src="main.js"></script>
+  
+  <!-- Script para cargar proyectos dinámicamente -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Cargar proyectos desde CONFIG
+      if (typeof CONFIG !== 'undefined' && CONFIG.proyectos) {
+        const proyectosContainer = document.getElementById('proyectos-container');
+        if (proyectosContainer) {
+          proyectosContainer.innerHTML = CONFIG.proyectos.map(proyecto => {
+            // Buscar el artículo del blog relacionado
+            let blogLink = '#';
+            let linkText = 'Ver más';
+            let linkAction = '';
+            
+            if (typeof BLOG_POSTS !== 'undefined' && proyecto.blogId) {
+              const blogPost = BLOG_POSTS.find(post => post.id === proyecto.blogId);
+              if (blogPost) {
+                // Crear función para abrir el artículo del blog
+                linkAction = `onclick="if(typeof openBlogPost === 'function') { openBlogPost(${blogPost.id}); } else { window.location.href='blog.html'; }"`;
+                linkText = 'Leer artículo';
+              }
+            }
+            
+            // Si no hay blog relacionado, usar WhatsApp como fallback
+            if (!linkAction) {
+              const whatsappUrl = `https://wa.me/${CONFIG.contact.whatsapp.number}?text=${encodeURIComponent(`Me interesa saber más sobre: ${proyecto.title}`)}`;
+              linkAction = `onclick="window.open('${whatsappUrl}', '_blank')"`;
+            }
+            
+            return `
+              <div class="group relative rounded-xl overflow-hidden aspect-[16/9] cursor-pointer border border-gray-800 hover:border-gray-700 transition" ${linkAction}>
+                <img 
+                  src="${proyecto.image}" 
+                  alt="${proyecto.title}" 
+                  class="w-full h-full object-cover transition duration-500 group-hover:scale-105 opacity-60 group-hover:opacity-80"
+                />
+                <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-gray-900 via-transparent to-transparent">
+                  <div class="flex items-center gap-2 mb-1 text-${proyecto.categoryColor} text-xs font-bold uppercase tracking-wider">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    ${proyecto.category}
+                  </div>
+                  <h3 class="text-xl font-bold">${proyecto.title}</h3>
+                  <p class="text-sm text-gray-300 mt-1 line-clamp-2">${proyecto.description}</p>
+                  <div class="mt-3 flex items-center gap-2 text-green-400 text-sm font-semibold">
+                    ${linkText}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+
+      // Configurar CTAs de WhatsApp
+      const whatsappUrl = `https://wa.me/${CONFIG.contact.whatsapp.number}?text=${encodeURIComponent(CONFIG.contact.whatsapp.defaultMessage)}`;
+      
+      const heroCta = document.getElementById('hero-whatsapp-cta');
+      const metodoCta = document.getElementById('metodo-whatsapp-cta');
+      
+      if (heroCta) heroCta.href = whatsappUrl;
+      if (metodoCta) metodoCta.href = whatsappUrl;
+    });
+  </script>
+</body>
+</html>
+

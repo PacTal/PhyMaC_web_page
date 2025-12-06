@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Publicaciones de PhyMaC - Libros y artículos sobre educación STEM y metodologías activas.">
+  <title>Publicaciones - PhyMaC</title>
+  
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Estilos personalizados -->
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    .scroll-animate {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50 font-sans text-gray-800">
+  
+  <!-- HEADER CONTAINER (se llena dinámicamente) -->
+  <div id="header-container"></div>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-28 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-indigo-900 text-white text-center">
+    <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')]"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-indigo-900/90"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 relative z-10 scroll-animate">
+      <h1 class="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-6">
+        Publicaciones
+      </h1>
+      
+      <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-indigo-100/90 leading-relaxed">
+        Compartimos el conocimiento generado en nuestros laboratorios vivos. Investigaciones, artículos y hallazgos educativos.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN PUBLICACIONES -->
+  <section class="py-20 bg-gray-50 border-t border-gray-200 scroll-animate">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Nuestros Libros</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Obras que desafían las metodologías tradicionales y proponen enfoques innovadores para la enseñanza de la física y las ciencias.
+        </p>
+      </div>
+
+      <div id="publicaciones-container" class="grid md:grid-cols-2 gap-8">
+        <!-- Las publicaciones se cargarán dinámicamente desde CONFIG -->
+      </div>
+
+      <!-- CTA Final -->
+      <div class="text-center mt-16">
+        <div class="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-gray-100">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">¿Interesado en nuestras publicaciones?</h3>
+          <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+            Contáctanos para conocer la disponibilidad y obtener más información sobre nuestros libros.
+          </p>
+          <a 
+            id="publicaciones-cta"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-indigo-900 hover:bg-indigo-800 text-white font-bold px-8 py-4 rounded-full transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Consultar disponibilidad
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CONTAINER (se llena dinámicamente) -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="main.js"></script>
+  
+  <!-- Script para cargar publicaciones dinámicamente -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Verificar que CONFIG esté disponible
+      if (typeof CONFIG === 'undefined') {
+        console.error('CONFIG no está definido');
+        return;
+      }
+
+      // Cargar publicaciones desde CONFIG
+      if (CONFIG.publicaciones && Array.isArray(CONFIG.publicaciones)) {
+        const publicacionesContainer = document.getElementById('publicaciones-container');
+        if (publicacionesContainer) {
+          publicacionesContainer.innerHTML = CONFIG.publicaciones.map(publicacion => {
+            const whatsappUrl = `https://wa.me/${CONFIG.contact.whatsapp.number}?text=${encodeURIComponent(`Me interesa consultar sobre el libro: ${publicacion.title}`)}`;
+            // Asegurar que la ruta de la imagen sea correcta
+            let imagePath = publicacion.image;
+            if (!imagePath.startsWith('http') && !imagePath.startsWith('/') && !imagePath.startsWith('./')) {
+              imagePath = './' + imagePath;
+            }
+            
+            return `
+              <div class="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition overflow-hidden flex flex-col h-full scroll-animate">
+                <div class="h-64 w-full bg-gray-50 relative flex items-center justify-center p-4">
+                  <img 
+                    src="${imagePath}" 
+                    alt="Portada ${publicacion.title}" 
+                    class="max-w-full max-h-full object-contain"
+                  />
+                </div>
+                <div class="p-8 flex-1 flex flex-col">
+                  <h3 class="text-xl font-bold text-gray-900 mt-2 mb-3">${publicacion.title}</h3>
+                  <p class="text-sm text-gray-500 mb-3">Por ${publicacion.author}</p>
+                  <div class="text-gray-600 mb-6 text-sm leading-relaxed flex-1">
+                    ${publicacion.description}
+                  </div>
+                  <a 
+                    href="${whatsappUrl}" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center text-indigo-700 font-bold text-sm hover:text-indigo-900 transition mt-auto"
+                  >
+                    Consultar disponibilidad
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            `;
+          }).join('');
+          
+          // Inicializar animaciones
+          if (typeof initScrollAnimations === 'function') {
+            initScrollAnimations();
+          }
+        }
+      }
+
+      // Configurar CTA de WhatsApp
+      if (CONFIG.contact && CONFIG.contact.whatsapp) {
+        const whatsappUrl = `https://wa.me/${CONFIG.contact.whatsapp.number}?text=${encodeURIComponent('Me interesa conocer más sobre las publicaciones de PhyMaC')}`;
+        const publicacionesCta = document.getElementById('publicaciones-cta');
+        if (publicacionesCta) publicacionesCta.href = whatsappUrl;
+      }
+    });
+  </script>
+</body>
+</html>
+

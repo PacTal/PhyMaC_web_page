@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Servicios de PhyMaC - Talleres, capacitación docente, programas educativos y consultoría STEM.">
+  <title>Servicios - PhyMaC</title>
+  
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Estilos personalizados -->
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    .scroll-animate {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50 font-sans text-gray-800">
+  
+  <!-- HEADER CONTAINER (se llena dinámicamente) -->
+  <div id="header-container"></div>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-28 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-indigo-900 text-white text-center">
+    <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')]"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-indigo-900/90"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 relative z-10 scroll-animate">
+      <h1 class="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-6">
+        Nuestros Servicios
+      </h1>
+      
+      <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-indigo-100/90 leading-relaxed mb-8">
+        Soluciones educativas prácticas para estudiantes, docentes e instituciones que buscan transformar la enseñanza de STEM.
+      </p>
+      
+      <!-- CTA Prominente -->
+      <a 
+        id="hero-servicios-cta"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-4 rounded-full transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        Consulta nuestros servicios
+      </a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN SERVICIOS -->
+  <section class="py-20 bg-gray-50 scroll-animate">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">¿Qué ofrecemos?</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto">
+          Programas diseñados para diferentes audiencias, todos con un enfoque práctico y basado en retos reales.
+        </p>
+      </div>
+
+      <div id="servicios-container" class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <!-- Los servicios se cargarán dinámicamente desde CONFIG -->
+      </div>
+
+      <!-- CTA Final -->
+      <div class="text-center mt-16">
+        <div class="bg-indigo-50 rounded-2xl p-8 md:p-12">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">¿Listo para transformar tu educación STEM?</h3>
+          <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+            Contáctanos y descubre cómo podemos adaptar nuestros servicios a tus necesidades específicas.
+          </p>
+          <a 
+            id="servicios-final-cta"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-indigo-900 hover:bg-indigo-800 text-white font-bold px-8 py-4 rounded-full transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Hablar con un asesor
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CONTAINER (se llena dinámicamente) -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="main.js"></script>
+  
+  <!-- Script para cargar servicios dinámicamente -->
+  <script>
+    // Función para cargar servicios
+    function loadServicios() {
+      // Verificar que CONFIG esté disponible
+      if (typeof CONFIG === 'undefined') {
+        console.error('CONFIG no está definido. Esperando...');
+        setTimeout(loadServicios, 100);
+        return;
+      }
+
+      // Iconos SVG para los servicios
+      const iconMap = {
+        users: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>`,
+        wrench: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+        </svg>`,
+        brain: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44L2.61 17.5a2.5 2.5 0 0 1 0-3.5l4.39-4.39A2.5 2.5 0 0 1 9.5 2z"></path>
+          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44L21.39 17.5a2.5 2.5 0 0 0 0-3.5l-4.39-4.39A2.5 2.5 0 0 0 14.5 2z"></path>
+        </svg>`,
+        layers: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>`
+      };
+
+      // Cargar servicios desde CONFIG
+      if (CONFIG.servicios && Array.isArray(CONFIG.servicios)) {
+        const serviciosContainer = document.getElementById('servicios-container');
+        if (serviciosContainer) {
+          console.log('Cargando servicios:', CONFIG.servicios.length);
+          serviciosContainer.innerHTML = CONFIG.servicios.map(servicio => {
+            const icon = iconMap[servicio.icon] || iconMap.layers;
+            return `
+              <div class="bg-white rounded-2xl shadow-sm border border-gray-200 hover:shadow-lg hover:border-indigo-300 transition-all duration-300 p-6 md:p-8 scroll-animate">
+                <div class="flex items-start gap-4">
+                  <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-xl flex items-center justify-center text-indigo-700 shadow-sm">
+                    ${icon}
+                  </div>
+                  <div class="flex-1 pt-1">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">${servicio.title}</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">${servicio.description}</p>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+          
+          // Inicializar animaciones después de cargar
+          if (typeof initScrollAnimations === 'function') {
+            initScrollAnimations();
+          }
+        } else {
+          console.error('No se encontró el contenedor servicios-container');
+        }
+      } else {
+        console.error('CONFIG.servicios no está definido o no es un array');
+      }
+
+      // Configurar CTAs de WhatsApp
+      if (CONFIG.contact && CONFIG.contact.whatsapp) {
+        const whatsappUrl = `https://wa.me/${CONFIG.contact.whatsapp.number}?text=${encodeURIComponent('Me interesa conocer más sobre los servicios de PhyMaC')}`;
+        
+        const heroCta = document.getElementById('hero-servicios-cta');
+        const finalCta = document.getElementById('servicios-final-cta');
+        
+        if (heroCta) heroCta.href = whatsappUrl;
+        if (finalCta) finalCta.href = whatsappUrl;
+      }
+    }
+
+    // Intentar cargar cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadServicios);
+    } else {
+      // DOM ya está listo
+      loadServicios();
+    }
+  </script>
+</body>
+</html>
+

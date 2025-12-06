@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blog de PhyMaC - Artículos sobre educación STEM, metodologías activas, proyectos prácticos y más.">
+  <title>Blog - PhyMaC</title>
+  
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Estilos personalizados -->
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    .scroll-animate {
+      opacity: 0;
+    }
+
+    /* Estilos para el contenido del blog (prose) */
+    .prose {
+      color: #374151;
+    }
+    .prose h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #111827;
+    }
+    .prose p {
+      margin-bottom: 1rem;
+      line-height: 1.75;
+    }
+    .prose ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .prose li {
+      margin-bottom: 0.5rem;
+    }
+    .prose strong {
+      font-weight: 600;
+      color: #111827;
+    }
+    .prose em {
+      font-style: italic;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50 font-sans text-gray-800">
+  
+  <!-- HEADER CONTAINER (se llena dinámicamente) -->
+  <div id="header-container"></div>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-28 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-indigo-900 text-white text-center">
+    <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')]"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-indigo-900/90"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 relative z-10 scroll-animate">
+      <h1 class="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-6">
+        Blog PhyMaC
+      </h1>
+      
+      <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-indigo-100/90 leading-relaxed">
+        Artículos, reflexiones y recursos sobre educación STEM, metodologías activas y aprendizaje por retos.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN BLOG -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Filtros de Categoría -->
+      <div id="blog-filters" class="flex flex-wrap gap-3 mb-12 justify-center">
+        <!-- Los filtros se cargarán dinámicamente desde blog.js -->
+      </div>
+
+      <!-- Contenedor de Artículos -->
+      <div id="blog-container" class="space-y-6">
+        <!-- Los artículos se cargarán dinámicamente desde blog.js -->
+        <div class="text-center py-12">
+          <p class="text-gray-500">Cargando artículos...</p>
+        </div>
+      </div>
+
+      <!-- CTA Final -->
+      <div class="text-center mt-16">
+        <div class="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-gray-100">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">¿Tienes preguntas o quieres más información?</h3>
+          <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+            Contáctanos y te ayudaremos a encontrar las respuestas que buscas.
+          </p>
+          <a 
+            id="blog-cta"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-indigo-900 hover:bg-indigo-800 text-white font-bold px-8 py-4 rounded-full transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Contactar con PhyMaC
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CONTAINER (se llena dinámicamente) -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="main.js"></script>
+  <script src="blog-data.js"></script>
+  <script src="blog.js"></script>
+  
+  <!-- Script para configurar CTA -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Configurar CTA de WhatsApp
+      if (typeof CONFIG !== 'undefined') {
+        const whatsappUrl = `https://wa.me/${CONFIG.contact.whatsapp.number}?text=${encodeURIComponent('Me interesa conocer más sobre PhyMaC')}`;
+        const blogCta = document.getElementById('blog-cta');
+        if (blogCta) blogCta.href = whatsappUrl;
+      }
+    });
+  </script>
+</body>
+</html>
+
+
