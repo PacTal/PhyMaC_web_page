@@ -120,10 +120,17 @@ window.getWhatsAppLink = function(message = null) {
 /**
  * Función auxiliar para formatear fechas
  * Disponible globalmente
+ * Si el día es 1, solo muestra mes y año
  */
 window.formatDate = function(dateString) {
   const date = new Date(dateString);
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('es-ES', options);
+  const day = date.getDate();
+  if (day === 1) {
+    const options = { year: 'numeric', month: 'long' };
+    return date.toLocaleDateString('es-ES', options);
+  } else {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('es-ES', options);
+  }
 };
 
