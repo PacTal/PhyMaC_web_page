@@ -25,9 +25,9 @@ const BLOG_POSTS = [
       
       <h3>Nuestro Ciclo STEM de Tres Fases</h3>
       <ul>
-        <li><strong>Lo que quiero:</strong> Identificar el problema o reto a resolver</li>
         <li><strong>Lo que haré:</strong> Diseñar y planificar la solución</li>
         <li><strong>Lo que necesito:</strong> Identificar los conocimientos y recursos necesarios</li>
+        <li><strong>Lo que aplico:</strong> Poner en práctica los conocimientos adquiridos</li>
       </ul>
       
       <p>Este ciclo asegura un aprendizaje práctico y significativo en cualquier nivel educativo, desde primaria hasta educación superior.</p>

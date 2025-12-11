@@ -75,7 +75,7 @@ const CONFIG = {
     },
     metodo: {
       title: "Aprendizaje por retos",
-      description: "Descubre la ciencia construyendo artefactos para resolver problemas. Nuestro ciclo STEM de tres fases —lo que quiero, lo que haré y lo que necesito— asegura un aprendizaje práctico en cualquier nivel educativo."
+      description: "Descubre la ciencia construyendo artefactos para resolver problemas. Nuestro ciclo STEM de tres fases —lo que haré, lo que necesito y lo que aplico— asegura un aprendizaje práctico en cualquier nivel educativo."
     },
     proyectos: {
       title: "Así luce la ciencia en acción.",

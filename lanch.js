@@ -140,7 +140,7 @@ const App = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Aprendizaje por retos</h2>
             <p className="text-gray-500 max-w-2xl mx-auto">
-              Descubre la ciencia construyendo artefactos para resolver problemas. Nuestro ciclo STEM de tres fases —lo que quiero, lo que haré y lo que necesito— asegura un aprendizaje práctico en cualquier nivel educativo.
+              Descubre la ciencia construyendo artefactos para resolver problemas. Nuestro ciclo STEM de tres fases —lo que haré, lo que necesito y lo que aplico— asegura un aprendizaje práctico en cualquier nivel educativo.
             </p>
           </div>
 
