@@ -1,0 +1,508 @@
+/**
+ * ============================================================================
+ * PHYMAC BRAND IDENTITY - "MAKER ENERGY"
+ * ============================================================================
+ * Manual de marca aplicado: Eléctrico, Explosivo, Hands-On
+ * 
+ * PALETA "KIT DE VOLTAJE":
+ * - Lab White:     #F5F5F5 (Fondo general - High Key)
+ * - Electric Blue: #2962FF (Primario - Enlaces, bordes activos)
+ * - Safety Orange: #FF6D00 (Acento/CTA - Botones "Build It!")
+ * - Carbon Grey:   #212121 (Texto principal, fondos alto contraste)
+ * 
+ * TIPOGRAFÍA "POWER UP":
+ * - Títulos: Montserrat ExtraBold (impactantes, "gritan")
+ * - Cuerpo:  Open Sans (legibilidad)
+ */
+
+/* ============================================================================
+   VARIABLES CSS - PALETA DE COLORES
+   ============================================================================ */
+:root {
+  /* Paleta Principal PhyMaC */
+  --phymac-white: #F5F5F5;
+  --phymac-blue: #2962FF;
+  --phymac-blue-dark: #0039CB;
+  --phymac-blue-light: #768FFF;
+  --phymac-orange: #FF6D00;
+  --phymac-orange-dark: #C43E00;
+  --phymac-orange-light: #FF9E40;
+  --phymac-carbon: #212121;
+  --phymac-carbon-light: #484848;
+  
+  /* Colores auxiliares */
+  --phymac-gray-100: #FAFAFA;
+  --phymac-gray-200: #EEEEEE;
+  --phymac-gray-300: #E0E0E0;
+  --phymac-gray-400: #BDBDBD;
+  --phymac-gray-500: #9E9E9E;
+  --phymac-gray-600: #757575;
+  
+  /* Shadows */
+  --shadow-electric: 0 4px 20px rgba(41, 98, 255, 0.25);
+  --shadow-orange: 0 4px 20px rgba(255, 109, 0, 0.3);
+  --shadow-sharp: 0 4px 0 var(--phymac-carbon);
+}
+
+/* ============================================================================
+   RESET Y BASE
+   ============================================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--phymac-white);
+  color: var(--phymac-carbon);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================================
+   TIPOGRAFÍA - POWER UP
+   ============================================================================ */
+
+/* Títulos con Montserrat ExtraBold - "Títulos que gritan" */
+h1, h2, h3, h4, h5, h6,
+.phymac-title {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--phymac-carbon);
+}
+
+h1, .phymac-h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+h2, .phymac-h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h3, .phymac-h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h4, .phymac-h4 {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  color: var(--phymac-carbon); /* Alto contraste */
+}
+
+h5, .phymac-h5 {
+  font-size: 1.125rem;
+  color: var(--phymac-carbon);
+}
+
+h6, .phymac-h6 {
+  font-size: 1rem;
+  color: var(--phymac-carbon);
+}
+
+/* Títulos sobre fondos oscuros (hero sections) */
+.hero-phymac h1,
+.bg-phymac-blue h1,
+.bg-phymac-carbon h1,
+h1.text-white,
+.phymac-h1-light {
+  color: #FFFFFF;
+}
+
+/* Cuerpo con Open Sans */
+p, .phymac-body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+/* ============================================================================
+   BOTONES - ESTILO "HANDS-ON"
+   ============================================================================ */
+
+/* Botón Primario - Safety Orange (CTA Principal) */
+.btn-phymac-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background-color: var(--phymac-orange);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 0 var(--phymac-orange-dark);
+  transform: translateY(0);
+}
+
+.btn-phymac-primary:hover {
+  background-color: var(--phymac-orange-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--phymac-orange-dark);
+}
+
+.btn-phymac-primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--phymac-orange-dark);
+}
+
+/* Botón Secundario - Electric Blue */
+.btn-phymac-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background-color: var(--phymac-blue);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 0 var(--phymac-blue-dark);
+}
+
+.btn-phymac-secondary:hover {
+  background-color: var(--phymac-blue-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--phymac-blue-dark);
+}
+
+/* Botón Outline - Borde Eléctrico */
+.btn-phymac-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background-color: transparent;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  border: 3px solid white;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-phymac-outline:hover {
+  background-color: white;
+  color: var(--phymac-blue);
+  border-color: white;
+}
+
+/* ============================================================================
+   HERO SECTION - EXPLOSIVO
+   ============================================================================ */
+.hero-phymac {
+  background-color: var(--phymac-blue);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-phymac::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(135deg, var(--phymac-blue) 0%, var(--phymac-blue-dark) 100%);
+  z-index: 0;
+}
+
+/* Patrón de circuitos para el hero */
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hero-phymac h1 {
+  color: white;
+}
+
+/* Texto destacado con gradiente naranja */
+.text-electric {
+  color: var(--phymac-orange);
+}
+
+.text-gradient-electric {
+  background: linear-gradient(135deg, var(--phymac-orange) 0%, var(--phymac-orange-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================================
+   TARJETAS Y CONTENEDORES - BORDES DEFINIDOS
+   ============================================================================ */
+.card-phymac {
+  background-color: white;
+  border-radius: 1rem;
+  border: 2px solid var(--phymac-gray-200);
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.card-phymac:hover {
+  border-color: var(--phymac-blue);
+  box-shadow: var(--shadow-electric);
+  transform: translateY(-4px);
+}
+
+/* Tarjeta con borde superior de color */
+.card-phymac-accent {
+  background-color: white;
+  border-radius: 1rem;
+  border: 2px solid var(--phymac-gray-200);
+  border-top: 4px solid var(--phymac-orange);
+  padding: 1.5rem;
+}
+
+/* ============================================================================
+   SECCIONES
+   ============================================================================ */
+.section-phymac {
+  padding: 5rem 0;
+  background-color: var(--phymac-white);
+}
+
+.section-phymac-dark {
+  padding: 5rem 0;
+  background-color: var(--phymac-carbon);
+  color: white;
+}
+
+.section-phymac-dark h2,
+.section-phymac-dark h3 {
+  color: white;
+}
+
+/* ============================================================================
+   FORMULARIOS - INPUTS DEFINIDOS
+   ============================================================================ */
+.input-phymac {
+  width: 100%;
+  padding: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  border: 2px solid var(--phymac-gray-300);
+  border-radius: 0.75rem;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.input-phymac:focus {
+  outline: none;
+  border-color: var(--phymac-blue);
+  box-shadow: 0 0 0 4px rgba(41, 98, 255, 0.15);
+}
+
+.input-phymac::placeholder {
+  color: var(--phymac-gray-500);
+}
+
+/* ============================================================================
+   ENLACES
+   ============================================================================ */
+a {
+  color: var(--phymac-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--phymac-blue-dark);
+}
+
+.link-electric {
+  color: var(--phymac-orange);
+  font-weight: 600;
+}
+
+.link-electric:hover {
+  color: var(--phymac-orange-dark);
+}
+
+/* ============================================================================
+   NAVBAR / HEADER
+   ============================================================================ */
+.navbar-phymac {
+  background-color: white;
+  border-bottom: 2px solid var(--phymac-gray-200);
+  box-shadow: none;
+}
+
+.navbar-phymac .logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  color: var(--phymac-blue);
+  border-bottom: 3px solid var(--phymac-blue);
+}
+
+.navbar-phymac .logo-circle {
+  border: 3px solid var(--phymac-blue);
+}
+
+/* ============================================================================
+   ANIMACIONES - EFECTO ELÉCTRICO
+   ============================================================================ */
+@keyframes pulse-electric {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(41, 98, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(41, 98, 255, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-pulse-electric {
+  animation: pulse-electric 2s infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Animaciones escalonadas para listas */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* ============================================================================
+   UTILIDADES
+   ============================================================================ */
+.bg-phymac-white { background-color: var(--phymac-white); }
+.bg-phymac-blue { background-color: var(--phymac-blue); }
+.bg-phymac-orange { background-color: var(--phymac-orange); }
+.bg-phymac-carbon { background-color: var(--phymac-carbon); }
+
+.text-phymac-blue { color: var(--phymac-blue); }
+.text-phymac-orange { color: var(--phymac-orange); }
+.text-phymac-carbon { color: var(--phymac-carbon); }
+
+.border-phymac-blue { border-color: var(--phymac-blue); }
+.border-phymac-orange { border-color: var(--phymac-orange); }
+
+/* Espaciado aireado pero con "caos organizado" */
+.spacing-loose {
+  letter-spacing: 0.05em;
+}
+
+/* Sin sombras suaves - bordes definidos */
+.shadow-sharp {
+  box-shadow: 4px 4px 0 var(--phymac-carbon);
+}
+
+.shadow-sharp-blue {
+  box-shadow: 4px 4px 0 var(--phymac-blue);
+}
+
+.shadow-sharp-orange {
+  box-shadow: 4px 4px 0 var(--phymac-orange);
+}
+
+/* ============================================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================================ */
+@media (max-width: 768px) {
+  h1, .phymac-h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2, .phymac-h2 {
+    font-size: 2rem;
+  }
+  
+  .btn-phymac-primary,
+  .btn-phymac-secondary {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+}
+
+/* ============================================================================
+   PROSE / CONTENIDO DEL BLOG
+   ============================================================================ */
+.prose-phymac {
+  color: var(--phymac-carbon);
+}
+
+.prose-phymac h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--phymac-carbon);
+}
+
+.prose-phymac p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.prose-phymac ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-phymac li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-phymac strong {
+  font-weight: 700;
+  color: var(--phymac-carbon);
+}
+
+.prose-phymac a {
+  color: var(--phymac-blue);
+  font-weight: 600;
+}
+
+.prose-phymac a:hover {
+  color: var(--phymac-orange);
+}
+
