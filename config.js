@@ -12,7 +12,7 @@ const CONFIG = {
   // LOGO
   // ----------------------------------------------------------------------
   logo: {
-    url: "https://lh3.googleusercontent.com/d/1LWeAcoOmXDmEiHkdGytXOQRKYrRs62DE",
+    url: "imagenes/logo.svg",
     alt: "PhyMaC Logo",
     fallbackText: "PhyMaC"
   },

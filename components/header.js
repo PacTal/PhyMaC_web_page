@@ -33,13 +33,13 @@ function createHeader() {
           <!-- ZONA DEL LOGO -->
           <a href="index.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
             
-            <!-- CONTENEDOR CIRCULAR PARA LA IMAGEN DEL LOGO -->
-            <div class="h-12 w-12 rounded-full overflow-hidden border-3 border-phymac-blue flex items-center justify-center bg-white p-0.5 relative transition-all group-hover:border-phymac-orange" style="border-width: 3px; border-color: #2962FF;">
+            <!-- CONTENEDOR PARA LA IMAGEN DEL LOGO -->
+            <div class="h-12 w-12 flex items-center justify-center relative transition-all">
               <img 
                 id="logo-img"
                 src="${logoUrl}" 
                 alt="${logoAlt}" 
-                class="h-full w-full object-cover transform scale-125" 
+                class="h-full w-full object-contain" 
                 referrerpolicy="no-referrer"
                 onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';"
               />
