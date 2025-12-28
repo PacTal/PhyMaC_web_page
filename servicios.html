@@ -6,10 +6,48 @@
   <meta name="description" content="Servicios de PhyMaC - Talleres, capacitación docente, programas educativos y consultoría STEM.">
   <title>Servicios - PhyMaC</title>
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="imagenes/logo.svg">
+  
+  <!-- Google Fonts: Montserrat (Títulos) + Open Sans (Cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Estilos personalizados -->
+  <!-- Tailwind Config PhyMaC -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'phymac': {
+              'white': '#F5F5F5',
+              'blue': '#2962FF',
+              'blue-dark': '#0039CB',
+              'blue-light': '#768FFF',
+              'orange': '#FF6D00',
+              'orange-dark': '#C43E00',
+              'orange-light': '#FF9E40',
+              'carbon': '#212121',
+              'carbon-light': '#484848',
+            }
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'system-ui', 'sans-serif'],
+            'body': ['Open Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Estilos PhyMaC -->
+  <link rel="stylesheet" href="phymac-styles.css">
+  
+  <!-- Estilos adicionales -->
   <style>
     @keyframes fadeIn {
       from {
@@ -29,24 +67,31 @@
     .scroll-animate {
       opacity: 0;
     }
+
+    /* Patrón de fondo eléctrico */
+    .electric-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
   </style>
 </head>
-<body class="min-h-screen bg-gray-50 font-sans text-gray-800">
+<body class="min-h-screen bg-phymac-white font-body text-phymac-carbon">
   
   <!-- HEADER CONTAINER (se llena dinámicamente) -->
   <div id="header-container"></div>
 
   <!-- HERO SECTION -->
-  <section class="relative pt-28 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-indigo-900 text-white text-center">
-    <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/circuit-board.png')]"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-indigo-900/90"></div>
+  <section class="relative pt-28 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-phymac-blue text-white text-center">
+    <!-- Patrón de fondo -->
+    <div class="absolute inset-0 electric-pattern"></div>
+    <!-- Gradiente overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-phymac-blue/80 via-phymac-blue to-phymac-blue-dark"></div>
     
     <div class="max-w-4xl mx-auto px-4 relative z-10 scroll-animate">
-      <h1 class="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-6">
+      <h1 class="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6 text-white">
         Nuestros Servicios
       </h1>
       
-      <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-indigo-100/90 leading-relaxed mb-8">
+      <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed mb-8 font-body">
         Soluciones educativas prácticas para estudiantes, docentes e instituciones que buscan transformar la enseñanza de STEM.
       </p>
       
@@ -56,7 +101,8 @@
         href="#"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-4 rounded-full transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg"
+        class="inline-flex items-center gap-3 bg-phymac-orange hover:bg-phymac-orange-light text-white font-display font-bold px-8 py-4 rounded-full transition-all transform hover:-translate-y-1 text-lg"
+        style="box-shadow: 0 4px 0 #C43E00;"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -67,12 +113,12 @@
   </section>
 
   <!-- SECCIÓN SERVICIOS -->
-  <section class="py-20 bg-gray-50 scroll-animate">
+  <section class="py-20 bg-phymac-white scroll-animate">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">¿Qué ofrecemos?</h2>
-        <p class="text-gray-500 max-w-2xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-phymac-carbon mb-4">¿Qué ofrecemos?</h2>
+        <p class="text-phymac-carbon-light max-w-2xl mx-auto font-body text-lg">
           Programas diseñados para diferentes audiencias, todos con un enfoque práctico y basado en retos reales.
         </p>
       </div>
@@ -83,9 +129,9 @@
 
       <!-- CTA Final -->
       <div class="text-center mt-16">
-        <div class="bg-indigo-50 rounded-2xl p-8 md:p-12">
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">¿Listo para transformar tu educación STEM?</h3>
-          <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+        <div class="bg-phymac-blue/10 rounded-2xl p-8 md:p-12 border-2 border-phymac-blue/20">
+          <h3 class="font-display text-2xl font-extrabold text-phymac-carbon mb-4">¿Listo para transformar tu educación STEM?</h3>
+          <p class="text-phymac-carbon-light mb-6 max-w-2xl mx-auto font-body">
             Contáctanos y descubre cómo podemos adaptar nuestros servicios a tus necesidades específicas.
           </p>
           <a 
@@ -93,7 +139,8 @@
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 bg-indigo-900 hover:bg-indigo-800 text-white font-bold px-8 py-4 rounded-full transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            class="inline-flex items-center gap-2 bg-phymac-blue hover:bg-phymac-blue-light text-white font-display font-bold px-8 py-4 rounded-full transition-all transform hover:-translate-y-0.5"
+            style="box-shadow: 0 4px 0 #0039CB;"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -155,14 +202,14 @@
           serviciosContainer.innerHTML = CONFIG.servicios.map(servicio => {
             const icon = iconMap[servicio.icon] || iconMap.layers;
             return `
-              <div class="bg-white rounded-2xl shadow-sm border border-gray-200 hover:shadow-lg hover:border-indigo-300 transition-all duration-300 p-6 md:p-8 scroll-animate">
+              <div class="bg-white rounded-2xl border-2 border-gray-200 hover:border-phymac-blue transition-all duration-300 p-6 md:p-8 scroll-animate hover:shadow-lg" style="border-top: 4px solid #FF6D00;">
                 <div class="flex items-start gap-4">
-                  <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-xl flex items-center justify-center text-indigo-700 shadow-sm">
+                  <div class="flex-shrink-0 w-14 h-14 bg-phymac-blue rounded-xl flex items-center justify-center text-white">
                     ${icon}
                   </div>
                   <div class="flex-1 pt-1">
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">${servicio.title}</h3>
-                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">${servicio.description}</p>
+                    <h3 class="font-display text-xl font-extrabold text-phymac-carbon mb-3">${servicio.title}</h3>
+                    <p class="text-phymac-carbon-light leading-relaxed text-sm md:text-base font-body">${servicio.description}</p>
                   </div>
                 </div>
               </div>
@@ -202,4 +249,3 @@
   </script>
 </body>
 </html>
-

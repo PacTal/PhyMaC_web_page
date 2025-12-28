@@ -1,9 +1,14 @@
 /**
  * ----------------------------------------------------------------------
  * COMPONENTE HEADER - NAVBAR MODULAR
- * PhyMaC Web Page
+ * PhyMaC Web Page - Identidad Visual "Maker Energy"
  * ----------------------------------------------------------------------
  * Componente reutilizable del navbar que lee datos de CONFIG
+ * 
+ * Paleta PhyMaC:
+ * - Electric Blue: #2962FF (primario)
+ * - Safety Orange: #FF6D00 (CTA)
+ * - Carbon Grey: #212121 (texto)
  */
 
 function createHeader() {
@@ -21,46 +26,49 @@ function createHeader() {
   const menuItems = CONFIG.menu.items;
 
   return `
-    <nav class="bg-white shadow-sm fixed w-full z-50">
+    <nav class="bg-white border-b-2 border-gray-200 fixed w-full z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-20 items-center">
           
           <!-- ZONA DEL LOGO -->
-          <a href="index.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+          <a href="index.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
             
-            <!-- CONTENEDOR CIRCULAR PARA LA IMAGEN DEL LOGO -->
-            <div class="h-12 w-12 rounded-full overflow-hidden border-2 border-indigo-900 flex items-center justify-center bg-white p-0.5 relative">
+            <!-- CONTENEDOR PARA LA IMAGEN DEL LOGO -->
+            <div class="h-12 w-12 flex items-center justify-center relative transition-all">
               <img 
                 id="logo-img"
                 src="${logoUrl}" 
                 alt="${logoAlt}" 
-                class="h-full w-full object-cover transform scale-125" 
+                class="h-full w-full object-contain" 
                 referrerpolicy="no-referrer"
                 onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';"
               />
               <div id="logo-fallback" class="hidden flex-col items-center justify-center text-center h-full w-full">
-                <span class="font-bold text-lg tracking-tighter text-indigo-900 font-serif leading-none">${logoFallback}</span>
+                <span class="font-bold text-lg tracking-tighter font-display leading-none" style="color: #2962FF;">${logoFallback}</span>
               </div>
             </div>
             
-            <span class="font-bold text-3xl tracking-tighter text-indigo-900 font-serif border-b-2 border-indigo-900 pb-0.5 hidden sm:block">${logoFallback}</span>
+            <span class="font-extrabold text-3xl tracking-tighter font-display border-b-3 pb-0.5 hidden sm:block transition-colors group-hover:text-phymac-orange group-hover:border-phymac-orange" style="color: #2962FF; border-bottom: 3px solid #2962FF;">${logoFallback}</span>
           </a>
           
           <!-- MENÚ DE ESCRITORIO -->
-          <div class="hidden md:flex space-x-6 items-center text-sm font-medium">
+          <div class="hidden md:flex space-x-6 items-center text-sm font-semibold font-body">
             ${menuItems.map(item => {
               let href = item.href;
               // Si el href empieza con #, agregar index.html antes para que funcione desde cualquier página
               if (href.startsWith('#') && !href.startsWith('index.html')) {
                 href = 'index.html' + href;
               }
-              return `<a href="${href}" class="text-gray-600 hover:text-indigo-600 transition menu-link" data-href="${item.href}">${item.text}</a>`;
+              return `<a href="${href}" class="transition menu-link hover:text-phymac-orange" style="color: #484848;" data-href="${item.href}">${item.text}</a>`;
             }).join('')}
             <a 
               href="${whatsappUrl}"
               target="_blank"
               rel="noopener noreferrer"
-              class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full flex items-center gap-2 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              class="text-white px-5 py-2.5 rounded-full flex items-center gap-2 transition-all transform hover:-translate-y-0.5 font-display font-bold"
+              style="background-color: #FF6D00; box-shadow: 0 3px 0 #C43E00;"
+              onmouseover="this.style.backgroundColor='#FF9E40'"
+              onmouseout="this.style.backgroundColor='#FF6D00'"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -71,13 +79,13 @@ function createHeader() {
 
           <!-- BOTÓN MENÚ MÓVIL -->
           <div class="md:hidden flex items-center">
-            <button id="menu-toggle" class="text-gray-600 hover:text-indigo-600 focus:outline-none">
-              <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button id="menu-toggle" class="focus:outline-none transition-colors" style="color: #2962FF;">
+              <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
               </svg>
-              <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
@@ -87,16 +95,20 @@ function createHeader() {
       </div>
 
       <!-- MENÚ MÓVIL DESPLEGABLE -->
-      <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 space-y-2 text-center shadow-lg">
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t-2 p-4 space-y-2 text-center" style="border-color: #E0E0E0;">
         ${menuItems.map(item => {
           let href = item.href;
           // Si el href empieza con #, agregar index.html antes para que funcione desde cualquier página
           if (href.startsWith('#') && !href.startsWith('index.html')) {
             href = 'index.html' + href;
           }
-          return `<a href="${href}" class="block py-2 text-gray-700 font-medium menu-link" data-href="${item.href}">${item.text}</a>`;
+          return `<a href="${href}" class="block py-3 font-display font-bold menu-link transition-colors" style="color: #212121;" data-href="${item.href}">${item.text}</a>`;
         }).join('')}
-        <a href="${whatsappUrl}" class="block mt-2 bg-green-600 text-white px-4 py-2 rounded-lg font-bold">
+        <a 
+          href="${whatsappUrl}" 
+          class="block mt-4 text-white px-4 py-3 rounded-full font-display font-bold text-lg"
+          style="background-color: #FF6D00;"
+        >
           ${ctaText}
         </a>
       </div>
@@ -179,4 +191,3 @@ function initHeaderBehavior() {
     }
   });
 }
-
