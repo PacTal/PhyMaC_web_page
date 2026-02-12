@@ -206,7 +206,7 @@ const BLOG_POSTS = [
         <div style="position: relative; padding-bottom: 177.78%; height: 0; overflow: hidden; max-width: 360px; margin: 0 auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
           <iframe 
             src="https://www.youtube.com/embed/u_IN1UNdhNI" 
-            title="Testimonio Mari Verdugo - Short"
+            title="Testimonio Mary Verdugo - Short"
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             allowfullscreen
