@@ -213,7 +213,7 @@ const BLOG_POSTS = [
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
           </iframe>
         </div>
-        <p style="font-size: 0.9rem; color: #666; margin-top: 0.75rem; font-style: italic;">Testimonio Mari Verdugo — Short</p>
+        <p style="font-size: 0.9rem; color: #666; margin-top: 0.75rem; font-style: italic;">Testimonio Mary Verdugo — Short</p>
       </div>
 
       <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0e0e0;">
