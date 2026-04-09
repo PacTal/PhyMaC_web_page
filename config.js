@@ -36,10 +36,10 @@ const CONFIG = {
   // REDES SOCIALES
   // ----------------------------------------------------------------------
   social: {
-    facebook: "https://facebook.com/phymac",
-    instagram: "https://instagram.com/phymac",
-    linkedin: "https://linkedin.com/company/phymac",
-    twitter: "https://twitter.com/phymac"
+    instagram: "https://www.instagram.com/fundacion_phymac/",
+    facebook:  "https://www.facebook.com/profile.php?id=61586652184965",
+    linkedin:  "https://www.linkedin.com/company/fundacion-phymac/",
+    tiktok:    "https://www.tiktok.com/@fundacion_phymac"
   },
 
   // ----------------------------------------------------------------------
@@ -102,7 +102,7 @@ const CONFIG = {
       image: "imagenes/img1.jpeg",
       category: "Estudiantes",
       categoryColor: "cyan-400",
-      blogId: 7 // Relacionado con el artículo "¡Acción y reacción en el Rosal!"
+      blogSlug: "accion-reaccion-rosal-fundacion-cresiendo"
     },
     {
       id: 1,
@@ -111,7 +111,7 @@ const CONFIG = {
       image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       category: "Estudiantes",
       categoryColor: "cyan-400",
-      blogId: 2 // Relacionado con el artículo "Física de Cohetes: Aprendiendo las Leyes de Newton en Acción"
+      blogSlug: "propulsion-cohetes-leyes-newton"
     },
     {
       id: 2,
@@ -120,7 +120,7 @@ const CONFIG = {
       image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       category: "Docentes",
       categoryColor: "purple-400",
-      blogId: 6 // Relacionado con el artículo "Capacitación Docente: Metodologías Activas en el Aula"
+      blogSlug: "capacitacion-docente-metodologias-activas-arduino"
     },
     {
       id: 3,
@@ -129,7 +129,7 @@ const CONFIG = {
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       category: "Adulto Mayor",
       categoryColor: "orange-400",
-      blogId: 4 // Relacionado con el artículo "Gimnasia Cerebral STEM: Ciencia para Adultos Mayores"
+      blogSlug: "gimnasia-cerebral-stem-adultos-mayores"
     }
   ],
 
