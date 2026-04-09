@@ -42,6 +42,7 @@ function parsePost(filePath, id) {
  * @returns {Object[]}
  */
 function generateBlogData(dir) {
+  if (!fs.existsSync(dir)) return [];
   const files = fs.readdirSync(dir)
     .filter(f => f.endsWith('.md'))
     .sort();

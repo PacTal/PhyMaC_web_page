@@ -18,6 +18,17 @@ function driveToDownload(url) {
   return url.replace(/\/view.*$/, '/export?format=pdf');
 }
 
+// Escapa caracteres HTML en campos de texto para prevenir XSS
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+}
+
 // Función para renderizar artículos del blog
 function renderBlogPosts(posts = []) {
   const blogContainer = document.getElementById('blog-container');
@@ -47,7 +58,11 @@ function renderBlogPosts(posts = []) {
       'Proyectos': { bg: '#E8F5E9', text: '#2E7D32' },
       'Programas': { bg: '#FFF3E0', text: '#FF6D00' },
       'Publicaciones': { bg: '#E3F2FD', text: '#1565C0' },
-      'Capacitación': { bg: '#FCE4EC', text: '#C2185B' }
+      'Capacitación': { bg: '#FCE4EC', text: '#C2185B' },
+      'Educación STEM': { bg: '#E8F5E9', text: '#1B5E20' },
+      'Docentes':       { bg: '#EDE7F6', text: '#4527A0' },
+      'Adultos Mayores': { bg: '#FFF8E1', text: '#E65100' },
+      'Tecnología':     { bg: '#E0F7FA', text: '#006064' }
     };
     const categoryStyle = categoryColors[post.category] || { bg: '#EEEEEE', text: '#212121' };
 
@@ -65,18 +80,18 @@ function renderBlogPosts(posts = []) {
           <div class="md:w-2/3 p-6 md:p-8 flex flex-col" style="border-left: 4px solid #FF6D00;">
             <div class="flex items-center gap-3 mb-3">
               <span class="px-3 py-1 rounded-full text-xs font-display font-bold" style="background-color: ${categoryStyle.bg}; color: ${categoryStyle.text};">
-                ${post.category}
+                ${escapeHtml(post.category)}
               </span>
               <span class="text-sm font-body" style="color: #757575;">${formattedDate}</span>
             </div>
             <h2 class="font-display text-2xl font-extrabold mb-3" style="color: #212121;">
-              ${post.title}
+              ${escapeHtml(post.title)}
             </h2>
             <p class="mb-4 leading-relaxed flex-1 font-body" style="color: #484848;">
-              ${post.summary}
+              ${escapeHtml(post.summary)}
             </p>
             <div class="flex items-center justify-between mt-4">
-              <span class="text-sm font-body" style="color: #757575;">Por ${post.author}</span>
+              <span class="text-sm font-body" style="color: #757575;">Por ${escapeHtml(post.author)}</span>
               <button
                 onclick="openBlogPost(${post.id})"
                 class="inline-flex items-center font-display font-bold text-sm transition-colors"
@@ -136,7 +151,7 @@ window.openBlogPost = function(postId) {
   modal.innerHTML = `
     <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" style="border: 3px solid #2962FF;">
       <div class="sticky top-0 bg-white px-6 py-4 flex justify-between items-center" style="border-bottom: 3px solid #2962FF;">
-        <h2 class="font-display text-2xl font-extrabold" style="color: #212121;">${post.title}</h2>
+        <h2 class="font-display text-2xl font-extrabold" style="color: #212121;">${escapeHtml(post.title)}</h2>
         <button onclick="this.closest('.fixed').remove()" class="transition-colors" style="color: #9E9E9E;" onmouseover="this.style.color='#FF6D00'" onmouseout="this.style.color='#9E9E9E'">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -146,13 +161,13 @@ window.openBlogPost = function(postId) {
       </div>
       <div class="p-6">
           <div class="mb-6">
-            <img src="${post.image}" alt="${post.title}" class="w-full h-64 object-cover rounded-xl mb-4" />
+            <img src="${post.image}" alt="${escapeHtml(post.title)}" class="w-full h-64 object-cover rounded-xl mb-4" />
             <div class="flex items-center gap-4 text-sm mb-4 font-body" style="color: #757575;">
-              <span>Por ${post.author}</span>
+              <span>Por ${escapeHtml(post.author)}</span>
               <span>•</span>
               <span>${window.formatDate ? window.formatDate(post.date) : new Date(post.date).toLocaleDateString('es-ES')}</span>
             <span>•</span>
-            <span class="px-3 py-1 rounded-full font-display font-bold text-xs" style="background-color: #E8EAF6; color: #2962FF;">${post.category}</span>
+            <span class="px-3 py-1 rounded-full font-display font-bold text-xs" style="background-color: #E8EAF6; color: #2962FF;">${escapeHtml(post.category)}</span>
           </div>
         </div>
         <div class="prose max-w-none font-body" style="color: #212121;">
@@ -160,7 +175,7 @@ window.openBlogPost = function(postId) {
         </div>
         <div class="mt-8 pt-6" style="border-top: 2px solid #E0E0E0;">
           <a 
-            href="${window.getWhatsAppLink ? window.getWhatsAppLink(`Me interesa saber más sobre: ${post.title}`) : '#'}"
+            href="${window.getWhatsAppLink ? window.getWhatsAppLink(`Me interesa saber más sobre: ${escapeHtml(post.title)}`) : '#'}"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 text-white font-display font-bold px-6 py-3 rounded-full transition-all transform hover:-translate-y-0.5"

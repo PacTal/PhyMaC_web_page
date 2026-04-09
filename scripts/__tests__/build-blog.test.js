@@ -86,6 +86,11 @@ describe('generateBlogData', () => {
     ].join('\n'));
   });
 
+  test('retorna array vacío si el directorio no existe', () => {
+    const result = generateBlogData('/ruta/que/no/existe/jamas');
+    expect(result).toEqual([]);
+  });
+
   afterEach(() => {
     fs.rmSync(tmpDir, { recursive: true });
   });
