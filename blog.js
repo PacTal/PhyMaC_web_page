@@ -92,10 +92,10 @@ function renderBlogPosts(posts = []) {
             </p>
             <div class="flex items-center justify-between mt-4">
               <span class="text-sm font-body" style="color: #757575;">Por ${escapeHtml(post.author)}</span>
-              <button
-                onclick="openBlogPost(${post.id})"
+              <a
+                href="post.html?slug=${escapeHtml(post.slug)}"
                 class="inline-flex items-center font-display font-bold text-sm transition-colors"
-                style="color: #2962FF;"
+                style="color: #2962FF; text-decoration: none;"
                 onmouseover="this.style.color='#FF6D00'"
                 onmouseout="this.style.color='#2962FF'"
               >
@@ -103,7 +103,7 @@ function renderBlogPosts(posts = []) {
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
                   <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
-              </button>
+              </a>
             </div>
             ${post.pdf_url ? `
               <a href="${driveToDownload(post.pdf_url)}"
@@ -129,79 +129,6 @@ function renderBlogPosts(posts = []) {
   // Inicializar animaciones de scroll
   initScrollAnimations();
 }
-
-// Función para abrir un artículo completo (modal o página)
-// Disponible globalmente
-window.openBlogPost = function(postId) {
-  if (typeof BLOG_POSTS === 'undefined') {
-    console.error('BLOG_POSTS no está definido');
-    return;
-  }
-
-  const post = BLOG_POSTS.find(p => p.id === postId);
-  if (!post) {
-    console.error('Artículo no encontrado');
-    return;
-  }
-
-  // Crear modal con el contenido completo - Estilo PhyMaC
-  const modal = document.createElement('div');
-  modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
-  modal.style.backgroundColor = 'rgba(33, 33, 33, 0.8)';
-  modal.innerHTML = `
-    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" style="border: 3px solid #2962FF;">
-      <div class="sticky top-0 bg-white px-6 py-4 flex justify-between items-center" style="border-bottom: 3px solid #2962FF;">
-        <h2 class="font-display text-2xl font-extrabold" style="color: #212121;">${escapeHtml(post.title)}</h2>
-        <button onclick="this.closest('.fixed').remove()" class="transition-colors" style="color: #9E9E9E;" onmouseover="this.style.color='#FF6D00'" onmouseout="this.style.color='#9E9E9E'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-      <div class="p-6">
-          <div class="mb-6">
-            <img src="${post.image}" alt="${escapeHtml(post.title)}" class="w-full h-64 object-cover rounded-xl mb-4" />
-            <div class="flex items-center gap-4 text-sm mb-4 font-body" style="color: #757575;">
-              <span>Por ${escapeHtml(post.author)}</span>
-              <span>•</span>
-              <span>${window.formatDate ? window.formatDate(post.date) : new Date(post.date).toLocaleDateString('es-ES')}</span>
-            <span>•</span>
-            <span class="px-3 py-1 rounded-full font-display font-bold text-xs" style="background-color: #E8EAF6; color: #2962FF;">${escapeHtml(post.category)}</span>
-          </div>
-        </div>
-        <div class="prose max-w-none font-body" style="color: #212121;">
-          ${post.content}
-        </div>
-        <div class="mt-8 pt-6" style="border-top: 2px solid #E0E0E0;">
-          <a 
-            href="${window.getWhatsAppLink ? window.getWhatsAppLink(`Me interesa saber más sobre: ${escapeHtml(post.title)}`) : '#'}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 text-white font-display font-bold px-6 py-3 rounded-full transition-all transform hover:-translate-y-0.5"
-            style="background-color: #FF6D00; box-shadow: 0 4px 0 #C43E00;"
-            onmouseover="this.style.backgroundColor='#FF9E40'"
-            onmouseout="this.style.backgroundColor='#FF6D00'"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-            Consultar sobre este tema
-          </a>
-        </div>
-      </div>
-    </div>
-  `;
-  
-      document.body.appendChild(modal);
-      
-      // Cerrar al hacer clic fuera del modal
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          modal.remove();
-        }
-      });
-};
 
 // Función para filtrar por categoría
 // Disponible globalmente
