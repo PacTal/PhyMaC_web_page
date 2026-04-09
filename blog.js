@@ -11,6 +11,13 @@
  * - Carbon Grey: #212121 (texto)
  */
 
+// Transforma URL de Google Drive de visor a descarga directa de PDF
+function driveToDownload(url) {
+  if (!url) return null;
+  if (url.includes('/export')) return url;
+  return url.replace(/\/view.*$/, '/export?format=pdf');
+}
+
 // Función para renderizar artículos del blog
 function renderBlogPosts(posts = []) {
   const blogContainer = document.getElementById('blog-container');
@@ -70,7 +77,7 @@ function renderBlogPosts(posts = []) {
             </p>
             <div class="flex items-center justify-between mt-4">
               <span class="text-sm font-body" style="color: #757575;">Por ${post.author}</span>
-              <button 
+              <button
                 onclick="openBlogPost(${post.id})"
                 class="inline-flex items-center font-display font-bold text-sm transition-colors"
                 style="color: #2962FF;"
@@ -83,6 +90,21 @@ function renderBlogPosts(posts = []) {
                 </svg>
               </button>
             </div>
+            ${post.pdf_url ? `
+              <a href="${driveToDownload(post.pdf_url)}"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="inline-flex items-center gap-2 mt-3 px-4 py-2 rounded-full text-sm font-bold transition-all"
+                 style="background-color: #2962FF; color: white; text-decoration: none; box-shadow: 0 3px 0 #0039CB;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                Descargar PDF
+              </a>
+            ` : ''}
           </div>
         </div>
       </article>
