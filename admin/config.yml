@@ -1,0 +1,40 @@
+backend:
+  name: github
+  repo: PacTal/PhyMaC_web_page
+  branch: main
+
+media_folder: imagenes/blog
+public_folder: /imagenes/blog
+
+collections:
+  - name: blog
+    label: Artículos del Blog
+    folder: content/blog
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Título, name: title, widget: string }
+      - { label: Subtítulo, name: subtitle, widget: string, required: false }
+      - { label: Autor, name: author, widget: string }
+      - { label: Fecha, name: date, widget: datetime }
+      - label: Categoría
+        name: category
+        widget: select
+        options:
+          - Educación STEM
+          - Metodología
+          - Proyectos
+          - Docentes
+          - Adultos Mayores
+          - Tecnología
+          - Programas
+          - Publicaciones
+          - Capacitación
+      - { label: Imagen destacada, name: image, widget: image, required: false }
+      - { label: Resumen, name: summary, widget: text, required: false }
+      - { label: Contenido, name: body, widget: markdown }
+      - label: PDF adjunto (Google Drive)
+        name: pdf_url
+        widget: string
+        required: false
+        hint: "Pega el link de Google Drive con permiso 'Cualquier persona con el enlace puede ver'"
