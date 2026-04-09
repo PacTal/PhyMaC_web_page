@@ -259,15 +259,15 @@ document.addEventListener('DOMContentLoaded', function() {
           Todos
         </button>
         ${categories.map(cat => `
-          <button 
-            onclick="filterByCategory('${cat}')"
+          <button
+            onclick="filterByCategory('${escapeHtml(cat)}')"
             class="category-filter px-5 py-2.5 rounded-full text-sm font-display font-bold transition-all"
-            data-category="${cat}"
+            data-category="${escapeHtml(cat)}"
             style="background-color: #EEEEEE; color: #484848;"
             onmouseover="if(this.style.backgroundColor !== 'rgb(41, 98, 255)') this.style.backgroundColor='#E0E0E0'"
             onmouseout="if(this.style.backgroundColor !== 'rgb(41, 98, 255)') this.style.backgroundColor='#EEEEEE'"
           >
-            ${cat}
+            ${escapeHtml(cat)}
           </button>
         `).join('')}
       `;
