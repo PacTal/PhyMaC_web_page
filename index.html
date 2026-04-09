@@ -251,26 +251,23 @@
             let href = 'blog.html';
             let linkText = 'Ver más';
             let extraAttrs = '';
-            let onclickAttr = '';
-
-            if (typeof BLOG_POSTS !== 'undefined' && proyecto.blogId) {
-              const blogPost = BLOG_POSTS.find(post => post.id === proyecto.blogId);
+            if (typeof BLOG_POSTS !== 'undefined' && proyecto.blogSlug) {
+              const blogPost = BLOG_POSTS.find(post => post.slug === proyecto.blogSlug);
               if (blogPost) {
-                href = 'blog.html';
-                onclickAttr = `onclick="if(typeof openBlogPost === 'function') { event.preventDefault(); openBlogPost(${blogPost.id}); }"`;
+                href = 'post.html?slug=' + encodeURIComponent(blogPost.slug);
                 linkText = 'Leer artículo';
               }
             }
 
             // Si no hay blog relacionado, usar WhatsApp como fallback
-            if (!onclickAttr) {
+            if (href === 'blog.html') {
               const whatsappUrl = `https://wa.me/${CONFIG.contact.whatsapp.number}?text=${encodeURIComponent('Me interesa saber más sobre: ' + proyecto.title)}`;
               href = whatsappUrl;
               extraAttrs = 'target="_blank" rel="noopener noreferrer"';
             }
 
             return `
-              <a href="${href}" ${extraAttrs} ${onclickAttr}
+              <a href="${href}" ${extraAttrs}
                 class="group relative rounded-2xl overflow-hidden transition-all transform hover:-translate-y-2 hover:shadow-xl"
                 style="background: white; border: 2px solid #E0E0E0; text-decoration: none; display: block;">
                 <!-- Imagen -->
