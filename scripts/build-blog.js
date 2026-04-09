@@ -18,7 +18,6 @@ function parsePost(filePath, id) {
   const raw = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(raw);
 
-  // gray-matter puede parsear la fecha como objeto Date
   const dateStr = data.date instanceof Date
     ? data.date.toISOString().split('T')[0]
     : String(data.date);
@@ -37,4 +36,47 @@ function parsePost(filePath, id) {
   };
 }
 
-module.exports = { parsePost };
+/**
+ * Lee todos los archivos .md de un directorio y retorna un array de posts.
+ * @param {string} dir - Ruta absoluta al directorio con los .md
+ * @returns {Object[]}
+ */
+function generateBlogData(dir) {
+  const files = fs.readdirSync(dir)
+    .filter(f => f.endsWith('.md'))
+    .sort();
+
+  return files.map((file, index) =>
+    parsePost(path.join(dir, file), index + 1)
+  );
+}
+
+/**
+ * Genera el string del archivo blog-data.js a partir del array de posts.
+ * @param {Object[]} posts
+ * @returns {string}
+ */
+function generateBlogDataSource(posts) {
+  return `/**
+ * AUTO-GENERATED — No editar manualmente.
+ * Generado por: npm run build:blog
+ * Fuente: content/blog/*.md
+ */
+
+const BLOG_POSTS = ${JSON.stringify(posts, null, 2)};
+
+// Compatibilidad CommonJS para tests y scripts
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = BLOG_POSTS;
+}
+`;
+}
+
+// Punto de entrada — solo corre cuando se ejecuta directamente
+if (require.main === module) {
+  const posts = generateBlogData(BLOG_DIR);
+  fs.writeFileSync(OUTPUT_FILE, generateBlogDataSource(posts));
+  console.log(`✓ blog-data.js generado con ${posts.length} artículos`);
+}
+
+module.exports = { parsePost, generateBlogData, generateBlogDataSource };
