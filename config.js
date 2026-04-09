@@ -96,6 +96,15 @@ const CONFIG = {
   // ----------------------------------------------------------------------
   proyectos: [
     {
+      id: 4,
+      title: "¡Acción y reacción en el Rosal!",
+      description: "Niños y jóvenes construyendo cohetes propulsados por aire en la Fundación CreSiendo.",
+      image: "imagenes/img1.jpeg",
+      category: "Estudiantes",
+      categoryColor: "cyan-400",
+      blogId: 7 // Relacionado con el artículo "¡Acción y reacción en el Rosal!"
+    },
+    {
       id: 1,
       title: "Física de Cohetes",
       description: "Aprendiendo leyes de Newton lanzando proyectiles a 50 metros.",
