@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Artículo del blog de PhyMaC">
+  <title>Artículo — PhyMaC</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="imagenes/logo.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'phymac': {
+              'white': '#F5F5F5',
+              'blue': '#2962FF',
+              'blue-dark': '#0039CB',
+              'blue-light': '#768FFF',
+              'orange': '#FF6D00',
+              'orange-dark': '#C43E00',
+              'orange-light': '#FF9E40',
+              'carbon': '#212121',
+              'carbon-light': '#484848',
+            }
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'system-ui', 'sans-serif'],
+            'body': ['Open Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos PhyMaC -->
+  <link rel="stylesheet" href="phymac-styles.css">
+
+  <style>
+    .post-body h2 { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; color: #212121; margin: 2rem 0 0.75rem; }
+    .post-body h3 { font-family: 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 700; color: #212121; margin: 1.5rem 0 0.5rem; }
+    .post-body p  { font-family: 'Open Sans', sans-serif; color: #484848; line-height: 1.8; margin-bottom: 1.25rem; }
+    .post-body ul, .post-body ol { font-family: 'Open Sans', sans-serif; color: #484848; margin: 0 0 1.25rem 1.5rem; line-height: 1.8; }
+    .post-body ul { list-style: disc; }
+    .post-body ol { list-style: decimal; }
+    .post-body a  { color: #2962FF; text-decoration: underline; }
+    .post-body a:hover { color: #FF6D00; }
+    .post-body img { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; }
+    .post-body iframe { max-width: 100%; }
+    .post-body strong { font-weight: 700; color: #212121; }
+    .post-body blockquote { border-left: 4px solid #2962FF; padding-left: 1rem; margin: 1.5rem 0; color: #757575; font-style: italic; }
+  </style>
+</head>
+<body style="background-color: #F5F5F5;">
+
+  <!-- Header (injected by header.js) -->
+  <div id="header-placeholder"></div>
+
+  <!-- Main content -->
+  <main id="post-main"></main>
+
+  <!-- Footer (injected by footer.js) -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Script load order: config → header → footer → blog-data → blog → main → inline -->
+  <script src="config.js"></script>
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="blog-data.js"></script>
+  <script src="blog.js"></script>
+  <script src="main.js"></script>
+
+  <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var slug = params.get('slug');
+
+      var headerEl = document.getElementById('header-placeholder');
+      if (headerEl && typeof createHeader === 'function') {
+        headerEl.innerHTML = createHeader();
+        if (typeof initHeaderBehavior === 'function') initHeaderBehavior();
+      }
+      var footerEl = document.getElementById('footer-placeholder');
+      if (footerEl && typeof createFooter === 'function') {
+        footerEl.innerHTML = createFooter();
+        if (typeof initFooterBehavior === 'function') initFooterBehavior();
+      }
+
+      var main = document.getElementById('post-main');
+
+      if (!slug || typeof BLOG_POSTS === 'undefined') {
+        renderNotFound(main);
+        return;
+      }
+      var post = BLOG_POSTS.find(function(p) { return p.slug === slug; });
+      if (!post) {
+        renderNotFound(main);
+        return;
+      }
+
+      document.title = post.title + ' — PhyMaC';
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', post.summary);
+
+      var categoryColors = {
+        'Metodología':    { bg: '#E8EAF6', text: '#2962FF' },
+        'Proyectos':      { bg: '#E8F5E9', text: '#2E7D32' },
+        'Programas':      { bg: '#FFF3E0', text: '#FF6D00' },
+        'Publicaciones':  { bg: '#E3F2FD', text: '#1565C0' },
+        'Capacitación':   { bg: '#FCE4EC', text: '#C2185B' },
+        'Educación STEM': { bg: '#E8F5E9', text: '#1B5E20' },
+        'Docentes':       { bg: '#EDE7F6', text: '#4527A0' },
+        'Adultos Mayores':{ bg: '#FFF8E1', text: '#E65100' },
+        'Tecnología':     { bg: '#E0F7FA', text: '#006064' },
+        'Otros':          { bg: '#EEEEEE', text: '#212121' }
+      };
+      var catStyle = categoryColors[post.category] || { bg: '#EEEEEE', text: '#212121' };
+
+      var formattedDate = typeof window.formatDate === 'function'
+        ? window.formatDate(post.date)
+        : new Date(post.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+
+      var wordCount = post.content ? post.content.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length : 0;
+      var readTime = Math.max(1, Math.round(wordCount / 200));
+
+      var pdfBtn = '';
+      if (post.pdf_url && typeof driveToDownload === 'function') {
+        var pdfHref = driveToDownload(post.pdf_url);
+        if (pdfHref) {
+          pdfBtn = '<div class="mt-8">' +
+            '<a href="' + pdfHref + '" target="_blank" rel="noopener noreferrer" ' +
+            'class="inline-flex items-center gap-2 px-5 py-3 rounded-full text-white font-display font-bold text-sm transition-all" ' +
+            'style="background-color: #2962FF; box-shadow: 0 3px 0 #0039CB; text-decoration: none;">' +
+            '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+            '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>' +
+            '<polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>' +
+            '</svg>Descargar PDF</a></div>';
+        }
+      }
+
+      var waMsg = encodeURIComponent('Me interesa saber más sobre: ' + post.title);
+      var waNumber = (typeof CONFIG !== 'undefined' && CONFIG.contact && CONFIG.contact.whatsapp)
+        ? CONFIG.contact.whatsapp.number
+        : '573197438210';
+      var waUrl = 'https://wa.me/' + waNumber + '?text=' + waMsg;
+
+      main.innerHTML =
+        '<nav class="max-w-5xl mx-auto px-4 pt-4 pb-2 text-sm font-body" style="color: #9E9E9E;" aria-label="Breadcrumb">' +
+          '<a href="blog.html" style="color: #2962FF; text-decoration: none;">Blog</a>' +
+          ' <span aria-hidden="true">›</span> ' +
+          '<span style="background-color: ' + catStyle.bg + '; color: ' + catStyle.text + '; padding: 2px 10px; border-radius: 99px; font-size: 12px; font-weight: 700;">' + escapeHtml(post.category) + '</span>' +
+          ' <span aria-hidden="true">›</span> ' +
+          '<span style="color: #484848;">' + escapeHtml(post.title.length > 48 ? post.title.slice(0, 48) + '\u2026' : post.title) + '</span>' +
+        '</nav>' +
+
+        '<div style="position: relative; min-height: 320px; max-height: 480px; overflow: hidden; background: linear-gradient(135deg, #1a1a2e 0%, #2962FF 100%);">' +
+          '<img src="' + post.image + '" alt="" role="presentation" ' +
+               'style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5;" ' +
+               'onerror="this.style.display=\'none\'">' +
+          '<div style="position: absolute; inset: 0; background: rgba(0,0,0,0.45);"></div>' +
+          '<div style="position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem 2.5rem;">' +
+            '<span style="display: inline-block; background-color: #FF6D00; color: white; font-size: 12px; font-weight: 700; font-family: Montserrat, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 12px; border-radius: 99px; margin-bottom: 1rem;">' + escapeHtml(post.category) + '</span>' +
+            '<h1 style="font-family: Montserrat, sans-serif; font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 900; color: white; line-height: 1.2; margin-bottom: 1rem;">' + escapeHtml(post.title) + '</h1>' +
+            '<p style="font-family: Open Sans, sans-serif; font-size: 14px; color: rgba(255,255,255,0.8);">' +
+              escapeHtml(post.author) + ' · ' + formattedDate + ' · ' + readTime + ' min lectura' +
+            '</p>' +
+          '</div>' +
+        '</div>' +
+
+        '<div style="height: 4px; background-color: #FF6D00;"></div>' +
+
+        '<article class="max-w-3xl mx-auto px-4 py-10 post-body">' +
+          post.content +
+          pdfBtn +
+        '</article>' +
+
+        '<div style="background-color: #FFF3E0; border-top: 1px solid #FFE0B2; border-bottom: 1px solid #FFE0B2; padding: 1.5rem 1rem;">' +
+          '<div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">' +
+            '<p style="font-family: Montserrat, sans-serif; font-size: 1rem; font-weight: 700; color: #FF6D00; margin: 0;">\u00bfTe interesa este reto en tu instituci\u00f3n?</p>' +
+            '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" ' +
+               'class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-display font-bold text-sm transition-all" ' +
+               'style="background-color: #FF6D00; box-shadow: 0 3px 0 #C43E00; text-decoration: none; white-space: nowrap;">' +
+              'Cont\u00e1ctanos \u2192' +
+            '</a>' +
+          '</div>' +
+        '</div>';
+
+      if (typeof initScrollAnimations === 'function') initScrollAnimations();
+
+      function renderNotFound(container) {
+        container.innerHTML =
+          '<div class="max-w-xl mx-auto px-4 py-20 text-center">' +
+            '<h1 class="font-display text-3xl font-extrabold mb-4" style="color: #212121;">Art\u00edculo no encontrado</h1>' +
+            '<p class="font-body mb-8" style="color: #484848;">El art\u00edculo que buscas no existe o fue movido.</p>' +
+            '<a href="blog.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-display font-bold" style="background-color: #2962FF; text-decoration: none;">\u2190 Volver al Blog</a>' +
+          '</div>';
+      }
+    })();
+  </script>
+
+</body>
+</html>
