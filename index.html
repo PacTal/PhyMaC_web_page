@@ -70,7 +70,7 @@
     
     /* Patrón de fondo eléctrico */
     .electric-pattern {
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.18'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
   </style>
 </head>
@@ -79,6 +79,8 @@
   <!-- HEADER CONTAINER (se llena dinámicamente) -->
   <div id="header-container"></div>
 
+  <main>
+
   <!-- HERO SECTION -->
   <section class="relative pt-28 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-phymac-blue text-white text-center">
     <!-- Patrón de fondo -->
@@ -86,7 +88,7 @@
     <!-- Gradiente overlay -->
     <div class="absolute inset-0 bg-gradient-to-b from-phymac-blue/80 via-phymac-blue to-phymac-blue-dark"></div>
     
-    <div class="max-w-5xl mx-auto px-4 relative z-10 scroll-animate">
+    <div class="max-w-5xl mx-auto px-4 relative z-10 animate-fade-in">
       <h1 class="font-display text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6 text-white">
         Para entender el mundo tecnológico,<br />
         <span class="text-phymac-orange">
@@ -108,7 +110,7 @@
           class="bg-phymac-orange hover:bg-phymac-orange-light text-white font-display font-bold px-8 py-4 rounded-full flex items-center gap-3 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg"
           style="box-shadow: 0 4px 0 #C43E00;"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
           </svg>
           ¡Acepta el reto!
@@ -127,17 +129,60 @@
   <!-- SECCIÓN MÉTODO -->
   <section id="metodo" class="py-20 bg-white relative scroll-animate">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center mb-16">
+
+      <div class="text-center mb-14">
         <h2 class="font-display text-3xl md:text-4xl font-extrabold text-phymac-carbon mb-4">Aprendizaje por retos</h2>
         <p class="text-phymac-carbon-light max-w-2xl mx-auto font-body text-lg">
-          Descubre la ciencia construyendo artefactos para resolver problemas. Nuestro ciclo STEM de tres fases —lo que haré, lo que necesito y lo que aplico— asegura un aprendizaje práctico en cualquier nivel educativo.
+          Descubre la ciencia construyendo artefactos. Nuestro ciclo STEM de tres fases asegura un aprendizaje práctico en cualquier nivel educativo.
         </p>
       </div>
 
+      <!-- CICLO STEM — Diagrama visual de 3 fases -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 relative">
+        <!-- Línea conectora (solo desktop) -->
+        <div class="hidden md:block absolute top-10 left-1/6 right-1/6 h-0.5" style="background: linear-gradient(to right, #2962FF, #FF6D00); opacity: 0.25; top: 2.5rem;"></div>
+
+        <!-- Fase 1: Lo que haré -->
+        <div class="relative flex flex-col items-center text-center p-8 rounded-2xl scroll-animate" style="background: #F5F5F5; border: 2px solid #E0E0E0;">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-5 shadow-md" style="background: #2962FF;">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+          </div>
+          <span class="font-display text-xs font-bold uppercase tracking-widest mb-2" style="color: #2962FF;">Fase 1</span>
+          <h3 class="font-display text-xl font-extrabold text-phymac-carbon mb-3">Lo que haré</h3>
+          <p class="font-body text-phymac-carbon-light text-sm leading-relaxed">Diseña y planifica tu solución. Define el reto, imagina posibles respuestas y traza el camino antes de construir.</p>
+        </div>
+
+        <!-- Fase 2: Lo que necesito -->
+        <div class="relative flex flex-col items-center text-center p-8 rounded-2xl scroll-animate" style="background: #F5F5F5; border: 2px solid #E0E0E0;">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-5 shadow-md" style="background: #2962FF;">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"></path>
+            </svg>
+          </div>
+          <span class="font-display text-xs font-bold uppercase tracking-widest mb-2" style="color: #2962FF;">Fase 2</span>
+          <h3 class="font-display text-xl font-extrabold text-phymac-carbon mb-3">Lo que necesito</h3>
+          <p class="font-body text-phymac-carbon-light text-sm leading-relaxed">Identifica los conocimientos, materiales y habilidades requeridos. Investiga, pregunta y prepara todo lo necesario para actuar.</p>
+        </div>
+
+        <!-- Fase 3: Lo que aplico -->
+        <div class="relative flex flex-col items-center text-center p-8 rounded-2xl scroll-animate" style="background: #FFF3E0; border: 2px solid #FFE0B2;">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-5 shadow-md" style="background: #FF6D00;">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.663 17h4.673M12 3v1m6.364 1.636-.707.707M21 12h-1M4 12H3m3.343-5.657-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              <line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <span class="font-display text-xs font-bold uppercase tracking-widest mb-2" style="color: #FF6D00;">Fase 3</span>
+          <h3 class="font-display text-xl font-extrabold text-phymac-carbon mb-3">Lo que aplico</h3>
+          <p class="font-body text-phymac-carbon-light text-sm leading-relaxed">Construye, experimenta y ajusta. Pon en práctica lo aprendido creando un artefacto tangible que resuelva el reto propuesto.</p>
+        </div>
+      </div>
+
       <!-- CTA en sección método -->
-      <div class="text-center mt-12">
-        <a 
+      <div class="text-center">
+        <a
           id="metodo-whatsapp-cta"
           href="#"
           target="_blank"
@@ -145,7 +190,7 @@
           class="inline-flex items-center gap-2 bg-phymac-blue hover:bg-phymac-blue-light text-white font-display font-bold px-6 py-3 rounded-full transition-all transform hover:-translate-y-0.5"
           style="box-shadow: 0 4px 0 #0039CB;"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
           </svg>
           Quiero saber más
@@ -181,6 +226,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER CONTAINER (se llena dinámicamente) -->
   <div id="footer-container"></div>
 
@@ -201,36 +248,37 @@
         if (proyectosContainer) {
           proyectosContainer.innerHTML = CONFIG.proyectos.map(proyecto => {
             // Buscar el artículo del blog relacionado
-            let blogLink = '#';
+            let href = 'blog.html';
             let linkText = 'Ver más';
-            let linkAction = '';
-            
-            if (typeof BLOG_POSTS !== 'undefined' && proyecto.blogId) {
-              const blogPost = BLOG_POSTS.find(post => post.id === proyecto.blogId);
+            let extraAttrs = '';
+            if (typeof BLOG_POSTS !== 'undefined' && proyecto.blogSlug) {
+              const blogPost = BLOG_POSTS.find(post => post.slug === proyecto.blogSlug);
               if (blogPost) {
-                // Crear función para abrir el artículo del blog
-                linkAction = `onclick="if(typeof openBlogPost === 'function') { openBlogPost(${blogPost.id}); } else { window.location.href='blog.html'; }"`;
+                href = 'post.html?slug=' + encodeURIComponent(blogPost.slug);
                 linkText = 'Leer artículo';
               }
             }
-            
+
             // Si no hay blog relacionado, usar WhatsApp como fallback
-            if (!linkAction) {
-              const whatsappUrl = `https://wa.me/${CONFIG.contact.whatsapp.number}?text=${encodeURIComponent(`Me interesa saber más sobre: ${proyecto.title}`)}`;
-              linkAction = `onclick="window.open('${whatsappUrl}', '_blank')"`;
+            if (href === 'blog.html') {
+              const whatsappUrl = `https://wa.me/${CONFIG.contact.whatsapp.number}?text=${encodeURIComponent('Me interesa saber más sobre: ' + proyecto.title)}`;
+              href = whatsappUrl;
+              extraAttrs = 'target="_blank" rel="noopener noreferrer"';
             }
-            
+
             return `
-              <div class="group relative rounded-2xl overflow-hidden cursor-pointer transition-all transform hover:-translate-y-2 hover:shadow-xl" style="background: white; border: 2px solid #E0E0E0;" ${linkAction}>
+              <a href="${href}" ${extraAttrs}
+                class="group relative rounded-2xl overflow-hidden transition-all transform hover:-translate-y-2 hover:shadow-xl"
+                style="background: white; border: 2px solid #E0E0E0; text-decoration: none; display: block;">
                 <!-- Imagen -->
                 <div class="aspect-[16/10] overflow-hidden">
-                  <img 
-                    src="${proyecto.image}" 
-                    alt="${proyecto.title}" 
+                  <img
+                    src="${proyecto.image}"
+                    alt="${proyecto.title}"
                     class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                   />
                 </div>
-                <!-- Contenido con fondo blanco -->
+                <!-- Contenido -->
                 <div class="p-5" style="border-top: 4px solid #FF6D00;">
                   <div class="flex items-center gap-2 mb-2">
                     <span class="px-3 py-1 rounded-full text-xs font-display font-bold uppercase tracking-wider" style="background-color: #2962FF; color: white;">
@@ -239,14 +287,14 @@
                   </div>
                   <h3 class="font-display text-lg font-extrabold mb-2 leading-tight" style="color: #212121;">${proyecto.title}</h3>
                   <p class="text-sm line-clamp-2 font-body mb-3" style="color: #484848;">${proyecto.description}</p>
-                  <div class="flex items-center gap-2 font-display font-bold text-sm transition-colors" style="color: #FF6D00;">
+                  <div class="flex items-center gap-2 font-display font-bold text-sm" style="color: #FF6D00;">
                     ${linkText}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                   </div>
                 </div>
-              </div>
+              </a>
             `;
           }).join('');
         }

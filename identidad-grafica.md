@@ -65,9 +65,16 @@ Para complementar la identidad gráfica, se sugieren los siguientes colores:
 - HEX: `#F5F5F5` (Gris muy claro)
 - Uso: Secciones alternadas, tarjetas
 
-**Color de Acento**
+**Color de Acento / Institucional**
 - HEX: `#2962FF` (Azul brillante del gradiente)
-- Uso: Botones, enlaces, elementos interactivos
+- Uso: Botones secundarios, enlaces, badges de categoría, bordes activos
+
+**Color de Acción / CTA — Safety Orange**
+- HEX: `#FF6D00`
+- HEX variante oscura: `#C43E00` (sombra 3D en botones)
+- HEX variante clara: `#FF9E40` (hover)
+- Uso: Botones CTA principales ("¡Acepta el reto!"), borde superior de tarjetas, links de acción ("Leer artículo"), énfasis visual en la Fase 3 del ciclo STEM
+- Razón: El naranja transmite energía, acción inmediata y contraste sobre el azul institucional. No reemplaza al azul — los dos colores operan en jerarquías distintas.
 
 ---
 
