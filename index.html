@@ -7,6 +7,7 @@
   <title>PhyMaC - Aprendizaje por Retos en STEM</title>
   
   <!-- Favicon -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <link rel="icon" type="image/svg+xml" href="imagenes/logo.svg">
   
   <!-- Google Fonts: Montserrat (Títulos) + Open Sans (Cuerpo) -->
@@ -310,5 +311,17 @@
       if (metodoCta) metodoCta.href = whatsappUrl;
     });
   </script>
+
+  <script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 </body>
 </html>
