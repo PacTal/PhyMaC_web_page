@@ -1,11 +1,14 @@
 ---
-title: "Aprendizaje por Retos: La Metodología que Transforma la Educación STEM"
+title: Aprendizaje por Retos
+subtitle: La Metodología que Transforma la Educación STEM
+author: Equipo PhyMaC
+date: 2026-04-20T17:00:00.000-05:00
+summary: Descubre cómo el aprendizaje por retos revoluciona la enseñanza de
+  ciencias, tecnología, ingeniería y matemáticas. Una metodología práctica que
+  conecta teoría con realidad.
 slug: aprendizaje-por-retos-metodologia-stem
-author: "Equipo PhyMaC"
-date: 2024-01-15
 category: Metodología
-image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-summary: "Descubre cómo el aprendizaje por retos revoluciona la enseñanza de ciencias, tecnología, ingeniería y matemáticas. Una metodología práctica que conecta teoría con realidad."
+image: /imagenes/blog/whatsapp-image-2025-12-10-at-8.50.48-pm.jpeg
 ---
 
 El aprendizaje por retos es una metodología educativa que ha demostrado ser altamente efectiva en la enseñanza de STEM (Ciencia, Tecnología, Ingeniería y Matemáticas). En PhyMaC, hemos implementado esta metodología con resultados extraordinarios.
