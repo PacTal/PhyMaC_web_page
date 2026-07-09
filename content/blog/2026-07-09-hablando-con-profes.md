@@ -6,7 +6,7 @@ category: Docentes
 image: /imagenes/blog/final.jpeg
 summary: "Saber de ciencia, pedagogía  y de didáctica ya no es suficiente;
   seamos honestos: enseñar ciencia y tecnología hoy es como practicar un deporte
-  de alto riesgo."
+  de alto riesgo. "
 ---
 Saber de ciencia, pedagogía  y de didáctica ya no es suficiente; seamos honestos: enseñar ciencia y tecnología hoy es como practicar un deporte de alto riesgo. Los conocimientos con los que nos formamos en la universidad se quedan cortos, pues la clase tradicional no aguanta el ritmo de aulas cada vez más diversas. Competir contra la IA por la atención de los estudiantes se siente como una batalla perdida; el currículo parece escrito para otro planeta y cada día  es una sorpresa caótica. De todo esto emergen dudas y retos que ponen a prueba nuestra vocación.
 
