@@ -14,26 +14,22 @@ De esa incertidumbre nace Hablando con profes, una serie de la Fundación PhyMaC
 
 Este espacio está abierto para todas las voces que quieran sumar. Comenzamos...
 
-<div style="display: flex; justify-content: center; width: 100%; margin: 2rem 0;">
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:1.5rem 0;">
 
-  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; width: 100%; max-width: 650px;">
-
-\    <iframe
+  <iframe
 
 \    src="https://www.youtube.com/embed/eRXzo_VgzlU"
 
 \    title="Hablando con profes"
 
-\    frameborder="0"
+frameborder="0"
 
 \    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 
 \    allowfullscreen
 
-\    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;">
+\    style="position:absolute;top:0;left:0;width:100%;height:100%;">
 
-\    </iframe>
-
-  </div>
+  </iframe>
 
 </div>
