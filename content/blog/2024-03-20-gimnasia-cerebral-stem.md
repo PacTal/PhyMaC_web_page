@@ -24,11 +24,13 @@ Queda abierta la invitación a integrar diversas voces para compartir fracasos y
 
 \    title="Hablando con profes"
 
-\    style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+frameborder="0"
 
-\    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+\    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 
-\    allowfullscreen>
+\    allowfullscreen
+
+\    style="position:absolute;top:0;left:0;width:100%;height:100%;">
 
   </iframe>
 
