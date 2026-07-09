@@ -3,7 +3,7 @@ title: Hablando con profes
 slug: gimnasia-cerebral-stem-adultos-mayores
 author: Equipo PhyMaC
 date: 2026-07-08T20:14:00.000-05:00
-category: Programas
+category: Docentes
 image: /imagenes/blog/final.jpeg
 summary: "Saber de ciencia, pedagogía  y de didáctica ya no es suficiente;
   seamos honestos: enseñar ciencia y tecnología hoy es como practicar un deporte
