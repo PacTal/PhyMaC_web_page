@@ -17,9 +17,9 @@ Queda abierta la invitación a integrar diversas voces para compartir fracasos y
 
   <iframe
 
-\    src="https://www.youtube.com/embed/pIY0BgIwMIk"
+\    src="https://youtu.be/eRXzo_VgzlU"
 
-\    title="Ciencia con Sello de Mujer - Perspectivas en tecnología"
+\    title="Hablando con profes"
 
 \    frameborder="0"
 
