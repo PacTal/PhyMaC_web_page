@@ -16,7 +16,7 @@ Ante este reto se concibe *Hablando con profes*, una serie de la Fundación PhyM
 
 Queda abierta la invitación a integrar diversas voces para compartir fracasos y aciertos metodológicos. Comenzamos…
 
-<div style="width:100%;position:relative;padding-bottom:56.25%;overflow:hidden;margin:1.5rem 0;">
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:1.5rem 0;">
 
   <iframe
 
