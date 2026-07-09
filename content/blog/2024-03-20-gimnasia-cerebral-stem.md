@@ -17,17 +17,17 @@ Queda abierta la invitación a integrar diversas voces para compartir fracasos y
 
   <iframe
 
-\    src="https://youtu.be/eRXzo_VgzlU"
+\    src="https://www.youtube.com/embed/eRXzo_VgzlU"
 
-\    title="Hablando con profes"
+\    title="Hablando con Profes"
 
-\    frameborder="0"
+\    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
 
-\    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+\    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 
-\    allowfullscreen
+\    referrerpolicy="strict-origin-when-cross-origin"
 
-\    style="position:absolute;top:0;left:0;width:100%;height:100%;">
+\    allowfullscreen>
 
   </iframe>
 
