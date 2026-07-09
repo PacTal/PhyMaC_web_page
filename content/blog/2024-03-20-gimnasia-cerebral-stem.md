@@ -5,16 +5,15 @@ author: Equipo PhyMaC
 date: 2026-07-08T20:14:00.000-05:00
 category: Programas
 image: /imagenes/blog/final.jpeg
-summary: Aun con una buena formación didáctica y disciplinar, formar en ciencias
-  y tecnología, en todos los niveles, constituye un enorme desafío. En la
-  actualidad, los conocimientos con los cuales los profesores de ciencias y
-  tecnología se han formado están...
+summary: "Saber de ciencia, pedagogía  y de didáctica ya no es suficiente;
+  seamos honestos: enseñar ciencia y tecnología hoy es como practicar un deporte
+  de alto riesgo."
 ---
-Aun con una buena formación didáctica y disciplinar, formar en ciencias y tecnología, en todos los niveles, constituye un enorme desafío. En la actualidad, los conocimientos con los cuales los profesores de ciencias y tecnología se han formado están siendo cuestionados, pues la instrucción magistral colapsa ante aulas enmarcadas en contextos diversos; se imparte un currículo divorciado del contexto social; la explicación docente está siendo desplazada por la IA; y la vida en el aula es una sorpresa caótica diaria, de todo esto emergen dudas y retos que ponen a prueba la vocación docente.
+Saber de ciencia, pedagogía  y de didáctica ya no es suficiente; seamos honestos: enseñar ciencia y tecnología hoy es como practicar un deporte de alto riesgo. Los conocimientos con los que nos formamos en la universidad se quedan cortos, pues la clase tradicional no aguanta el ritmo de aulas cada vez más diversas. Competir contra la IA por la atención de los estudiantes se siente como una batalla perdida; el currículo parece escrito para otro planeta y cada día  es una sorpresa caótica. De todo esto emergen dudas y retos que ponen a prueba nuestra vocación.
+De esa incertidumbre nace Hablando con profes, una serie de la Fundación PhyMaC, propuesta como un espacio para encontrarnos y charlar con franqueza sobre lo que de verdad pasa en el aula: reírnos de los días difíciles, celebrar lo que sí funciona y recordar por qué seguimos aquí.
+Este espacio está abierto para todas las voces que quieran sumar. Comenzamos...
 
-Ante este reto se concibe *Hablando con profes*, una serie de la Fundación PhyMaC propuesta como un punto de encuentro para contar y diseccionar las experiencias vividas día a día en el aula, cuestionar las barreras, proponer soluciones y, sobre todo, compartir cómo se afrontan estos desafíos.
 
-Queda abierta la invitación a integrar diversas voces para compartir fracasos y aciertos metodológicos. Comenzamos…
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:1.5rem 0;">
 
   <iframe
