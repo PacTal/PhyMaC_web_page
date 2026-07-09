@@ -4,7 +4,7 @@ slug: gimnasia-cerebral-stem-adultos-mayores
 author: Equipo PhyMaC
 date: 2026-07-08T20:14:00.000-05:00
 category: Programas
-image: ""
+image: /imagenes/blog/final.jpeg
 summary: Aun con una buena formación didáctica y disciplinar, formar en ciencias
   y tecnología, en todos los niveles, constituye un enorme desafío. En la
   actualidad, los conocimientos con los cuales los profesores de ciencias y
@@ -16,7 +16,7 @@ Ante este reto se concibe *Hablando con profes*, una serie de la Fundación PhyM
 
 Queda abierta la invitación a integrar diversas voces para compartir fracasos y aciertos metodológicos. Comenzamos…
 
-<div style="position:relative;width:100%;height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;margin:0;">
+<div style="position:relative;width:100%;padding bottom:65%;height:0;overflow:hidden;margin:0;">
 
   <iframe
 
