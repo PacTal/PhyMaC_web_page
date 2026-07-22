@@ -233,7 +233,7 @@ Una pasada rápida, sobre todo en celular:
 - [ ] En `contacto.html`, las tarjetas **Correo** y **Agendar reunión** intercambian el formulario de abajo (WhatsApp sí sale del sitio).
 - [ ] El formulario de correo envía y muestra el mensaje de confirmación.
 - [ ] Prueba **los dos caminos** del formulario de agenda: uno que califique (decido + este mes + presupuesto sí) y otro que no (solo consultando + explorando + sin presupuesto).
-- [ ] El formulario de contacto del footer ahora exige la casilla de autorización.
+- [ ] El footer ya no lleva formulario en ninguna página: ahora muestra dos botones, "Escríbenos" (a Contacto) y WhatsApp. En `contacto.html` ni siquiera eso, porque ya estás ahí.
 - [ ] Revisa `privacidad.html`: los datos del responsable, el correo y los plazos son los que redacté a partir de la ley. **Léelos y confirma que reflejan cómo manejas los datos de verdad.** Es un documento legal con tu nombre.
 
 Sobre el episodio 1 (`content/episodios/ep-01-hablando-con-profes.md`): es contenido **real**, migrado del artículo del blog que tenías, con su video (`eRXzo_VgzlU`) y su texto. Si ese video es la presentación de la serie y no el episodio 1 propiamente, cambia el número y el título desde el CMS.

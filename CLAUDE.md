@@ -50,7 +50,7 @@ On DOMContentLoaded, `main.js` calls `initHeader()` and `initFooter()`, which in
 | `blog.js` | Renders blog posts into `blog.html` |
 | `episodios.js` | Render helpers for the series (`epGetAll`, `epFindBySlug`, `epGetMateriales`, `epCard`, `epMaterialCard`) |
 | `components/header.js` | Responsive navbar, reads from `CONFIG` |
-| `components/footer.js` | Footer + Formspree contact form + consent checkbox |
+| `components/footer.js` | Footer: CTA to `contacto.html`, social links, site links |
 | `components/lead-form.js` | Reusable email-gated download block (`createLeadForm` / `initLeadForm`) |
 | `components/analytics.js` | GA4 + Meta Pixel loader and `trackEvent()`; inert when no IDs are configured |
 | `admin/config.yml` | Decap CMS collections (`blog`, `episodios`) |
@@ -93,7 +93,7 @@ Downloads are email-gated: `components/lead-form.js` requires name, email, role 
 
 `CONFIG.contact.formspree` has three endpoints: `endpoint` (general contact), `materiales` and `agenda`. The last two fall back to the general one while empty, so the forms work before dedicated endpoints exist.
 
-The footer carries the general contact form on every page. A page that already has its own form suppresses it with `<div id="footer-container" data-formulario="no">` — otherwise two forms asking the same thing stack up, as they did on `contacto.html`.
+There is exactly one contact form on the site, on `contacto.html`. The footer used to carry a second one on every page; it now shows a short CTA pointing there instead. `contacto.html` drops even that CTA via `<div id="footer-container" data-cta="no">`.
 
 Every capture point must keep the consent checkbox and the link to `privacidad.html` — this is a legal requirement (Ley 1581 de 2012), not a UX choice.
 

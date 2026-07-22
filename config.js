@@ -163,7 +163,7 @@ const CONFIG = {
     },
     footer: {
       title: "Llevamos el laboratorio a donde estés",
-      subtitle: "Déjanos tus datos y nos pondremos en contacto contigo."
+      subtitle: "¿Hablamos? Escríbenos y te respondemos en horario hábil."
     }
   },
 
