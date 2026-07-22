@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Episodio de Hablando con profes, la serie en video de la Fundación PhyMaC.">
+  <title>Episodio — Hablando con profes</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="imagenes/logo.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'phymac': {
+              'white': '#F5F5F5',
+              'blue': '#2962FF',
+              'blue-dark': '#0039CB',
+              'blue-light': '#768FFF',
+              'orange': '#FF6D00',
+              'orange-dark': '#C43E00',
+              'orange-light': '#FF9E40',
+              'carbon': '#212121',
+              'carbon-light': '#484848',
+            }
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'system-ui', 'sans-serif'],
+            'body': ['Open Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos PhyMaC -->
+  <link rel="stylesheet" href="phymac-styles.css">
+
+  <style>
+    .post-body h2 { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; color: #212121; margin: 2rem 0 0.75rem; }
+    .post-body h3 { font-family: 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 700; color: #212121; margin: 1.5rem 0 0.5rem; }
+    .post-body p  { font-family: 'Open Sans', sans-serif; color: #484848; line-height: 1.8; margin-bottom: 1.25rem; }
+    .post-body ul, .post-body ol { font-family: 'Open Sans', sans-serif; color: #484848; margin: 0 0 1.25rem 1.5rem; line-height: 1.8; }
+    .post-body ul { list-style: disc; }
+    .post-body ol { list-style: decimal; }
+    .post-body a  { color: #2962FF; text-decoration: underline; }
+    .post-body a:hover { color: #FF6D00; }
+    .post-body img { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; }
+    .post-body strong { font-weight: 700; color: #212121; }
+    .post-body blockquote { border-left: 4px solid #2962FF; padding-left: 1rem; margin: 1.5rem 0; color: #757575; font-style: italic; }
+  </style>
+</head>
+<body style="background-color: #F5F5F5;">
+
+  <!-- Header (inyectado) -->
+  <div id="header-container"></div>
+
+  <!-- Contenido -->
+  <main id="episodio-main"></main>
+
+  <!-- Footer (inyectado) -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="components/analytics.js"></script>
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="components/lead-form.js"></script>
+  <script src="main.js"></script>
+  <script src="episodios-data.js"></script>
+  <script src="episodios.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var main = document.getElementById('episodio-main');
+      if (!main) return;
+
+      var slug = new URLSearchParams(window.location.search).get('slug');
+
+      // Regla estricta: sin slug, sin datos o slug desconocido -> "no encontrado".
+      // Nunca caemos de vuelta a otro episodio.
+      var ep = (slug && typeof epFindBySlug === 'function') ? epFindBySlug(slug) : null;
+
+      if (!ep) {
+        renderNoEncontrado();
+        return;
+      }
+
+      renderEpisodio(ep);
+
+      /** Estado de error: slug inexistente o datos no cargados. */
+      function renderNoEncontrado() {
+        document.title = 'Episodio no encontrado — PhyMaC';
+        main.innerHTML =
+          '<div class="max-w-xl mx-auto px-4 py-24 text-center">' +
+            '<p class="font-display font-bold text-sm uppercase tracking-widest mb-3" style="color: #FF6D00;">Hablando con profes</p>' +
+            '<h1 class="font-display text-3xl font-extrabold mb-4" style="color: #212121;">Episodio no encontrado</h1>' +
+            '<p class="font-body mb-8" style="color: #484848;">El episodio que buscas no existe o fue movido.</p>' +
+            '<a href="profes.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-display font-bold" ' +
+               'style="background-color: #2962FF; box-shadow: 0 3px 0 #0039CB; text-decoration: none;">← Ver todos los episodios</a>' +
+          '</div>';
+      }
+
+      /** Render completo del episodio. */
+      function renderEpisodio(ep) {
+        document.title = ep.titulo + ' — Hablando con profes';
+        var metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc && ep.resumen) metaDesc.setAttribute('content', ep.resumen);
+
+        var badge = epEstadoBadge(ep);
+
+        // --- Reproductor o estado "muy pronto" ---
+        var reproductor;
+        if (ep.estado === 'publicado' && ep.youtube_id) {
+          reproductor =
+            '<div style="position: relative; aspect-ratio: 16/9; background: #000; border-radius: 16px; overflow: hidden;">' +
+              '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(ep.youtube_id) + '" ' +
+                      'title="' + epEscape(ep.titulo) + '" ' +
+                      'style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;" ' +
+                      'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ' +
+                      'allowfullscreen loading="lazy"></iframe>' +
+            '</div>';
+        } else {
+          var thumb = epThumb(ep);
+          reproductor =
+            '<div style="position: relative; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; background: linear-gradient(135deg,#1a1a2e 0%,#2962FF 100%);">' +
+              (thumb ? '<img src="' + epEscape(thumb) + '" alt="" role="presentation" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.45;" onerror="this.style.display=\'none\'">' : '') +
+              '<div style="position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 1.5rem;">' +
+                '<div>' +
+                  '<span style="display:inline-block; background-color:#FF6D00; color:white; font-family:Montserrat,sans-serif; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:5px 14px; border-radius:99px; margin-bottom:14px;">' +
+                    epEscape(Number(ep.numero) === 0 ? 'Próximamente' : 'Episodio ' + ep.numero + ' · Próximamente') +
+                  '</span>' +
+                  '<p class="font-display font-extrabold text-white" style="font-size: clamp(1.25rem, 3vw, 1.75rem);">Muy pronto</p>' +
+                  '<p class="font-body text-white/80 mt-2">Estamos preparando esta conversación.</p>' +
+                '</div>' +
+              '</div>' +
+            '</div>';
+        }
+
+        // --- Temas ---
+        var temas = (ep.temas || []).map(function (t) {
+          return '<span class="px-3 py-1 rounded-full text-xs font-body" style="background-color:#EEEEEE; color:#484848;">' + epEscape(t) + '</span>';
+        }).join('');
+
+        // --- Bloque de material (Funcionalidad 1) ---
+        var bloqueMaterial = '';
+        var leadOpts = null;
+
+        if (ep.guia && ep.guia.archivo) {
+          leadOpts = {
+            id: 'lead-' + ep.slug,
+            guiaTitulo: ep.guia.titulo,
+            guiaDescripcion: ep.guia.descripcion,
+            guiaPortada: ep.guia.portada,
+            guiaArchivo: ep.guia.archivo,
+            episodioSlug: ep.slug,
+            episodioTitulo: ep.titulo
+          };
+          bloqueMaterial =
+            '<section id="material" class="max-w-3xl mx-auto px-4 pb-4">' +
+              '<div id="lead-container"></div>' +
+            '</section>';
+        }
+
+        var waUrl = typeof window.getWhatsAppLink === 'function'
+          ? window.getWhatsAppLink('Quiero participar en Hablando con profes. Vi el episodio: ' + ep.titulo)
+          : '#';
+
+        main.innerHTML =
+          // Migas de pan
+          '<nav class="max-w-5xl mx-auto px-4 pt-24 pb-2 text-sm font-body" style="color: #9E9E9E;" aria-label="Breadcrumb">' +
+            '<a href="profes.html" style="color: #2962FF; text-decoration: none;">Hablando con profes</a>' +
+            ' <span aria-hidden="true">›</span> ' +
+            '<span style="color: #484848;">' + epEscape(epNumeroLabel(ep)) + '</span>' +
+          '</nav>' +
+
+          // Cabecera
+          '<header class="max-w-3xl mx-auto px-4 pt-4 pb-6">' +
+            '<div class="flex items-center gap-2 mb-4 flex-wrap">' +
+              '<span class="px-3 py-1 rounded-full text-xs font-display font-bold" style="background-color:#E8EAF6; color:#2962FF;">' +
+                epEscape(Number(ep.numero) === 0 ? 'Tráiler' : 'Temporada ' + ep.temporada + ' · Episodio ' + ep.numero) +
+              '</span>' +
+              '<span class="px-3 py-1 rounded-full text-xs font-display font-bold" style="background-color:' + badge.bg + '; color:' + badge.color + ';">' +
+                badge.texto +
+              '</span>' +
+              (ep.fecha ? '<span class="text-sm font-body" style="color:#757575;">' + epEscape(epFormatFecha(ep.fecha)) + '</span>' : '') +
+            '</div>' +
+            '<h1 class="font-display font-extrabold mb-3" style="color:#212121; font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.15;">' +
+              epEscape(ep.titulo) +
+            '</h1>' +
+            (ep.invitado ? '<p class="font-body text-lg mb-3" style="color:#2962FF;">Con ' + epEscape(ep.invitado) + '</p>' : '') +
+            '<p class="font-body text-lg leading-relaxed" style="color:#484848;">' + epEscape(ep.resumen) + '</p>' +
+          '</header>' +
+
+          // Reproductor
+          '<div class="max-w-3xl mx-auto px-4 pb-8">' + reproductor + '</div>' +
+
+          // Notas del episodio
+          (ep.contenido
+            ? '<article class="max-w-3xl mx-auto px-4 pb-8 post-body">' + ep.contenido + '</article>'
+            : '') +
+
+          // Temas
+          (temas
+            ? '<div class="max-w-3xl mx-auto px-4 pb-10">' +
+                '<p class="font-display font-bold text-sm uppercase tracking-widest mb-3" style="color:#FF6D00;">Temas</p>' +
+                '<div class="flex flex-wrap gap-2">' + temas + '</div>' +
+              '</div>'
+            : '') +
+
+          // Material descargable
+          bloqueMaterial +
+
+          // CTA participar
+          '<div style="background-color:#FFF3E0; border-top:1px solid #FFE0B2; border-bottom:1px solid #FFE0B2; padding:1.5rem 1rem; margin-top:2.5rem;">' +
+            '<div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">' +
+              '<p class="font-display font-bold" style="color:#FF6D00; margin:0;">¿Quieres contar tu historia en un próximo episodio?</p>' +
+              '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" ' +
+                 'class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-display font-bold text-sm" ' +
+                 'style="background-color:#FF6D00; box-shadow:0 3px 0 #C43E00; text-decoration:none; white-space:nowrap;">' +
+                'Escríbenos →' +
+              '</a>' +
+            '</div>' +
+          '</div>' +
+
+          // Volver
+          '<div class="max-w-3xl mx-auto px-4 py-10 text-center">' +
+            '<a href="profes.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-display font-bold" ' +
+               'style="border:2px solid #2962FF; color:#2962FF; text-decoration:none;">← Todos los episodios</a>' +
+          '</div>';
+
+        // Monta el formulario de captura una vez el DOM del episodio existe
+        if (leadOpts) {
+          var leadContainer = document.getElementById('lead-container');
+          if (leadContainer && typeof createLeadForm === 'function') {
+            leadContainer.innerHTML = createLeadForm(leadOpts);
+            initLeadForm(leadOpts);
+          }
+        }
+
+        if (typeof initScrollAnimations === 'function') initScrollAnimations();
+      }
+    });
+  </script>
+
+</body>
+</html>

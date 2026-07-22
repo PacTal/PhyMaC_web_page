@@ -1,0 +1,15 @@
+# robots.txt — Fundación PhyMaC
+# https://phymac.com
+
+User-agent: *
+Allow: /
+
+# El panel del CMS no aporta nada a los buscadores y exige autenticación.
+Disallow: /admin/
+
+# Archivos de datos generados por el build: su contenido ya está indexado
+# a través de las páginas que lo muestran.
+Disallow: /blog-data.js
+Disallow: /episodios-data.js
+
+Sitemap: https://phymac.com/sitemap.xml

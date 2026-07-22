@@ -9,6 +9,15 @@
 
 const CONFIG = {
   // ----------------------------------------------------------------------
+  // SITIO
+  // ----------------------------------------------------------------------
+  // Dominio canónico, sin barra final. Lo usa scripts/build-sitemap.js para
+  // armar las URLs absolutas del sitemap.
+  site: {
+    url: "https://phymac.com"
+  },
+
+  // ----------------------------------------------------------------------
   // LOGO
   // ----------------------------------------------------------------------
   logo: {
@@ -26,9 +35,15 @@ const CONFIG = {
       defaultMessage: "Me encantaría participar",
       ctaText: "¡Acepta el reto!"
     },
-    email: "contacto@phymac.com",
+    email: "funphymac@gmail.com",
+    // Un formulario de Formspree por tipo de envío, para poder segmentar:
+    // cada bandeja responde una pregunta distinta del negocio.
+    // Si alguno se deja vacío, cae de vuelta en `endpoint` y sigue funcionando,
+    // solo que los envíos llegan mezclados.
     formspree: {
-      endpoint: "https://formspree.io/f/xkgdzeda" // Reemplazar con tu ID de Formspree
+      endpoint:   "https://formspree.io/f/xvzeqnlz", // Mensajes (panel "Correo" de contacto.html)
+      materiales: "https://formspree.io/f/xpqvlebz", // Descargas de guías (Biblioteca y episodios)
+      agenda:     "https://formspree.io/f/xkodzayg"  // Solicitudes de reunión (contacto.html)
     }
   },
 
@@ -45,15 +60,88 @@ const CONFIG = {
   // ----------------------------------------------------------------------
   // MENÚ DE NAVEGACIÓN
   // ----------------------------------------------------------------------
+  // Solo secciones que son páginas propias. "Inicio" lo cubre el logo y
+  // "El método" es un ancla dentro del home, no un destino. Biblioteca se
+  // alcanza desde Hablando con profes y desde el footer.
   menu: {
     items: [
-      { text: "Inicio", href: "index.html" },
-      { text: "El método", href: "index.html#metodo" },
-      { text: "Proyectos", href: "index.html#proyectos" },
       { text: "Servicios", href: "servicios.html" },
+      { text: "Hablando con profes", href: "profes.html" },
       { text: "Blog", href: "blog.html" },
-      { text: "Publicaciones", href: "publicaciones.html" }
+      { text: "Publicaciones", href: "publicaciones.html" },
+      { text: "Contacto", href: "contacto.html" }
     ]
+  },
+
+  // ----------------------------------------------------------------------
+  // SERIE "HABLANDO CON PROFES"
+  // ----------------------------------------------------------------------
+  serie: {
+    nombre: "Hablando con profes",
+    tagline: "Una serie en video de la Fundación PhyMaC para charlar con franqueza sobre lo que de verdad pasa en el aula: reírnos de los días difíciles, celebrar lo que sí funciona y recordar por qué seguimos aquí.",
+    // Codificado (%C3%B3 = ó) para que el enlace no dependa de cómo trate
+    // cada navegador las tildes en la URL.
+    youtube: "https://www.youtube.com/@Fundaci%C3%B3nPhyMaC",
+    temas: [
+      { icono: "🤖", titulo: "La IA en el aula",        texto: "Cómo competir (o aliarnos) con la IA por la atención y la curiosidad de los estudiantes." },
+      { icono: "🧭", titulo: "Currículo vs. realidad",  texto: "Qué hacer cuando el programa parece escrito para otro planeta y el aula pide otra cosa." },
+      { icono: "🌱", titulo: "Aulas diversas",          texto: "Enseñar a grupos cada vez más distintos sin dejar a nadie atrás." },
+      { icono: "🔧", titulo: "Aprender haciendo",       texto: "Metodologías activas y laboratorios low-cost que sí funcionan en contextos reales." },
+      { icono: "💬", titulo: "Los días difíciles",      texto: "Reírnos de lo que salió mal y compartir cómo seguimos de pie." },
+      { icono: "⭐", titulo: "Lo que sí funciona",      texto: "Celebrar las pequeñas victorias que nos recuerdan por qué elegimos enseñar." }
+    ]
+  },
+
+  // ----------------------------------------------------------------------
+  // AGENDAMIENTO (sección "Agenda" de contacto.html)
+  // ----------------------------------------------------------------------
+  agenda: {
+    // Identificador del evento en Cal.com, SIN el dominio.
+    // De https://cal.com/fundacion-phymac-owlzje/30min queda lo de después de .com/
+    // Si se deja vacío, la página avisa y ofrece WhatsApp como alternativa.
+    calLink: "fundacion-phymac-owlzje/30min",
+    calOrigin: "https://cal.com",
+
+    // Regla de calificación. Un prospecto califica si cumple LAS TRES:
+    //   - su rol está en rolesValidos
+    //   - su plazo NO está en plazosExcluidos
+    //   - su presupuesto está en presupuestosValidos
+    // Ajusta estas listas para abrir o cerrar el filtro.
+    reglas: {
+      rolesValidos: ["decido", "recomiendo"],
+      plazosExcluidos: ["explorando"],
+      presupuestosValidos: ["si", "gestion"]
+    },
+
+    // Puntaje informativo (0-13) que viaja con el lead para priorizar el
+    // seguimiento comercial. No decide el filtro: eso lo hacen las reglas.
+    puntajes: {
+      rol:           { decido: 3, recomiendo: 2, consulto: 0 },
+      plazo:         { este_mes: 3, "1_3_meses": 2, explorando: 0 },
+      presupuesto:   { si: 3, gestion: 2, no: 0 },
+      participantes: { "1-20": 0, "21-50": 1, "51-150": 2, "mas-150": 2 },
+      organizacion:  { colegio_privado: 2, universidad: 2, empresa: 2, colegio_publico: 1, fundacion: 1, independiente: 0 }
+    }
+  },
+
+  // ----------------------------------------------------------------------
+  // ANALÍTICA
+  // ----------------------------------------------------------------------
+  // Deja los IDs vacíos para no cargar nada. Al llenarlos, los scripts se
+  // inyectan solos y los eventos de conversión empiezan a registrarse.
+  analytics: {
+    ga4Id: "G-ZHF7F3W5SJ",
+    metaPixelId: "",  // Ej: "1234567890123456"
+    debug: false      // true = imprime cada evento en la consola
+  },
+
+  // ----------------------------------------------------------------------
+  // LEGAL
+  // ----------------------------------------------------------------------
+  legal: {
+    privacidadUrl: "privacidad.html",
+    consentLabel: "Autorizo el tratamiento de mis datos personales conforme a la",
+    consentLinkText: "política de privacidad"
   },
 
   // ----------------------------------------------------------------------
@@ -68,70 +156,22 @@ const CONFIG = {
   // TEXTO DEL SITIO
   // ----------------------------------------------------------------------
   content: {
+    // El hero de index.html se arma con estos tres campos: el título va en
+    // carbón y titleHighlight en naranja, en una segunda línea.
     hero: {
-      title: "Para entender el mundo tecnológico,",
-      titleHighlight: "resuelve retos reales",
+      title: "Descubre el mundo científico y tecnológico",
+      titleHighlight: "resolviendo retos de tu entorno",
       subtitle: "Siempre hay algo por descubrir, para hacerlo tú pones el ingenio, nosotros, la lúdica y los retos."
     },
     metodo: {
       title: "Aprendizaje por retos",
       description: "Descubre la ciencia construyendo artefactos para resolver problemas. Nuestro ciclo STEM de tres fases —lo que haré, lo que necesito y lo que aplico— asegura un aprendizaje práctico en cualquier nivel educativo."
     },
-    proyectos: {
-      title: "Así luce la ciencia en acción.",
-      ctaText: "Ver más casos de éxito"
-    },
     publicaciones: {
       title: "Publicaciones",
       description: "Compartimos el conocimiento generado en nuestros laboratorios vivos. Investigaciones, artículos y hallazgos educativos."
     },
-    footer: {
-      title: "Llevamos el laboratorio a donde estés",
-      subtitle: "Déjanos tus datos y nos pondremos en contacto contigo."
-    }
   },
-
-  // ----------------------------------------------------------------------
-  // PROYECTOS/CASOS DE ÉXITO
-  // ----------------------------------------------------------------------
-  proyectos: [
-    {
-      id: 4,
-      title: "¡Acción y reacción en el Rosal!",
-      description: "Niños y jóvenes construyendo cohetes propulsados por aire en la Fundación CreSiendo.",
-      image: "imagenes/img1.jpeg",
-      category: "Estudiantes",
-      categoryColor: "cyan-400",
-      blogSlug: "accion-reaccion-rosal-fundacion-cresiendo"
-    },
-    {
-      id: 1,
-      title: "Física de Cohetes",
-      description: "Aprendiendo leyes de Newton lanzando proyectiles a 50 metros.",
-      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Estudiantes",
-      categoryColor: "cyan-400",
-      blogSlug: "propulsion-cohetes-leyes-newton"
-    },
-    {
-      id: 2,
-      title: "Didáctica Experimental",
-      description: "Capacitación en metodologías activas y diseño de laboratorios low-cost.",
-      image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Docentes",
-      categoryColor: "purple-400",
-      blogSlug: "capacitacion-docente-metodologias-activas-arduino"
-    },
-    {
-      id: 3,
-      title: "Gimnasia Cerebral STEM",
-      description: "Recuperando la plasticidad cerebral a través de proyectos maker.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Adulto Mayor",
-      categoryColor: "orange-400",
-      blogSlug: "gimnasia-cerebral-stem-adultos-mayores"
-    }
-  ],
 
   // ----------------------------------------------------------------------
   // PUBLICACIONES/LIBROS

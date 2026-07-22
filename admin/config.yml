@@ -38,3 +38,79 @@ collections:
         widget: string
         required: false
         hint: "Pega el link de Google Drive con permiso 'Cualquier persona con el enlace puede ver'"
+
+  # ------------------------------------------------------------------
+  # SERIE "HABLANDO CON PROFES"
+  # ------------------------------------------------------------------
+  # Nota: esta colección NO define su propio media_folder a propósito.
+  # En Decap el media_folder de una colección se resuelve relativo al
+  # archivo de la entrada, no a la raíz del repo, así que overridearlo es
+  # una fuente clásica de imágenes rotas. Hereda el global (imagenes/blog)
+  # y así las subidas siempre caen donde el sitio las busca.
+  - name: episodios
+    label: Hablando con profes (Episodios)
+    label_singular: Episodio
+    folder: content/episodios
+    create: true
+    slug: "{{fields.slug}}"
+    summary: "Ep. {{fields.numero}} — {{fields.titulo}}"
+    sortable_fields: [numero, fecha, titulo]
+    fields:
+      - { label: Título del episodio, name: titulo, widget: string }
+
+      - label: Slug (URL)
+        name: slug
+        widget: string
+        hint: "Sin espacios ni tildes. Ej: ep-01-la-ia-en-el-aula. Este será el enlace del episodio y no debe cambiarse una vez publicado."
+        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', "Usa solo minúsculas, números y guiones (ej: ep-01-nombre)"]
+
+      - label: Número de episodio
+        name: numero
+        widget: number
+        value_type: int
+        min: 0
+        hint: "Usa 0 para un tráiler o avance: se muestra como \"Tráiler\" en vez de \"Ep. 0\"."
+      - { label: Temporada, name: temporada, widget: number, value_type: int, default: 1, min: 1 }
+      - { label: Fecha de publicación, name: fecha, widget: datetime }
+
+      - label: Estado
+        name: estado
+        widget: select
+        default: proximamente
+        options:
+          - { label: "Próximamente (aún sin video)", value: proximamente }
+          - { label: "Publicado (con video)", value: publicado }
+
+      - label: ID del video de YouTube
+        name: youtube_id
+        widget: string
+        required: false
+        hint: "SOLO el ID, no la URL completa. En https://youtube.com/watch?v=dQw4w9WgXcQ el ID es dQw4w9WgXcQ"
+
+      - { label: Invitado(s), name: invitado, widget: string, required: false }
+      - { label: Miniatura, name: miniatura, widget: image, required: false }
+      - { label: Resumen corto, name: resumen, widget: text }
+      - { label: Notas del episodio, name: contenido, widget: markdown, required: false }
+
+      - label: Temas / etiquetas
+        name: temas
+        widget: list
+        required: false
+        hint: "Una etiqueta por línea. Ej: IA, evaluación, aulas diversas"
+
+      - { label: "¿Destacado?", name: destacado, widget: boolean, default: false }
+
+      # --- Material descargable que alimenta la Biblioteca ---
+      - label: Título de la guía
+        name: guia_titulo
+        widget: string
+        required: false
+        hint: "Déjalo vacío si este episodio no tiene material descargable."
+      - { label: Descripción de la guía, name: guia_descripcion, widget: text, required: false }
+      - { label: Portada de la guía, name: guia_portada, widget: image, required: false }
+      - label: Archivo de la guía (PDF)
+        name: guia_archivo
+        widget: file
+        required: false
+        hint: "Sube el PDF. Sin este archivo, el material no aparece en la Biblioteca."
+      - { label: "¿Mostrar en la Biblioteca?", name: guia_publica, widget: boolean, default: true }

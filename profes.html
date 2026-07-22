@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hablando con profes: una serie en video de la Fundación PhyMaC para charlar con franqueza sobre lo que de verdad pasa en el aula.">
+  <title>Hablando con profes - PhyMaC</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hablando con profes — Serie PhyMaC">
+  <meta property="og:description" content="Una serie en video para charlar con franqueza sobre lo que de verdad pasa en el aula.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="imagenes/logo.svg">
+
+  <!-- Google Fonts: Montserrat (Títulos) + Open Sans (Cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config PhyMaC -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'phymac': {
+              'white': '#F5F5F5',
+              'blue': '#2962FF',
+              'blue-dark': '#0039CB',
+              'blue-light': '#768FFF',
+              'orange': '#FF6D00',
+              'orange-dark': '#C43E00',
+              'orange-light': '#FF9E40',
+              'carbon': '#212121',
+              'carbon-light': '#484848',
+            }
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'system-ui', 'sans-serif'],
+            'body': ['Open Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos PhyMaC -->
+  <link rel="stylesheet" href="phymac-styles.css">
+
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+    .scroll-animate { opacity: 0; }
+  </style>
+</head>
+<body class="min-h-screen bg-phymac-white font-body text-phymac-carbon">
+
+  <!-- HEADER CONTAINER (se llena dinámicamente) -->
+  <div id="header-container"></div>
+
+  <!-- HERO -->
+  <section class="relative pt-28 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-phymac-blue text-white text-center">
+    <div class="absolute inset-0 hero-pattern"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-phymac-blue/80 via-phymac-blue to-phymac-blue-dark"></div>
+
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-display font-bold uppercase tracking-wider mb-6"
+            style="background-color: rgba(255,109,0,0.22); color: #FFD9BD; border: 1px solid rgba(255,109,0,0.5);">
+        🎬 Serie PhyMaC
+      </span>
+
+      <h1 class="font-display text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6 text-white">
+        Hablando con <span style="color: #FF9E40;">profes</span>
+      </h1>
+
+      <p id="serie-tagline" class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed font-body mb-8">
+        Una serie en video de la Fundación PhyMaC para charlar con franqueza sobre lo que de verdad pasa en el aula.
+      </p>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="#episodios"
+           class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-display font-bold transition-all transform hover:-translate-y-0.5"
+           style="background-color: #FF6D00; box-shadow: 0 4px 0 #C43E00; text-decoration: none;">
+          Ver los episodios
+        </a>
+        <a id="serie-youtube" href="#" target="_blank" rel="noopener noreferrer"
+           class="hidden items-center gap-2 px-7 py-3.5 rounded-full font-display font-bold transition-all"
+           style="border: 3px solid rgba(255,255,255,0.85); color: white; text-decoration: none;">
+          ▶ Ver en YouTube
+        </a>
+        <a href="#participa"
+           class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-display font-bold transition-all"
+           style="border: 3px solid rgba(255,255,255,0.85); color: white; text-decoration: none;">
+          Quiero participar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div style="height: 4px; background-color: #FF6D00;"></div>
+
+  <!-- DE QUÉ SE TRATA -->
+  <section class="py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-4 text-center scroll-animate">
+      <p class="font-display font-bold text-sm uppercase tracking-widest mb-3" style="color: #FF6D00;">De qué se trata</p>
+      <h2 class="font-display text-3xl md:text-4xl font-extrabold mb-6" style="color: #212121;">
+        Enseñar ciencia hoy es un deporte de alto riesgo
+      </h2>
+      <p class="font-body text-lg leading-relaxed mb-5" style="color: #484848;">
+        Saber de ciencia, pedagogía y de didáctica ya no es suficiente. Los conocimientos con los que nos formamos se
+        quedan cortos: la clase tradicional no aguanta el ritmo de aulas cada vez más diversas, competir contra la IA por
+        la atención se siente como una batalla perdida y el currículo parece escrito para otro planeta.
+      </p>
+      <p class="font-body text-lg leading-relaxed mb-6" style="color: #484848;">
+        De esa incertidumbre nace <strong style="color: #212121;">Hablando con profes</strong>: un espacio para
+        encontrarnos, contar historias reales del aula y descubrir juntos qué sí está funcionando. Sin fórmulas mágicas,
+        con la honestidad de quienes viven la docencia todos los días.
+      </p>
+      <p class="font-display font-bold" style="color: #2962FF;">— Una serie de la Fundación PhyMaC</p>
+    </div>
+  </section>
+
+  <!-- EPISODIOS -->
+  <section id="episodios" class="py-20 bg-phymac-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 scroll-animate">
+        <p class="font-display font-bold text-sm uppercase tracking-widest mb-3" style="color: #FF6D00;">Episodios</p>
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold mb-4" style="color: #212121;">
+          Las conversaciones
+        </h2>
+        <p class="font-body text-lg max-w-2xl mx-auto" style="color: #484848;">
+          Cada episodio deja una guía descargable para llevarte algo concreto al aula.
+        </p>
+      </div>
+
+      <div id="episodios-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- TEMAS -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 scroll-animate">
+        <p class="font-display font-bold text-sm uppercase tracking-widest mb-3" style="color: #FF6D00;">La conversación</p>
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold mb-4" style="color: #212121;">
+          ¿De qué vamos a hablar?
+        </h2>
+        <p class="font-body text-lg max-w-2xl mx-auto" style="color: #484848;">
+          Temas que ponen a prueba nuestra vocación y que rara vez se conversan en voz alta.
+        </p>
+      </div>
+
+      <div id="temas-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- PARTICIPA -->
+  <section id="participa" class="py-20 relative overflow-hidden bg-phymac-blue text-white text-center">
+    <div class="absolute inset-0 hero-pattern"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-phymac-blue/80 via-phymac-blue to-phymac-blue-dark"></div>
+
+    <div class="max-w-3xl mx-auto px-4 relative z-10 scroll-animate">
+      <p class="font-display font-bold text-sm uppercase tracking-widest mb-3" style="color: #FFD9BD;">Sé parte</p>
+      <h2 class="font-display text-3xl md:text-4xl font-extrabold mb-5 text-white">
+        ¿Eres profe y quieres contar tu historia?
+      </h2>
+      <p class="font-body text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+        Este espacio está abierto para todas las voces que quieran sumar. Cuéntanos tu experiencia y podrías ser parte
+        de un próximo episodio.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a id="cta-participar" href="#"
+           class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-display font-bold transition-all transform hover:-translate-y-0.5"
+           style="background-color: #FF6D00; box-shadow: 0 4px 0 #C43E00; text-decoration: none;">
+          💬 Quiero participar
+        </a>
+        <a href="biblioteca.html"
+           class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-display font-bold transition-all"
+           style="border: 3px solid rgba(255,255,255,0.85); color: white; text-decoration: none;">
+          Ver la Biblioteca
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CONTAINER (se llena dinámicamente) -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="components/analytics.js"></script>
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="main.js"></script>
+  <script src="episodios-data.js"></script>
+  <script src="episodios.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // --- Textos configurables de la serie ---
+      if (typeof CONFIG !== 'undefined' && CONFIG.serie) {
+        var tagline = document.getElementById('serie-tagline');
+        if (tagline && CONFIG.serie.tagline) tagline.textContent = CONFIG.serie.tagline;
+
+        var yt = document.getElementById('serie-youtube');
+        if (yt && CONFIG.serie.youtube) {
+          yt.href = CONFIG.serie.youtube;
+          yt.classList.remove('hidden');
+          yt.classList.add('inline-flex');
+        }
+
+        // --- Temas de la conversación ---
+        var temasContainer = document.getElementById('temas-container');
+        if (temasContainer && Array.isArray(CONFIG.serie.temas)) {
+          temasContainer.innerHTML = CONFIG.serie.temas.map(function (t) {
+            return '' +
+              '<div class="p-6 rounded-2xl scroll-animate transition-all hover:shadow-lg" style="background-color: white; border: 2px solid #E0E0E0;">' +
+                '<div class="w-12 h-12 rounded-xl grid place-items-center text-2xl mb-4" style="background-color: #E8EAF6;">' +
+                  epEscape(t.icono) +
+                '</div>' +
+                '<h3 class="font-display text-lg font-extrabold mb-2" style="color: #212121;">' + epEscape(t.titulo) + '</h3>' +
+                '<p class="font-body" style="color: #484848;">' + epEscape(t.texto) + '</p>' +
+              '</div>';
+          }).join('');
+        }
+      }
+
+      // --- CTA de participación por WhatsApp ---
+      var ctaParticipar = document.getElementById('cta-participar');
+      if (ctaParticipar && typeof window.getWhatsAppLink === 'function') {
+        ctaParticipar.href = window.getWhatsAppLink('Quiero participar en Hablando con profes');
+      }
+
+      // --- Listado de episodios ---
+      var container = document.getElementById('episodios-container');
+      if (!container) return;
+
+      var episodios = typeof epGetAll === 'function' ? epGetAll() : [];
+
+      if (!episodios.length) {
+        container.className = '';
+        container.innerHTML =
+          '<div class="max-w-xl mx-auto text-center py-12 px-6 rounded-2xl" style="background-color: white; border: 2px solid #E0E0E0;">' +
+            '<p class="font-display text-xl font-extrabold mb-2" style="color: #212121;">El primer episodio viene en camino</p>' +
+            '<p class="font-body" style="color: #484848;">Estamos preparando la primera conversación. Vuelve pronto o escríbenos para proponer un tema.</p>' +
+          '</div>';
+        return;
+      }
+
+      container.innerHTML = episodios.map(epCard).join('');
+
+      if (typeof initScrollAnimations === 'function') initScrollAnimations();
+    });
+  </script>
+
+</body>
+</html>

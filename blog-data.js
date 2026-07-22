@@ -7,30 +7,18 @@
 const BLOG_POSTS = [
   {
     "id": 1,
-    "title": "Aprendizaje por Retos: La Metodología que Transforma la Educación STEM",
+    "title": "Aprendizaje por Retos",
     "slug": "aprendizaje-por-retos-metodologia-stem",
-    "date": "2024-01-15",
+    "date": "2026-04-20",
     "author": "Equipo PhyMaC",
     "category": "Metodología",
-    "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "image": "/imagenes/blog/whatsapp-image-2025-12-10-at-8.50.48-pm.jpeg",
     "summary": "Descubre cómo el aprendizaje por retos revoluciona la enseñanza de ciencias, tecnología, ingeniería y matemáticas. Una metodología práctica que conecta teoría con realidad.",
     "content": "<p>El aprendizaje por retos es una metodología educativa que ha demostrado ser altamente efectiva en la enseñanza de STEM (Ciencia, Tecnología, Ingeniería y Matemáticas). En PhyMaC, hemos implementado esta metodología con resultados extraordinarios.</p>\n<h2>¿Qué es el Aprendizaje por Retos?</h2>\n<p>Es un enfoque pedagógico donde los estudiantes aprenden resolviendo problemas reales y construyendo artefactos tangibles. En lugar de memorizar fórmulas abstractas, los estudiantes experimentan directamente con los conceptos científicos.</p>\n<h2>Nuestro Ciclo STEM de Tres Fases</h2>\n<ul>\n<li><strong>Lo que haré:</strong> Diseñar y planificar la solución</li>\n<li><strong>Lo que necesito:</strong> Identificar los conocimientos y recursos necesarios</li>\n<li><strong>Lo que aplico:</strong> Poner en práctica los conocimientos adquiridos</li>\n</ul>\n<p>Este ciclo asegura un aprendizaje práctico y significativo en cualquier nivel educativo, desde primaria hasta educación superior.</p>",
     "pdf_url": null
   },
   {
     "id": 2,
-    "title": "Gimnasia Cerebral STEM: actividades cognitivas para adultos mayores",
-    "slug": "gimnasia-cerebral-stem-adultos-mayores",
-    "date": "2024-03-20",
-    "author": "Equipo PhyMaC",
-    "category": "Programas",
-    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "summary": "Programa innovador que combina proyectos maker con neurociencia para promover la plasticidad cerebral en adultos mayores. Resultados prometedores en salud cognitiva.",
-    "content": "<p>En construcción.</p>",
-    "pdf_url": null
-  },
-  {
-    "id": 3,
     "title": "La Alegoría del Mono: Un Enfoque Alternativo para Entender el Movimiento",
     "slug": "alegoria-mono-movimiento-proyectiles",
     "date": "2024-04-01",
@@ -42,7 +30,7 @@ const BLOG_POSTS = [
     "pdf_url": null
   },
   {
-    "id": 4,
+    "id": 3,
     "title": "Capacitación docente: Metodologías activas con Arduino",
     "slug": "capacitacion-docente-metodologias-activas-arduino",
     "date": "2025-11-01",
@@ -54,7 +42,7 @@ const BLOG_POSTS = [
     "pdf_url": null
   },
   {
-    "id": 5,
+    "id": 4,
     "title": "Propulsión de cohetes: aprendiendo las leyes de Newton con cohetes dirigidos",
     "slug": "propulsion-cohetes-leyes-newton",
     "date": "2025-12-01",
@@ -66,7 +54,7 @@ const BLOG_POSTS = [
     "pdf_url": null
   },
   {
-    "id": 6,
+    "id": 5,
     "title": "¡Acción y reacción en el Rosal! Un reto de ingeniería con la fundación CreSiendo",
     "slug": "accion-reaccion-rosal-fundacion-cresiendo",
     "date": "2026-02-05",
@@ -78,7 +66,7 @@ const BLOG_POSTS = [
     "pdf_url": "https://drive.google.com/file/d/1ZWCNQd9gN3YVZn8MV01qZty2YMOFh4xJ/view?usp=sharing"
   },
   {
-    "id": 7,
+    "id": 6,
     "title": "Ciencia con Sello de Mujer: Perspectivas y desafíos en la tecnología",
     "slug": "ciencia-sello-mujer-perspectivas-desafios-tecnologia",
     "date": "2026-02-11",
@@ -86,7 +74,19 @@ const BLOG_POSTS = [
     "category": "Otros",
     "image": "https://img.youtube.com/vi/pIY0BgIwMIk/maxresdefault.jpg",
     "summary": "En el Día Internacional de la Mujer y la Niña en la Ciencia, compartimos las experiencias de mujeres líderes que están transformando el panorama científico en Colombia.",
-    "content": "<p>En el Día Internacional de la Mujer y la Niña en la Ciencia (11 de febrero), PhyMaC celebra el papel fundamental que tienen las mujeres en la construcción del conocimiento científico y tecnológico en Colombia.</p>\n<p>Compartimos dos conversaciones inspiradoras con mujeres líderes que están transformando el panorama científico desde diferentes frentes.</p>\n<h2>Video horizontal: Perspectivas en tecnología</h2>\n<div style=\"position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:1.5rem 0;\">\n  <iframe\n    src=\"https://www.youtube.com/embed/pIY0BgIwMIk\"\n    title=\"Ciencia con Sello de Mujer - Perspectivas en tecnología\"\n    frameborder=\"0\"\n    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\"\n    allowfullscreen\n    style=\"position:absolute;top:0;left:0;width:100%;height:100%;\">\n  </iframe>\n</div>\n\n<h2>Video vertical: Historias desde el laboratorio</h2>\n<div style=\"max-width:360px;margin:1.5rem auto;\">\n  <div style=\"position:relative;padding-bottom:177.78%;height:0;overflow:hidden;\">\n    <iframe\n      src=\"https://www.youtube.com/embed/u_IN1UNdhNI\"\n      title=\"Ciencia con Sello de Mujer - Historias desde el laboratorio\"\n      frameborder=\"0\"\n      allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\"\n      allowfullscreen\n      style=\"position:absolute;top:0;left:0;width:100%;height:100%;\">\n    </iframe>\n  </div>\n</div>\n\n<p>Desde PhyMaC creemos que la diversidad en ciencia no es solo un ideal — es una necesidad para construir soluciones más completas y justas. ¡Feliz día a todas las científicas, tecnólogas e ingenieras que inspiran con su trabajo!</p>",
+    "content": "<p>En el Día Internacional de la Mujer y la Niña en la Ciencia (11 de febrero), PhyMaC celebra el papel fundamental que tienen las mujeres en la construcción del conocimiento científico y tecnológico en Colombia.</p>\n<p>Compartimos dos conversaciones inspiradoras con mujeres líderes que están transformando el panorama científico desde diferentes frentes.</p>\n<h2>Perspectivas en tecnología</h2>\n<div style=\"position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:1.5rem 0;\">\n  <iframe\n    src=\"https://www.youtube.com/embed/pIY0BgIwMIk\"\n    title=\"Ciencia con Sello de Mujer - Perspectivas en tecnología\"\n    frameborder=\"0\"\n    allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\"\n    allowfullscreen\n    style=\"position:absolute;top:0;left:0;width:100%;height:100%;\">\n  </iframe>\n</div>\n\n<h2>Historias desde el laboratorio</h2>\n<div style=\"max-width:360px;margin:1.5rem auto;\">\n  <div style=\"position:relative;padding-bottom:177.78%;height:0;overflow:hidden;\">\n    <iframe\n      src=\"https://www.youtube.com/embed/u_IN1UNdhNI\"\n      title=\"Ciencia con Sello de Mujer - Historias desde el laboratorio\"\n      frameborder=\"0\"\n      allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\"\n      allowfullscreen\n      style=\"position:absolute;top:0;left:0;width:100%;height:100%;\">\n    </iframe>\n  </div>\n</div>\n\n<p>Desde PhyMaC creemos que la diversidad en ciencia no es solo un ideal — es una necesidad para construir soluciones más completas y justas. ¡Feliz día a todas las científicas, tecnólogas e ingenieras que inspiran con su trabajo!</p>",
+    "pdf_url": null
+  },
+  {
+    "id": 7,
+    "title": "¿Cuándo fue la última vez que el Sol te sorprendió?",
+    "slug": "2026-04-13-¿cuándo-fue-la-última-vez-que-el-sol-te-sorprendió",
+    "date": "2026-04-13",
+    "author": "Phymac",
+    "category": "Docentes",
+    "image": "/imagenes/blog/1775055532811.jpg",
+    "summary": "\"La sombra que desaparece y el Sol que no se oculta\" — un espacio de astronomía diurna para estudiantes de licenciatura de áreas no científicas.",
+    "content": "<p>El pasado 27 de marzo, la Fundación PhyMaC estuvo en la Universidad Pedagógica Nacional impartiendo el taller <strong>&quot;La sombra que desaparece y el Sol que no se oculta</strong>&quot; — un espacio de astronomía diurna para estudiantes de licenciatura de áreas no científicas.</p>\n<p><img src=\"/imagenes/blog/1775055532811.jpg\" alt=\"\"></p>\n<p>Más de 60 futuros docentes redescubrieron fenómenos que el cielo nos muestra todos los días, pero que raramente detenemos a observar: el Sol de medianoche, el paso cenital, la geometría del movimiento celeste.\nEste encuentro fue posible gracias a la invitación de la profesora Nidia Lugo, quien abrió su espacio universitario para que la divulgación científica llegara donde más se necesita: en la formación de quienes van a enseñar.</p>\n<p>El 2 de abril, Bogotá vivio el paso cenital del Sol — el momento en que el Sol estará exactamente sobre nuestras cabezas y las sombras verticales desaparecen por un instante.\nSiempre hay algo por descubrir. Tú pones el ingenio, nosotros el reto.</p>\n<p>🔭 ¿Quieres que PhyMaC llegue a tu institución? Escríbenos.</p>",
     "pdf_url": null
   }
 ];

@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "PhyMaC website build tools",
   "scripts": {
+    "build": "npm run build:blog && npm run build:episodios && npm run build:sitemap",
     "build:blog": "node scripts/build-blog.js",
+    "build:episodios": "node scripts/build-episodios.js",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "build:sitemap": "node scripts/build-sitemap.js"
   },
   "devDependencies": {
     "jest": "^29.7.0"

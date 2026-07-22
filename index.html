@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PhyMaC - Para entender el mundo tecnológico, resuelve retos reales. Aprendizaje por retos en STEM.">
+  <meta name="description" content="PhyMaC - Descubre el mundo científico y tecnológico resolviendo retos de tu entorno. Aprendizaje por retos en STEM.">
   <title>PhyMaC - Aprendizaje por Retos en STEM</title>
   
   <!-- Favicon -->
@@ -90,14 +90,15 @@
     <div class="absolute inset-0 bg-gradient-to-b from-phymac-blue/80 via-phymac-blue to-phymac-blue-dark"></div>
     
     <div class="max-w-5xl mx-auto px-4 relative z-10 animate-fade-in">
+      <!-- Texto desde CONFIG.content.hero -->
       <h1 class="font-display text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6 text-white">
-        Para entender el mundo tecnológico,<br />
-        <span class="text-phymac-orange">
-          resuelve retos reales
+        <span id="hero-title">Descubre el mundo científico y tecnológico</span><br />
+        <span id="hero-highlight" class="text-phymac-orange">
+          resolviendo retos de tu entorno
         </span>
       </h1>
-      
-      <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed mb-10 font-body">
+
+      <p id="hero-subtitle" class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed mb-10 font-body">
         Siempre hay algo por descubrir, para hacerlo tú pones el ingenio, nosotros, la lúdica y los retos.
       </p>
       
@@ -200,29 +201,37 @@
     </div>
   </section>
 
-  <!-- SECCIÓN PROYECTOS -->
-  <section id="proyectos" class="py-20 scroll-animate" style="background-color: #F5F5F5;">
+  <!-- SECCIÓN BLOG RECIENTE -->
+  <section id="blog-reciente" class="py-20 scroll-animate" style="background-color: #F5F5F5;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between items-end mb-12">
         <div>
-          <h2 class="font-display text-3xl md:text-4xl font-extrabold mb-2" style="color: #212121;">Así luce la ciencia en acción.</h2>
+          <p class="font-display font-bold text-sm uppercase tracking-widest mb-2" style="color: #FF6D00;">Del blog</p>
+          <h2 class="font-display text-3xl md:text-4xl font-extrabold" style="color: #212121;">Lo más reciente</h2>
         </div>
-        <a 
+        <a
           href="blog.html"
           class="hidden md:flex items-center mt-4 md:mt-0 text-sm transition-all font-display font-bold px-4 py-2 rounded-full"
           style="color: #2962FF; border: 2px solid #2962FF;"
           onmouseover="this.style.backgroundColor='#2962FF'; this.style.color='white';"
           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#2962FF';"
         >
-          Ver más casos de éxito
+          Ver todo el blog
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
         </a>
       </div>
 
-      <div id="proyectos-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Los proyectos se cargarán dinámicamente desde CONFIG -->
+      <div id="blog-reciente-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Se llena desde blog-data.js -->
+      </div>
+
+      <div class="mt-10 text-center md:hidden">
+        <a href="blog.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-display font-bold"
+           style="color: #2962FF; border: 2px solid #2962FF; text-decoration: none;">
+          Ver todo el blog →
+        </a>
       </div>
     </div>
   </section>
@@ -234,62 +243,83 @@
 
   <!-- Scripts -->
   <script src="config.js"></script>
+  <script src="components/analytics.js"></script>
   <script src="components/header.js"></script>
   <script src="components/footer.js"></script>
   <script src="blog-data.js"></script>
   <script src="blog.js"></script>
   <script src="main.js"></script>
   
-  <!-- Script para cargar proyectos dinámicamente -->
+  <!-- Ventana a lo más reciente del blog -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Cargar proyectos desde CONFIG
-      if (typeof CONFIG !== 'undefined' && CONFIG.proyectos) {
-        const proyectosContainer = document.getElementById('proyectos-container');
-        if (proyectosContainer) {
-          proyectosContainer.innerHTML = CONFIG.proyectos.map(proyecto => {
-            // Buscar el artículo del blog relacionado
-            let href = 'blog.html';
-            let linkText = 'Ver más';
-            let extraAttrs = '';
-            if (typeof BLOG_POSTS !== 'undefined' && proyecto.blogSlug) {
-              const blogPost = BLOG_POSTS.find(post => post.slug === proyecto.blogSlug);
-              if (blogPost) {
-                href = 'post.html?slug=' + encodeURIComponent(blogPost.slug);
-                linkText = 'Leer artículo';
-              }
-            }
 
-            // Si no hay blog relacionado, usar WhatsApp como fallback
-            if (href === 'blog.html') {
-              const whatsappUrl = `https://wa.me/${CONFIG.contact.whatsapp.number}?text=${encodeURIComponent('Me interesa saber más sobre: ' + proyecto.title)}`;
-              href = whatsappUrl;
-              extraAttrs = 'target="_blank" rel="noopener noreferrer"';
-            }
+      // --- Hero desde CONFIG (el HTML de arriba es solo el valor por defecto) ---
+      if (typeof CONFIG !== 'undefined' && CONFIG.content && CONFIG.content.hero) {
+        const hero = CONFIG.content.hero;
+        const campos = {
+          'hero-title': hero.title,
+          'hero-highlight': hero.titleHighlight,
+          'hero-subtitle': hero.subtitle
+        };
+        Object.keys(campos).forEach(function (id) {
+          const el = document.getElementById(id);
+          if (el && campos[id]) el.textContent = campos[id];
+        });
+      }
+
+      const recientesContainer = document.getElementById('blog-reciente-container');
+
+      if (recientesContainer && typeof BLOG_POSTS !== 'undefined') {
+        const colores = {
+          'Metodología':     { bg: '#E8EAF6', text: '#2962FF' },
+          'Proyectos':       { bg: '#E8F5E9', text: '#2E7D32' },
+          'Programas':       { bg: '#FFF3E0', text: '#FF6D00' },
+          'Publicaciones':   { bg: '#E3F2FD', text: '#1565C0' },
+          'Capacitación':    { bg: '#FCE4EC', text: '#C2185B' },
+          'Educación STEM':  { bg: '#E8F5E9', text: '#1B5E20' },
+          'Docentes':        { bg: '#EDE7F6', text: '#4527A0' },
+          'Adultos Mayores': { bg: '#FFF8E1', text: '#E65100' },
+          'Tecnología':      { bg: '#E0F7FA', text: '#006064' }
+        };
+
+        const recientes = [...BLOG_POSTS]
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 3);
+
+        if (!recientes.length) {
+          recientesContainer.innerHTML =
+            '<p class="font-body text-center col-span-full" style="color: #484848;">Pronto publicaremos aquí.</p>';
+        } else {
+          recientesContainer.innerHTML = recientes.map(post => {
+            const cat = colores[post.category] || { bg: '#EEEEEE', text: '#212121' };
+            const fecha = window.formatDate ? window.formatDate(post.date) : new Date(post.date).toLocaleDateString('es-ES');
+            const href = 'post.html?slug=' + encodeURIComponent(post.slug);
 
             return `
-              <a href="${href}" ${extraAttrs}
-                class="group relative rounded-2xl overflow-hidden transition-all transform hover:-translate-y-2 hover:shadow-xl"
-                style="background: white; border: 2px solid #E0E0E0; text-decoration: none; display: block;">
-                <!-- Imagen -->
+              <a href="${href}"
+                class="group relative rounded-2xl overflow-hidden transition-all transform hover:-translate-y-2 hover:shadow-xl flex flex-col"
+                style="background: white; border: 2px solid #E0E0E0; text-decoration: none;">
                 <div class="aspect-[16/10] overflow-hidden">
                   <img
-                    src="${proyecto.image}"
-                    alt="${proyecto.title}"
+                    src="${escapeHtml(post.image)}"
+                    alt=""
+                    role="presentation"
                     class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+                    onerror="this.style.display='none'"
                   />
                 </div>
-                <!-- Contenido -->
-                <div class="p-5" style="border-top: 4px solid #FF6D00;">
-                  <div class="flex items-center gap-2 mb-2">
-                    <span class="px-3 py-1 rounded-full text-xs font-display font-bold uppercase tracking-wider" style="background-color: #2962FF; color: white;">
-                      ${proyecto.category}
+                <div class="p-5 flex flex-col flex-1" style="border-top: 4px solid #FF6D00;">
+                  <div class="flex items-center gap-2 mb-2 flex-wrap">
+                    <span class="px-3 py-1 rounded-full text-xs font-display font-bold" style="background-color: ${cat.bg}; color: ${cat.text};">
+                      ${escapeHtml(post.category)}
                     </span>
+                    <span class="text-xs font-body" style="color: #757575;">${fecha}</span>
                   </div>
-                  <h3 class="font-display text-lg font-extrabold mb-2 leading-tight" style="color: #212121;">${proyecto.title}</h3>
-                  <p class="text-sm line-clamp-2 font-body mb-3" style="color: #484848;">${proyecto.description}</p>
+                  <h3 class="font-display text-lg font-extrabold mb-2 leading-tight" style="color: #212121;">${escapeHtml(post.title)}</h3>
+                  <p class="text-sm font-body mb-3 flex-1" style="color: #484848;">${escapeHtml(post.summary)}</p>
                   <div class="flex items-center gap-2 font-display font-bold text-sm" style="color: #FF6D00;">
-                    ${linkText}
+                    Leer artículo
                     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>

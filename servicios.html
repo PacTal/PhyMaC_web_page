@@ -134,18 +134,16 @@
           <p class="text-phymac-carbon-light mb-6 max-w-2xl mx-auto font-body">
             Contáctanos y descubre cómo podemos adaptar nuestros servicios a tus necesidades específicas.
           </p>
-          <a 
-            id="servicios-final-cta"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
+          <a
+            href="contacto.html"
             class="inline-flex items-center gap-2 bg-phymac-blue hover:bg-phymac-blue-light text-white font-display font-bold px-8 py-4 rounded-full transition-all transform hover:-translate-y-0.5"
-            style="box-shadow: 0 4px 0 #0039CB;"
+            style="box-shadow: 0 4px 0 #0039CB; text-decoration: none;"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
-            Hablar con un asesor
+            Contáctanos
           </a>
         </div>
       </div>
@@ -157,6 +155,7 @@
 
   <!-- Scripts -->
   <script src="config.js"></script>
+  <script src="components/analytics.js"></script>
   <script src="components/header.js"></script>
   <script src="components/footer.js"></script>
   <script src="main.js"></script>
@@ -232,10 +231,7 @@
         const whatsappUrl = `https://wa.me/${CONFIG.contact.whatsapp.number}?text=${encodeURIComponent('Me interesa conocer más sobre los servicios de PhyMaC')}`;
         
         const heroCta = document.getElementById('hero-servicios-cta');
-        const finalCta = document.getElementById('servicios-final-cta');
-        
         if (heroCta) heroCta.href = whatsappUrl;
-        if (finalCta) finalCta.href = whatsappUrl;
       }
     }
 

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Política de Tratamiento de Datos Personales de la Fundación PhyMaC, conforme a la Ley 1581 de 2012 y el Decreto 1074 de 2015.">
+  <title>Política de Privacidad - PhyMaC</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="imagenes/logo.svg">
+
+  <!-- Google Fonts: Montserrat (Títulos) + Open Sans (Cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config PhyMaC -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'phymac': {
+              'white': '#F5F5F5',
+              'blue': '#2962FF',
+              'blue-dark': '#0039CB',
+              'blue-light': '#768FFF',
+              'orange': '#FF6D00',
+              'orange-dark': '#C43E00',
+              'orange-light': '#FF9E40',
+              'carbon': '#212121',
+              'carbon-light': '#484848',
+            }
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'system-ui', 'sans-serif'],
+            'body': ['Open Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos PhyMaC -->
+  <link rel="stylesheet" href="phymac-styles.css">
+
+  <style>
+    .legal h2 { font-family: 'Montserrat', sans-serif; font-size: 1.375rem; font-weight: 800; color: #212121; margin: 2.5rem 0 0.75rem; }
+    .legal h3 { font-family: 'Montserrat', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #212121; margin: 1.5rem 0 0.5rem; }
+    .legal p  { font-family: 'Open Sans', sans-serif; color: #484848; line-height: 1.8; margin-bottom: 1rem; }
+    .legal ul { font-family: 'Open Sans', sans-serif; color: #484848; margin: 0 0 1rem 1.5rem; line-height: 1.8; list-style: disc; }
+    .legal ol { font-family: 'Open Sans', sans-serif; color: #484848; margin: 0 0 1rem 1.5rem; line-height: 1.8; list-style: decimal; }
+    .legal li { margin-bottom: 0.35rem; }
+    .legal a  { color: #2962FF; text-decoration: underline; }
+    .legal a:hover { color: #FF6D00; }
+    .legal strong { font-weight: 700; color: #212121; }
+  </style>
+</head>
+<body class="min-h-screen bg-phymac-white font-body text-phymac-carbon">
+
+  <!-- HEADER CONTAINER (se llena dinámicamente) -->
+  <div id="header-container"></div>
+
+  <!-- HERO -->
+  <section class="relative pt-28 pb-12 md:pt-36 md:pb-16 overflow-hidden bg-phymac-blue text-white text-center">
+    <div class="absolute inset-0 hero-pattern"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-phymac-blue/80 via-phymac-blue to-phymac-blue-dark"></div>
+    <div class="max-w-3xl mx-auto px-4 relative z-10">
+      <h1 class="font-display text-3xl md:text-4xl font-extrabold tracking-tight leading-tight mb-4 text-white">
+        Política de Tratamiento de Datos Personales
+      </h1>
+      <p class="text-white/90 font-body">
+        Fundación PhyMaC · Conforme a la Ley 1581 de 2012 y el Decreto 1074 de 2015 (Colombia)
+      </p>
+    </div>
+  </section>
+
+  <div style="height: 4px; background-color: #FF6D00;"></div>
+
+  <!-- CONTENIDO -->
+  <main class="py-14">
+    <article class="max-w-3xl mx-auto px-4 legal">
+
+      <p style="font-size: 0.875rem; color: #757575;">
+        <strong>Última actualización:</strong> 21 de julio de 2026
+      </p>
+
+      <p>
+        En la <strong>Fundación PhyMaC</strong> creemos que la confianza se construye con transparencia. Este documento
+        explica quién recoge tus datos, para qué los usamos, cuánto tiempo los conservamos y cómo puedes controlarlos
+        en cualquier momento.
+      </p>
+
+      <h2>1. Responsable del tratamiento</h2>
+      <ul>
+        <li><strong>Responsable:</strong> Fundación PhyMaC</li>
+        <li><strong>Correo de contacto:</strong> <a id="legal-email" href="mailto:funphymac@gmail.com">funphymac@gmail.com</a></li>
+        <li><strong>Formulario de contacto:</strong> <a href="contacto.html">disponible en contacto.html</a></li>
+        <li><strong>Ubicación:</strong> <span id="legal-region">Sabana de Occidente, Colombia</span></li>
+        <li><strong>Sitio web:</strong> phymac.com</li>
+      </ul>
+      <p>
+        Cualquier consulta, reclamo o solicitud relacionada con tus datos personales puedes hacerla por el correo
+        indicado o por el formulario de contacto del sitio. Ambos canales son oficiales y los atendemos en los plazos
+        que exige la ley.
+      </p>
+
+      <h2>2. Datos que recolectamos</h2>
+      <p>Solo pedimos lo que necesitamos para responderte o entregarte lo que solicitaste:</p>
+      <ul>
+        <li><strong>Formulario de contacto:</strong> nombre, número de WhatsApp o celular, correo electrónico y el mensaje que nos escribas.</li>
+        <li><strong>Descarga de guías y materiales:</strong> nombre, correo electrónico, rol (docente, estudiante, institución u otro) e institución (opcional).</li>
+        <li><strong>Solicitud de reunión:</strong> nombre, correo, WhatsApp, tipo de organización, rol, necesidad, número aproximado de participantes, plazo estimado y disponibilidad de presupuesto.</li>
+        <li><strong>Datos técnicos de navegación:</strong> si tienes la analítica habilitada en tu navegador, podemos registrar de forma agregada páginas visitadas y origen del tráfico. Estos datos no te identifican individualmente.</li>
+      </ul>
+      <p>
+        <strong>No recolectamos datos sensibles</strong> (origen racial o étnico, orientación política, convicciones
+        religiosas, datos de salud, datos biométricos ni orientación sexual), ni datos de niñas, niños y adolescentes.
+        Si eres menor de edad, pide a tu madre, padre o acudiente que gestione la solicitud por ti.
+      </p>
+
+      <h2>3. Finalidades del tratamiento</h2>
+      <p>Usamos tus datos únicamente para:</p>
+      <ol>
+        <li>Responder tus consultas y solicitudes de información.</li>
+        <li>Entregarte los materiales educativos, guías y recursos que hayas solicitado.</li>
+        <li>Coordinar y agendar reuniones, talleres, capacitaciones y actividades.</li>
+        <li>Informarte sobre nuevos episodios de la serie <em>Hablando con profes</em>, nuevos materiales de la Biblioteca y actividades de la Fundación.</li>
+        <li>Elaborar estadísticas internas y agregadas para mejorar nuestros contenidos y programas.</li>
+      </ol>
+      <p>
+        <strong>No vendemos, alquilamos ni comercializamos tus datos personales.</strong> No los compartimos con terceros
+        con fines publicitarios.
+      </p>
+
+      <h2>4. Autorización</h2>
+      <p>
+        Antes de enviar cualquier formulario debes marcar de forma expresa la casilla de autorización. Esa casilla es
+        obligatoria y nunca viene marcada por defecto: el consentimiento es libre, previo, expreso e informado, tal como
+        lo exige la Ley 1581 de 2012. Si no autorizas el tratamiento, no podemos procesar tu solicitud, pero puedes
+        escribirnos directamente al correo de contacto.
+      </p>
+
+      <h2>5. Derechos del titular</h2>
+      <p>De acuerdo con el artículo 8 de la Ley 1581 de 2012, como titular de tus datos tienes derecho a:</p>
+      <ul>
+        <li><strong>Conocer, actualizar y rectificar</strong> tus datos personales.</li>
+        <li><strong>Solicitar prueba</strong> de la autorización que otorgaste.</li>
+        <li><strong>Ser informado</strong> sobre el uso que le hemos dado a tus datos.</li>
+        <li><strong>Presentar quejas</strong> ante la Superintendencia de Industria y Comercio por infracciones a la ley.</li>
+        <li><strong>Revocar la autorización y solicitar la supresión</strong> de tus datos, cuando no exista un deber legal o contractual que lo impida.</li>
+        <li><strong>Acceder de forma gratuita</strong> a los datos que hayan sido objeto de tratamiento.</li>
+      </ul>
+
+      <h3>Cómo ejercer tus derechos</h3>
+      <p>
+        Escríbenos a <a href="mailto:funphymac@gmail.com">funphymac@gmail.com</a> con el asunto
+        <em>"Protección de datos"</em>, o usa el <a href="contacto.html">formulario de contacto</a> del sitio,
+        indicando tu nombre, el dato o solicitud concreta y un canal de respuesta.
+        Atenderemos las <strong>consultas en un máximo de 10 días hábiles</strong> y los <strong>reclamos en un máximo
+        de 15 días hábiles</strong>, prorrogables conforme a los artículos 14 y 15 de la Ley 1581 de 2012. Darte de baja
+        de nuestras comunicaciones no tiene costo y basta con pedirlo.
+      </p>
+
+      <h2>6. Conservación de los datos</h2>
+      <p>
+        Conservamos tus datos <strong>mientras exista una relación contigo y hasta 2 años después del último contacto</strong>,
+        o hasta que solicites su supresión, lo que ocurra primero. Vencido ese plazo los eliminamos o los anonimizamos
+        de forma irreversible, salvo que una obligación legal exija conservarlos por más tiempo.
+      </p>
+
+      <h2>7. Encargados y transferencia internacional</h2>
+      <p>
+        Para operar el sitio y gestionar los formularios usamos proveedores que actúan como encargados del tratamiento y
+        que pueden almacenar información en servidores fuera de Colombia:
+      </p>
+      <ul>
+        <li><strong>Netlify</strong> — alojamiento del sitio web.</li>
+        <li><strong>Formspree</strong> — recepción y notificación de los formularios.</li>
+        <li><strong>Cal.com</strong> — agendamiento de reuniones (solo si solicitas una).</li>
+        <li><strong>Google</strong> — correo electrónico de contacto y, cuando esté habilitada, analítica agregada de uso.</li>
+      </ul>
+      <p>
+        Al aceptar esta política autorizas dicha transferencia internacional de datos, en los términos del artículo 26
+        de la Ley 1581 de 2012. Estos proveedores solo pueden tratar los datos siguiendo nuestras instrucciones.
+      </p>
+
+      <h2>8. Seguridad de la información</h2>
+      <p>
+        Aplicamos medidas técnicas y administrativas razonables para proteger tus datos frente a acceso no autorizado,
+        pérdida o alteración: transmisión cifrada mediante HTTPS, acceso restringido a las personas del equipo que
+        realmente lo necesitan y proveedores con estándares reconocidos de seguridad. Ningún sistema es infalible, pero
+        nos comprometemos a informarte oportunamente si ocurre un incidente que afecte tus datos.
+      </p>
+
+      <h2>9. Cookies y tecnologías similares</h2>
+      <p>
+        Este sitio no usa cookies publicitarias ni de perfilamiento. Si la analítica está habilitada, se emplean cookies
+        de medición para entender de forma agregada cómo se navega el sitio. Puedes bloquearlas desde la configuración de
+        tu navegador sin que ello afecte el funcionamiento de la página. Tus datos de contacto pueden guardarse localmente
+        en tu navegador para no volver a pedirte lo mismo en cada descarga; puedes borrarlos limpiando los datos del sitio.
+      </p>
+
+      <h2>10. Cambios en esta política</h2>
+      <p>
+        Podemos actualizar esta política para reflejar cambios legales o en nuestros servicios. Publicaremos siempre la
+        versión vigente en esta página con su fecha de actualización. Si el cambio es sustancial y afecta las finalidades
+        autorizadas, te lo comunicaremos por el canal de contacto que nos hayas dado.
+      </p>
+
+      <h2>11. Vigencia</h2>
+      <p>
+        Esta política rige desde el <strong>21 de julio de 2026</strong>. Las bases de datos administradas por la
+        Fundación PhyMaC se conservan durante el tiempo indicado en el numeral 6.
+      </p>
+
+      <div class="mt-12 mb-4 p-6 rounded-2xl" style="background-color: #E8EAF6; border: 2px solid #C5CAE9;">
+        <p style="margin: 0; color: #212121;">
+          <strong>¿Dudas sobre tus datos?</strong> Escríbenos a
+          <a href="mailto:funphymac@gmail.com">funphymac@gmail.com</a> o déjanos un mensaje en el
+          <a href="contacto.html">formulario de contacto</a>. Sin letra menuda.
+        </p>
+      </div>
+
+      <div class="mt-8">
+        <a href="index.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-display font-bold"
+           style="background-color: #2962FF; box-shadow: 0 3px 0 #0039CB; text-decoration: none;">
+          ← Volver al inicio
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <!-- FOOTER CONTAINER (se llena dinámicamente) -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="components/analytics.js"></script>
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="main.js"></script>
+
+  <script>
+    // Sincroniza los datos de contacto con config.js para no duplicar la verdad
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof CONFIG === 'undefined') return;
+
+      document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
+        if (CONFIG.contact && CONFIG.contact.email) {
+          a.href = 'mailto:' + CONFIG.contact.email;
+          if (a.textContent.indexOf('@') !== -1) a.textContent = CONFIG.contact.email;
+        }
+      });
+
+      var regionEl = document.getElementById('legal-region');
+      if (regionEl && CONFIG.location && CONFIG.location.region) {
+        regionEl.textContent = CONFIG.location.region;
+      }
+    });
+  </script>
+
+</body>
+</html>

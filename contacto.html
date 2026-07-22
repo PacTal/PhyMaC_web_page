@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contacta a la Fundación PhyMaC: escríbenos por WhatsApp o correo, o agenda una reunión contándonos qué necesitas.">
+  <title>Contacto y agenda - PhyMaC</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="imagenes/logo.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'phymac': {
+              'white': '#F5F5F5',
+              'blue': '#2962FF',
+              'blue-dark': '#0039CB',
+              'blue-light': '#768FFF',
+              'orange': '#FF6D00',
+              'orange-dark': '#C43E00',
+              'orange-light': '#FF9E40',
+              'carbon': '#212121',
+              'carbon-light': '#484848',
+            }
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'system-ui', 'sans-serif'],
+            'body': ['Open Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos PhyMaC -->
+  <link rel="stylesheet" href="phymac-styles.css">
+
+  <style>
+    .campo {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #E0E0E0;
+      background-color: #F5F5F5;
+      border-radius: 0.75rem;
+      font-family: 'Open Sans', sans-serif;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .campo:focus {
+      border-color: #2962FF;
+      box-shadow: 0 0 0 3px rgba(41, 98, 255, 0.15);
+    }
+    .etiqueta {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      font-family: 'Open Sans', sans-serif;
+      color: #212121;
+    }
+    .requerido { color: #C43E00; }
+    #cal-inline { min-height: 620px; }
+  </style>
+</head>
+<body class="min-h-screen bg-phymac-white font-body text-phymac-carbon">
+
+  <!-- HEADER CONTAINER (se llena dinámicamente) -->
+  <div id="header-container"></div>
+
+  <!-- HERO -->
+  <section class="relative pt-28 pb-14 md:pt-40 md:pb-16 overflow-hidden bg-phymac-blue text-white text-center">
+    <div class="absolute inset-0 hero-pattern"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-phymac-blue/80 via-phymac-blue to-phymac-blue-dark"></div>
+
+    <div class="max-w-3xl mx-auto px-4 relative z-10">
+      <h1 class="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-5 text-white">
+        Hablemos
+      </h1>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-white/90 leading-relaxed font-body">
+        Escríbenos si tienes una pregunta rápida, o agenda una reunión si quieres llevar el laboratorio a tu institución.
+      </p>
+    </div>
+  </section>
+
+  <div style="height: 4px; background-color: #FF6D00;"></div>
+
+  <!-- CANALES DIRECTOS -->
+  <section class="py-14 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <p class="font-display font-bold text-sm uppercase tracking-widest mb-2" style="color: #FF6D00;">Contacto directo</p>
+        <h2 class="font-display text-2xl md:text-3xl font-extrabold" style="color: #212121;">¿Solo una pregunta?</h2>
+        <p class="font-body mt-3" style="color: #484848;">Escríbenos por donde te quede más cómodo. Respondemos en horario hábil.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-4">
+        <!-- WhatsApp sale del sitio; los otros dos cambian el formulario de abajo -->
+        <a id="canal-whatsapp" href="#" target="_blank" rel="noopener noreferrer"
+           class="flex flex-col items-center text-center gap-2 p-6 rounded-2xl transition-all transform hover:-translate-y-1"
+           style="background-color: #F5F5F5; border: 2px solid #E0E0E0; text-decoration: none;">
+          <span class="text-3xl" aria-hidden="true">💬</span>
+          <span class="font-display font-bold" style="color: #212121;">WhatsApp</span>
+          <span class="font-body text-sm" style="color: #484848;">La vía más rápida</span>
+        </a>
+
+        <button type="button" id="canal-correo" class="canal-selector transition-all transform hover:-translate-y-1" data-modo="correo" aria-pressed="false"
+                aria-controls="panel-correo"
+                style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; padding: 1.5rem; border-radius: 1rem; cursor: pointer; background-color: #F5F5F5; border: 2px solid #E0E0E0;">
+          <span class="text-3xl" aria-hidden="true">✉️</span>
+          <span class="font-display font-bold" style="color: #212121;">Correo</span>
+          <span class="font-body text-sm" style="color: #484848;">Escríbenos un mensaje</span>
+        </button>
+
+        <button type="button" id="canal-agenda" class="canal-selector transition-all transform hover:-translate-y-1" data-modo="agenda" aria-pressed="true"
+                aria-controls="panel-agenda"
+                style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; padding: 1.5rem; border-radius: 1rem; cursor: pointer; background-color: #FFF3E0; border: 2px solid #FFE0B2;">
+          <span class="text-3xl" aria-hidden="true">📅</span>
+          <span class="font-display font-bold" style="color: #C43E00;">Agendar reunión</span>
+          <span class="font-body text-sm" style="color: #E65100;">Para hablar del proyecto</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENCABEZADO DEL FORMULARIO ACTIVO -->
+  <section id="formularios" class="pt-14 pb-4" style="background-color: #F5F5F5;">
+    <div class="max-w-3xl mx-auto px-4 text-center mb-10">
+      <p id="form-eyebrow" class="font-display font-bold text-sm uppercase tracking-widest mb-2" style="color: #FF6D00;">Agenda</p>
+      <h2 id="form-titulo" class="font-display text-2xl md:text-3xl font-extrabold mb-3" style="color: #212121;">
+        Cuéntanos de tu proyecto
+      </h2>
+      <p id="form-bajada" class="font-body" style="color: #484848;">
+        Entre más sepamos, mejor preparamos la conversación y menos te hacemos repetir.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTENIDO -->
+  <main class="pb-14" style="background-color: #F5F5F5;">
+    <div class="max-w-3xl mx-auto px-4">
+
+      <!-- PANEL CORREO: mensaje corto -->
+      <div id="panel-correo" class="hidden">
+        <div class="rounded-2xl p-6 md:p-8" style="background-color: white; border: 2px solid #E0E0E0;">
+          <h3 class="font-display text-2xl font-extrabold mb-2" style="color: #212121;">Escríbenos</h3>
+          <p class="font-body mb-6" style="color: #484848;">
+            Te respondemos al correo que nos dejes. Si prefieres escribir desde tu propio correo, es
+            <a id="correo-directo" href="mailto:funphymac@gmail.com" style="color: #2962FF; text-decoration: underline;">funphymac@gmail.com</a>.
+          </p>
+
+          <form id="form-correo" class="space-y-5" novalidate>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="etiqueta" for="co-nombre">Tu nombre <span class="requerido" aria-hidden="true">*</span></label>
+                <input class="campo" type="text" id="co-nombre" name="nombre" required autocomplete="name" placeholder="Ej. Juan Pérez">
+              </div>
+              <div>
+                <label class="etiqueta" for="co-email">Correo electrónico <span class="requerido" aria-hidden="true">*</span></label>
+                <input class="campo" type="email" id="co-email" name="email" required autocomplete="email" placeholder="ejemplo@correo.com">
+              </div>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="co-asunto">Asunto <span style="color:#757575; font-weight:400;">(opcional)</span></label>
+              <input class="campo" type="text" id="co-asunto" name="asunto" placeholder="Ej. Taller para grado décimo">
+            </div>
+
+            <div>
+              <label class="etiqueta" for="co-mensaje">Mensaje <span class="requerido" aria-hidden="true">*</span></label>
+              <textarea class="campo" id="co-mensaje" name="mensaje" rows="5" required placeholder="Cuéntanos en qué podemos ayudarte."></textarea>
+            </div>
+
+            <div class="flex items-start gap-3 pt-1">
+              <input type="checkbox" id="co-consent" name="consentimiento" value="si" required
+                     class="mt-1 flex-shrink-0" style="width: 18px; height: 18px; accent-color: #2962FF; cursor: pointer;">
+              <label for="co-consent" class="text-sm font-body" style="color: #484848; cursor: pointer;">
+                <span class="consent-label">Autorizo el tratamiento de mis datos personales conforme a la</span>
+                <a class="consent-link" href="privacidad.html" target="_blank" rel="noopener noreferrer"
+                   style="color: #2962FF; text-decoration: underline;">política de privacidad</a>.
+                <span class="requerido" aria-hidden="true">*</span>
+              </label>
+            </div>
+
+            <p id="co-error" role="alert" aria-live="assertive" class="text-sm font-body hidden"
+               style="color: #C43E00; background-color: #FFEBEE; border: 1px solid #FFCDD2; border-radius: 10px; padding: 10px 14px;"></p>
+
+            <button type="submit" id="co-submit"
+                    class="w-full text-white font-display font-bold py-4 px-8 rounded-xl transition-all transform hover:-translate-y-0.5"
+                    style="background-color: #2962FF; box-shadow: 0 4px 0 #0039CB; border: none; cursor: pointer;"
+                    onmouseover="this.style.backgroundColor='#768FFF'" onmouseout="this.style.backgroundColor='#2962FF'">
+              Enviar mensaje
+            </button>
+          </form>
+
+          <div id="co-exito" class="hidden" tabindex="-1">
+            <div class="p-5 rounded-xl" style="background-color: #E8F5E9; border: 2px solid #A5D6A7;">
+              <p class="font-display font-bold mb-1" style="color: #1B5E20;">¡Mensaje enviado!</p>
+              <p class="font-body text-sm" style="color: #2E7D32;">
+                Te respondemos al correo que nos dejaste, en horario hábil. Si es urgente, escríbenos por WhatsApp.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL AGENDA -->
+      <div id="panel-agenda">
+
+      <!-- PASO 1: FORMULARIO DE CALIFICACIÓN -->
+      <section id="paso-formulario">
+        <div class="rounded-2xl p-6 md:p-8" style="background-color: white; border: 2px solid #E0E0E0;">
+
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-display font-bold mb-3"
+                style="background-color: #E8EAF6; color: #2962FF;">Paso 1 de 2</span>
+
+          <h2 class="font-display text-2xl font-extrabold mb-2" style="color: #212121;">Cuéntanos de ti</h2>
+          <p class="font-body mb-6" style="color: #484848;">
+            Te preguntamos esto para llegar a la reunión con algo concreto en la mano, no para filtrarte.
+            Si algo no lo tienes claro todavía, responde lo que mejor se acerque: lo demás lo resolvemos hablando.
+            Los campos con <span class="requerido">*</span> son los necesarios.
+          </p>
+
+          <form id="form-agenda" class="space-y-5" novalidate>
+
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="etiqueta" for="ag-nombre">Nombre completo <span class="requerido" aria-hidden="true">*</span></label>
+                <input class="campo" type="text" id="ag-nombre" name="nombre" required autocomplete="name" placeholder="Ej. Juan Pérez">
+              </div>
+              <div>
+                <label class="etiqueta" for="ag-email">Correo electrónico <span class="requerido" aria-hidden="true">*</span></label>
+                <input class="campo" type="email" id="ag-email" name="email" required autocomplete="email" placeholder="ejemplo@correo.com">
+              </div>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-whatsapp">WhatsApp <span style="color:#757575; font-weight:400;">(opcional, si prefieres que te escribamos por ahí)</span></label>
+              <input class="campo" type="tel" id="ag-whatsapp" name="whatsapp" autocomplete="tel" placeholder="Ej. 300 123 4567">
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-organizacion">¿Desde dónde nos escribes? <span class="requerido" aria-hidden="true">*</span></label>
+              <select class="campo" id="ag-organizacion" name="organizacion" required>
+                <option value="">Selecciona una opción</option>
+                <option value="colegio_publico">Colegio público</option>
+                <option value="colegio_privado">Colegio privado</option>
+                <option value="fundacion">Fundación / ONG</option>
+                <option value="universidad">Universidad</option>
+                <option value="empresa">Empresa</option>
+                <option value="independiente">A título personal</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-rol">¿Cómo participas en esta decisión? <span class="requerido" aria-hidden="true">*</span></label>
+              <select class="campo" id="ag-rol" name="rol" required>
+                <option value="">Selecciona una opción</option>
+                <option value="decido">Yo puedo aprobarlo</option>
+                <option value="recomiendo">Lo propongo a quien decide</option>
+                <option value="consulto">Estoy explorando ideas por ahora</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-necesidad">¿En qué te gustaría que trabajemos? <span class="requerido" aria-hidden="true">*</span></label>
+              <select class="campo" id="ag-necesidad" name="necesidad" required>
+                <option value="">Selecciona una opción</option>
+                <option value="talleres">Talleres para estudiantes</option>
+                <option value="capacitacion">Capacitación docente</option>
+                <option value="adultos">Programas para adultos mayores</option>
+                <option value="consultoria">Consultoría educativa</option>
+                <option value="otro">Otra cosa / todavía no lo sé</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-participantes">¿Cuántas personas participarían? <span style="color:#757575; font-weight:400;">(aproximado, no pasa nada si cambia)</span></label>
+              <select class="campo" id="ag-participantes" name="participantes">
+                <option value="">Prefiero no decirlo todavía</option>
+                <option value="1-20">1 a 20</option>
+                <option value="21-50">21 a 50</option>
+                <option value="51-150">51 a 150</option>
+                <option value="mas-150">Más de 150</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-plazo">¿Para cuándo lo tienes en mente? <span class="requerido" aria-hidden="true">*</span></label>
+              <select class="campo" id="ag-plazo" name="plazo" required>
+                <option value="">Selecciona una opción</option>
+                <option value="este_mes">Este mes</option>
+                <option value="1_3_meses">En 1 a 3 meses</option>
+                <option value="explorando">Sin fecha aún, estoy explorando</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-presupuesto">¿Ya tienen presupuesto para esto? <span class="requerido" aria-hidden="true">*</span></label>
+              <select class="campo" id="ag-presupuesto" name="presupuesto" required>
+                <option value="">Selecciona una opción</option>
+                <option value="si">Sí, ya está definido</option>
+                <option value="gestion">Lo estamos gestionando</option>
+                <option value="no">Aún no, queremos saber costos primero</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-mensaje">¿Algo más que nos ayude a entender tu contexto? <span style="color:#757575; font-weight:400;">(opcional)</span></label>
+              <textarea class="campo" id="ag-mensaje" name="mensaje" rows="3" placeholder="Qué te gustaría lograr, con qué grupo, qué han intentado antes..."></textarea>
+            </div>
+
+            <div class="flex items-start gap-3 pt-1">
+              <input type="checkbox" id="ag-consent" name="consentimiento" value="si" required
+                     class="mt-1 flex-shrink-0" style="width: 18px; height: 18px; accent-color: #2962FF; cursor: pointer;">
+              <label for="ag-consent" class="text-sm font-body" style="color: #484848; cursor: pointer;">
+                <span class="consent-label">Autorizo el tratamiento de mis datos personales conforme a la</span>
+                <a class="consent-link" href="privacidad.html" target="_blank" rel="noopener noreferrer"
+                   style="color: #2962FF; text-decoration: underline;">política de privacidad</a>.
+                <span class="requerido" aria-hidden="true">*</span>
+              </label>
+            </div>
+
+            <p id="ag-error" role="alert" aria-live="assertive" class="text-sm font-body hidden"
+               style="color: #C43E00; background-color: #FFEBEE; border: 1px solid #FFCDD2; border-radius: 10px; padding: 10px 14px;"></p>
+
+            <button type="submit" id="ag-submit"
+                    class="w-full text-white font-display font-bold py-4 px-8 rounded-xl transition-all transform hover:-translate-y-0.5"
+                    style="background-color: #FF6D00; box-shadow: 0 4px 0 #C43E00; border: none; cursor: pointer;"
+                    onmouseover="this.style.backgroundColor='#FF9E40'" onmouseout="this.style.backgroundColor='#FF6D00'">
+              Continuar
+            </button>
+
+          </form>
+        </div>
+      </section>
+
+      <!-- PASO 2A: CALIFICADO -> CALENDARIO -->
+      <section id="paso-calendario" class="hidden" tabindex="-1">
+        <div class="rounded-2xl p-6 md:p-8 mb-6" style="background-color: #E8F5E9; border: 2px solid #A5D6A7;">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-display font-bold mb-3"
+                style="background-color: #1B5E20; color: white;">Paso 2 de 2</span>
+          <h2 class="font-display text-2xl font-extrabold mb-2" style="color: #1B5E20;">
+            Perfecto, elige tu horario
+          </h2>
+          <p class="font-body" style="color: #2E7D32;">
+            Recibimos tus datos. Escoge el momento que mejor te sirva y nos vemos ahí.
+          </p>
+        </div>
+
+        <!-- Contenedor del embed de Cal.com -->
+        <div id="cal-inline" class="rounded-2xl overflow-hidden" style="background-color: white; border: 2px solid #E0E0E0;"></div>
+
+        <!-- Respaldo si aún no hay calendario configurado -->
+        <div id="cal-sin-configurar" class="hidden rounded-2xl p-6 md:p-8 text-center"
+             style="background-color: white; border: 2px solid #E0E0E0;">
+          <h3 class="font-display text-xl font-extrabold mb-2" style="color: #212121;">Te contactamos para coordinar</h3>
+          <p class="font-body mb-6" style="color: #484848;">
+            Ya tenemos tus datos. Escríbenos por WhatsApp y agendamos de una vez.
+          </p>
+          <a id="cal-wa-fallback" href="#" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-display font-bold"
+             style="background-color: #FF6D00; box-shadow: 0 4px 0 #C43E00; text-decoration: none;">
+            💬 Escribir por WhatsApp
+          </a>
+        </div>
+      </section>
+
+      <!-- PASO 2B: NO CALIFICADO -> RUTA ALTERNATIVA -->
+      <section id="paso-alternativa" class="hidden" tabindex="-1">
+        <div class="rounded-2xl p-6 md:p-8" style="background-color: white; border: 2px solid #E0E0E0;">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-display font-bold mb-3"
+                style="background-color: #E8EAF6; color: #2962FF;">Recibido</span>
+
+          <h2 class="font-display text-2xl font-extrabold mb-3" style="color: #212121;">
+            ¡Gracias! Ya tenemos tus datos
+          </h2>
+          <p class="font-body mb-6 leading-relaxed" style="color: #484848;">
+            Por lo que nos cuentas, estás explorando posibilidades: eso está perfecto. Te dejamos material para que
+            veas cómo trabajamos y, cuando quieras dar el siguiente paso, escríbenos y coordinamos una reunión.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <a href="biblioteca.html"
+               class="flex flex-col gap-1 p-5 rounded-xl transition-all"
+               style="background-color: #F5F5F5; border: 2px solid #E0E0E0; text-decoration: none;">
+              <span class="font-display font-bold" style="color: #2962FF;">📚 Biblioteca</span>
+              <span class="font-body text-sm" style="color: #484848;">Guías y materiales descargables gratis.</span>
+            </a>
+            <a href="servicios.html"
+               class="flex flex-col gap-1 p-5 rounded-xl transition-all"
+               style="background-color: #F5F5F5; border: 2px solid #E0E0E0; text-decoration: none;">
+              <span class="font-display font-bold" style="color: #2962FF;">🧪 Servicios</span>
+              <span class="font-body text-sm" style="color: #484848;">Qué hacemos y cómo lo hacemos.</span>
+            </a>
+          </div>
+
+          <div class="mt-6 text-center">
+            <a id="alt-wa" href="#" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-display font-bold"
+               style="background-color: #FF6D00; box-shadow: 0 4px 0 #C43E00; text-decoration: none;">
+              💬 Prefiero hablar ahora
+            </a>
+          </div>
+        </div>
+      </section>
+
+      </div><!-- /#panel-agenda -->
+
+    </div>
+  </main>
+
+  <!-- FOOTER CONTAINER (se llena dinámicamente) -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="components/analytics.js"></script>
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var form = document.getElementById('form-agenda');
+      if (!form) return;
+
+      var errorEl = document.getElementById('ag-error');
+      var submitEl = document.getElementById('ag-submit');
+      var pasoForm = document.getElementById('paso-formulario');
+      var pasoCal = document.getElementById('paso-calendario');
+      var pasoAlt = document.getElementById('paso-alternativa');
+
+      var agendaCfg = (typeof CONFIG !== 'undefined' && CONFIG.agenda) ? CONFIG.agenda : {};
+      var reglas = agendaCfg.reglas || {
+        rolesValidos: ['decido', 'recomiendo'],
+        plazosExcluidos: ['explorando'],
+        presupuestosValidos: ['si', 'gestion']
+      };
+      var puntajes = agendaCfg.puntajes || {};
+
+      // --- Canal de WhatsApp (los otros dos no salen del sitio) ---
+      var canalWa = document.getElementById('canal-whatsapp');
+      if (canalWa && typeof window.getWhatsAppLink === 'function') {
+        canalWa.href = window.getWhatsAppLink();
+      }
+
+      // --- Textos legales desde config (aplican a los dos formularios) ---
+      if (typeof CONFIG !== 'undefined' && CONFIG.legal) {
+        if (CONFIG.legal.consentLabel) {
+          document.querySelectorAll('.consent-label').forEach(function (el) {
+            el.textContent = CONFIG.legal.consentLabel;
+          });
+        }
+        document.querySelectorAll('.consent-link').forEach(function (el) {
+          if (CONFIG.legal.privacidadUrl) el.href = CONFIG.legal.privacidadUrl;
+          if (CONFIG.legal.consentLinkText) el.textContent = CONFIG.legal.consentLinkText;
+        });
+      }
+
+      // ------------------------------------------------------------------
+      // SELECTOR DE CANAL: las tarjetas intercambian el formulario de abajo
+      // ------------------------------------------------------------------
+      var panelCorreo = document.getElementById('panel-correo');
+      var panelAgenda = document.getElementById('panel-agenda');
+      var seccionForms = document.getElementById('formularios');
+
+      var COPYS = {
+        correo: {
+          eyebrow: 'Correo',
+          titulo: 'Escríbenos un mensaje',
+          bajada: 'Cuéntanos tu duda y te respondemos al correo que nos dejes.'
+        },
+        agenda: {
+          eyebrow: 'Agenda',
+          titulo: 'Hablemos de tu proyecto',
+          bajada: 'Cuéntanos qué necesitas en dos minutos. Con eso preparamos la conversación y no te hacemos perder el tiempo.'
+        }
+      };
+
+      var ESTILOS_CANAL = {
+        activo:   { correo: { bg: '#E8EAF6', border: '#2962FF' }, agenda: { bg: '#FFF3E0', border: '#FF6D00' } },
+        inactivo: { correo: { bg: '#F5F5F5', border: '#E0E0E0' }, agenda: { bg: '#FFF8F2', border: '#FFE0B2' } }
+      };
+
+      function cambiarModo(modo, hacerScroll) {
+        panelCorreo.classList.toggle('hidden', modo !== 'correo');
+        panelAgenda.classList.toggle('hidden', modo !== 'agenda');
+
+        var copy = COPYS[modo];
+        document.getElementById('form-eyebrow').textContent = copy.eyebrow;
+        document.getElementById('form-titulo').textContent = copy.titulo;
+        document.getElementById('form-bajada').textContent = copy.bajada;
+
+        document.querySelectorAll('.canal-selector').forEach(function (btn) {
+          var suyo = btn.getAttribute('data-modo');
+          var activo = suyo === modo;
+          var est = ESTILOS_CANAL[activo ? 'activo' : 'inactivo'][suyo];
+          btn.setAttribute('aria-pressed', activo ? 'true' : 'false');
+          btn.style.backgroundColor = est.bg;
+          btn.style.borderColor = est.border;
+        });
+
+        if (hacerScroll && seccionForms) {
+          seccionForms.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      document.querySelectorAll('.canal-selector').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          cambiarModo(btn.getAttribute('data-modo'), true);
+        });
+      });
+
+      cambiarModo('agenda', false);
+
+      // ------------------------------------------------------------------
+      // FORMULARIO DE CORREO
+      // ------------------------------------------------------------------
+      var formCorreo = document.getElementById('form-correo');
+      var coError = document.getElementById('co-error');
+      var coSubmit = document.getElementById('co-submit');
+      var coExito = document.getElementById('co-exito');
+
+      var correoDirecto = document.getElementById('correo-directo');
+      if (correoDirecto && typeof CONFIG !== 'undefined' && CONFIG.contact && CONFIG.contact.email) {
+        correoDirecto.href = 'mailto:' + CONFIG.contact.email;
+        correoDirecto.textContent = CONFIG.contact.email;
+      }
+
+      formCorreo.addEventListener('submit', function (e) {
+        e.preventDefault();
+        coError.classList.add('hidden');
+
+        var nombre = document.getElementById('co-nombre').value.trim();
+        var email = document.getElementById('co-email').value.trim();
+        var asunto = document.getElementById('co-asunto').value.trim();
+        var mensaje = document.getElementById('co-mensaje').value.trim();
+        var consent = document.getElementById('co-consent').checked;
+
+        function errorCorreo(msg, id) {
+          coError.textContent = msg;
+          coError.classList.remove('hidden');
+          var campo = document.getElementById(id);
+          if (campo) campo.focus();
+        }
+
+        if (!nombre) return errorCorreo('Escribe tu nombre para continuar.', 'co-nombre');
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+          return errorCorreo('Escribe un correo electrónico válido (ej. nombre@correo.com).', 'co-email');
+        }
+        if (!mensaje) return errorCorreo('Cuéntanos en qué podemos ayudarte.', 'co-mensaje');
+        if (!consent) return errorCorreo('Necesitamos tu autorización para tratar tus datos antes de enviar.', 'co-consent');
+
+        var endpointGeneral = (typeof CONFIG !== 'undefined' && CONFIG.contact && CONFIG.contact.formspree)
+          ? CONFIG.contact.formspree.endpoint
+          : '';
+
+        if (!endpointGeneral) {
+          return errorCorreo('El formulario no está disponible. Escríbenos por WhatsApp mientras lo arreglamos.', 'co-nombre');
+        }
+
+        var cuerpo = new FormData();
+        cuerpo.append('nombre', nombre);
+        cuerpo.append('email', email);
+        cuerpo.append('asunto', asunto);
+        cuerpo.append('mensaje', mensaje);
+        cuerpo.append('consentimiento', 'Sí, autorizó el tratamiento de datos');
+        cuerpo.append('origen', window.location.href);
+        cuerpo.append('_subject', asunto ? ('Contacto: ' + asunto) : ('Contacto web de ' + nombre));
+
+        coSubmit.disabled = true;
+        coSubmit.style.opacity = '0.7';
+        coSubmit.textContent = 'Enviando...';
+
+        fetch(endpointGeneral, { method: 'POST', body: cuerpo, headers: { Accept: 'application/json' } })
+          .then(function (res) {
+            if (!res.ok) throw new Error('Formspree respondió ' + res.status);
+            formCorreo.classList.add('hidden');
+            coExito.classList.remove('hidden');
+            coExito.focus();
+            if (typeof trackEvent === 'function') trackEvent('contacto_mensaje', { asunto: asunto });
+          })
+          .catch(function (err) {
+            console.error('Error enviando el mensaje de contacto:', err);
+            coSubmit.disabled = false;
+            coSubmit.style.opacity = '1';
+            coSubmit.textContent = 'Enviar mensaje';
+            errorCorreo('No pudimos enviar tu mensaje. Revisa tu conexión e inténtalo de nuevo.', 'co-nombre');
+          });
+      });
+
+      /** Endpoint dedicado de agenda, con respaldo al general. */
+      function endpointAgenda() {
+        if (typeof CONFIG === 'undefined' || !CONFIG.contact || !CONFIG.contact.formspree) return '';
+        var fs = CONFIG.contact.formspree;
+        return fs.agenda || fs.endpoint || '';
+      }
+
+      /**
+       * Decide si el prospecto califica para ocupar la agenda.
+       * Las tres condiciones deben cumplirse (ver CONFIG.agenda.reglas).
+       */
+      function califica(datos) {
+        return reglas.rolesValidos.indexOf(datos.rol) !== -1
+          && reglas.plazosExcluidos.indexOf(datos.plazo) === -1
+          && reglas.presupuestosValidos.indexOf(datos.presupuesto) !== -1;
+      }
+
+      /** Puntaje informativo 0-13 para priorizar el seguimiento comercial. */
+      function calcularPuntaje(datos) {
+        function p(tabla, valor) {
+          return (puntajes[tabla] && puntajes[tabla][valor]) || 0;
+        }
+        return p('rol', datos.rol)
+          + p('plazo', datos.plazo)
+          + p('presupuesto', datos.presupuesto)
+          + p('participantes', datos.participantes)
+          + p('organizacion', datos.organizacion);
+      }
+
+      function mostrarError(msg, campoId) {
+        errorEl.textContent = msg;
+        errorEl.classList.remove('hidden');
+        var campo = campoId ? document.getElementById(campoId) : null;
+        if (campo) campo.focus();
+      }
+
+      function limpiarError() {
+        errorEl.textContent = '';
+        errorEl.classList.add('hidden');
+      }
+
+      /** Carga el embed de Cal.com y monta el calendario con datos prellenados. */
+      function montarCalendario(datos) {
+        var calLink = agendaCfg.calLink;
+        var contenedor = document.getElementById('cal-inline');
+        var respaldo = document.getElementById('cal-sin-configurar');
+
+        if (!calLink) {
+          // Sin calendario configurado: no dejamos al usuario en el vacío
+          if (contenedor) contenedor.classList.add('hidden');
+          if (respaldo) {
+            respaldo.classList.remove('hidden');
+            var wa = document.getElementById('cal-wa-fallback');
+            if (wa && typeof window.getWhatsAppLink === 'function') {
+              wa.href = window.getWhatsAppLink('Hola, acabo de llenar el formulario de agenda. Soy ' + datos.nombre + '.');
+            }
+          }
+          console.warn('[agenda] CONFIG.agenda.calLink está vacío. Crea tu evento en cal.com y pégalo ahí (ej: "phymac/30min").');
+          return;
+        }
+
+        /* Snippet oficial de Cal.com para embeds inline */
+        (function (C, A, L) {
+          var p = function (a, ar) { a.q.push(ar); };
+          var d = C.document;
+          C.Cal = C.Cal || function () {
+            var cal = C.Cal;
+            var ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              d.head.appendChild(d.createElement('script')).src = A;
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              var api = function () { p(api, arguments); };
+              var namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === 'string') {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ['initNamespace', namespace]);
+              } else {
+                p(cal, ar);
+              }
+              return;
+            }
+            p(cal, ar);
+          };
+        })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+        window.Cal('init', { origin: agendaCfg.calOrigin || 'https://cal.com' });
+
+        window.Cal('inline', {
+          elementOrSelector: '#cal-inline',
+          calLink: calLink,
+          config: {
+            layout: 'month_view',
+            name: datos.nombre,
+            email: datos.email
+          }
+        });
+
+        // Evento de conversión final
+        window.Cal('on', {
+          action: 'bookingSuccessful',
+          callback: function () {
+            if (typeof trackEvent === 'function') {
+              trackEvent('reunion_reservada', {
+                necesidad: datos.necesidad,
+                organizacion: datos.organizacion,
+                puntaje: datos.puntaje
+              });
+            }
+          }
+        });
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        limpiarError();
+
+        var datos = {
+          nombre: document.getElementById('ag-nombre').value.trim(),
+          email: document.getElementById('ag-email').value.trim(),
+          whatsapp: document.getElementById('ag-whatsapp').value.trim(),
+          organizacion: document.getElementById('ag-organizacion').value,
+          rol: document.getElementById('ag-rol').value,
+          necesidad: document.getElementById('ag-necesidad').value,
+          participantes: document.getElementById('ag-participantes').value,
+          plazo: document.getElementById('ag-plazo').value,
+          presupuesto: document.getElementById('ag-presupuesto').value,
+          mensaje: document.getElementById('ag-mensaje').value.trim(),
+          consent: document.getElementById('ag-consent').checked
+        };
+
+        // --- Validación con mensajes claros ---
+        // WhatsApp y participantes quedaron opcionales a propósito: con el
+        // correo basta para responder, y exigir un número de personas antes
+        // de haber hablado hacía el formulario más duro de lo necesario.
+        if (!datos.nombre) return mostrarError('Escribe tu nombre para continuar.', 'ag-nombre');
+        if (!datos.email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(datos.email)) {
+          return mostrarError('Escribe un correo electrónico válido (ej. nombre@correo.com).', 'ag-email');
+        }
+        if (!datos.organizacion) return mostrarError('Cuéntanos desde dónde nos escribes.', 'ag-organizacion');
+        if (!datos.rol) return mostrarError('Cuéntanos cómo participas en esta decisión.', 'ag-rol');
+        if (!datos.necesidad) return mostrarError('Cuéntanos en qué te gustaría que trabajemos.', 'ag-necesidad');
+        if (!datos.plazo) return mostrarError('Cuéntanos para cuándo lo tienes en mente.', 'ag-plazo');
+        if (!datos.presupuesto) return mostrarError('Cuéntanos si ya tienen presupuesto para esto.', 'ag-presupuesto');
+        if (!datos.consent) {
+          return mostrarError('Necesitamos tu autorización para tratar tus datos antes de continuar.', 'ag-consent');
+        }
+
+        datos.califica = califica(datos);
+        datos.puntaje = calcularPuntaje(datos);
+
+        // --- Envío del lead (calificado o no: todo se guarda) ---
+        var payload = new FormData();
+        payload.append('nombre', datos.nombre);
+        payload.append('email', datos.email);
+        payload.append('whatsapp', datos.whatsapp);
+        payload.append('organizacion', datos.organizacion);
+        payload.append('rol', datos.rol);
+        payload.append('necesidad', datos.necesidad);
+        payload.append('participantes', datos.participantes);
+        payload.append('plazo', datos.plazo);
+        payload.append('presupuesto', datos.presupuesto);
+        payload.append('mensaje', datos.mensaje);
+        payload.append('consentimiento', 'Sí, autorizó el tratamiento de datos');
+        payload.append('calificado', datos.califica ? 'SÍ' : 'NO');
+        payload.append('puntaje', String(datos.puntaje) + '/13');
+        payload.append('origen', window.location.href);
+        payload.append('_subject', (datos.califica ? '[CALIFICADO] ' : '[Seguimiento] ') +
+                                    'Solicitud de reunión: ' + datos.nombre);
+
+        submitEl.disabled = true;
+        submitEl.style.opacity = '0.7';
+        submitEl.textContent = 'Enviando...';
+
+        var endpoint = endpointAgenda();
+        var envio = endpoint
+          ? fetch(endpoint, { method: 'POST', body: payload, headers: { Accept: 'application/json' } })
+          : Promise.reject(new Error('Sin endpoint de Formspree configurado'));
+
+        envio
+          .then(function (res) {
+            if (!res.ok) throw new Error('Formspree respondió ' + res.status);
+            avanzar(datos);
+          })
+          .catch(function (err) {
+            console.error('Error enviando la solicitud de agenda:', err);
+            submitEl.disabled = false;
+            submitEl.style.opacity = '1';
+            submitEl.textContent = 'Continuar';
+            mostrarError('No pudimos enviar tus datos. Revisa tu conexión e inténtalo de nuevo.');
+          });
+      });
+
+      /** Ramifica según el resultado de la calificación. */
+      function avanzar(datos) {
+        pasoForm.classList.add('hidden');
+
+        if (datos.califica) {
+          pasoCal.classList.remove('hidden');
+          pasoCal.focus();
+          if (typeof trackEvent === 'function') {
+            trackEvent('agenda_calificado', {
+              necesidad: datos.necesidad,
+              organizacion: datos.organizacion,
+              plazo: datos.plazo,
+              puntaje: datos.puntaje
+            });
+          }
+          montarCalendario(datos);
+        } else {
+          pasoAlt.classList.remove('hidden');
+          pasoAlt.focus();
+          var wa = document.getElementById('alt-wa');
+          if (wa && typeof window.getWhatsAppLink === 'function') {
+            wa.href = window.getWhatsAppLink('Hola, me interesa saber más sobre los programas de PhyMaC.');
+          }
+          if (typeof trackEvent === 'function') {
+            trackEvent('agenda_no_calificado', {
+              necesidad: datos.necesidad,
+              organizacion: datos.organizacion,
+              plazo: datos.plazo,
+              puntaje: datos.puntaje
+            });
+          }
+        }
+
+        // Subimos hasta el encabezado del formulario, no al tope de la
+        // página: el resultado queda justo debajo y no se pierde de vista.
+        var seccion = document.getElementById('formularios');
+        if (seccion) seccion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  </script>
+
+</body>
+</html>
