@@ -85,10 +85,10 @@ const CONFIG = {
   // AGENDAMIENTO (sección "Agenda" de contacto.html)
   // ----------------------------------------------------------------------
   agenda: {
-    // Cal.com es gratuito. Crea tu cuenta en cal.com y pega aquí SOLO el
-    // identificador del evento, sin el dominio. Ej: "phymac/30min"
-    // Mientras esté vacío, la página avisa y ofrece WhatsApp como alternativa.
-    calLink: "",
+    // Identificador del evento en Cal.com, SIN el dominio.
+    // De https://cal.com/fundacion-phymac-owlzje/30min queda lo de después de .com/
+    // Si se deja vacío, la página avisa y ofrece WhatsApp como alternativa.
+    calLink: "fundacion-phymac-owlzje/30min",
     calOrigin: "https://cal.com",
 
     // Regla de calificación. Un prospecto califica si cumple LAS TRES:

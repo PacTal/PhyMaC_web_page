@@ -77,22 +77,25 @@ llega a la bandeja correcta:
 Formspree pide confirmar el correo la primera vez que un formulario recibe algo,
 así que revisa también la carpeta de spam.
 
-### 2.2 Cal.com (necesario para que la agenda sirva)
+### 2.2 Cal.com — ✅ ya configurado
 
-Mientras esté vacío, quien califique verá un botón de WhatsApp en lugar del calendario. Funciona, pero pierdes el agendamiento automático.
-
-1. Crea tu cuenta gratis en [cal.com](https://cal.com).
-2. Crea un tipo de evento (por ejemplo, "Reunión PhyMaC · 30 min").
-3. Tu enlace se verá así: `https://cal.com/fundacion-phymac/30min`.
-4. En `config.js` pega **solo la parte final**, sin el dominio:
+Tu evento `fundacion-phymac-owlzje/30min` está conectado. Quien califique en el
+formulario de agenda ve el calendario incrustado en la misma página, con su
+nombre y correo ya rellenados para que no los escriba dos veces.
 
 ```js
 agenda: {
-  calLink: "fundacion-phymac/30min",   // ← sin "https://cal.com/"
+  calLink: "fundacion-phymac-owlzje/30min",   // solo lo que va después de cal.com/
   calOrigin: "https://cal.com",
 ```
 
-El nombre y el correo de quien llenó el formulario se pasan solos al calendario, así que no los tiene que escribir dos veces.
+**Falta probarlo de punta a punta:** llena el formulario con *decido + este mes +
+presupuesto sí*, confirma que aparece el calendario y reserva un espacio de
+prueba. Revisa que la reserva llegue a tu Cal.com y bórrala después.
+
+Si algún día cambias el enlace del evento en Cal.com, acuérdate de actualizar
+esta línea: si no coincide, el calendario no carga y la página cae al botón de
+WhatsApp sin avisar al visitante.
 
 ### 2.3 Google Analytics (opcional)
 
