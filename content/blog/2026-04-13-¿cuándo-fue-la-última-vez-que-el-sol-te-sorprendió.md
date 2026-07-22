@@ -15,7 +15,7 @@ Más de 60 futuros docentes redescubrieron fenómenos que el cielo nos muestra t
 Este encuentro fue posible gracias a la invitación de la profesora Nidia Lugo, quien abrió su espacio universitario para que la divulgación científica llegara donde más se necesita: en la formación de quienes van a enseñar.
 
 
-El 2 de abril, Bogotá vivio el paso cenital del Sol — el momento en que el Sol estará exactamente sobre nuestras cabezas y las sombras verticales desaparecen por un instante.
+El 2 de abril, Bogotá vivio el paso cenital del Sol  el momento en que el Sol estará exactamente sobre nuestras cabezas y las sombras verticales desaparecen por un instante.
 Siempre hay algo por descubrir. Tú pones el ingenio, nosotros el reto.
 
 🔭 ¿Quieres que PhyMaC llegue a tu institución? Escríbenos.
