@@ -27,8 +27,13 @@ function createFooter() {
   const currentYear = new Date().getFullYear();
   const social = CONFIG.social;
 
+  const legal = CONFIG.legal || {};
+  const privacidadUrl = legal.privacidadUrl || 'privacidad.html';
+  const consentLabel = legal.consentLabel || 'Autorizo el tratamiento de mis datos personales conforme a la';
+  const consentLinkText = legal.consentLinkText || 'política de privacidad';
+
   return `
-    <footer class="py-16 text-center border-t-4" style="background-color: #F5F5F5; border-color: #2962FF;">
+    <footer id="contacto" class="py-16 text-center border-t-4" style="background-color: #F5F5F5; border-color: #2962FF;">
       <div class="max-w-xl mx-auto px-4">
         <div class="mb-8">
           <h2 class="font-display text-2xl font-extrabold mb-2" style="color: #2962FF;">${footerTitle}</h2>
@@ -95,8 +100,24 @@ function createFooter() {
             ></textarea>
           </div>
 
-          <button 
-            type="submit" 
+          <div class="flex items-start gap-3 pt-1">
+            <input
+              type="checkbox"
+              id="consentimiento"
+              name="consentimiento"
+              value="si"
+              required
+              class="mt-1 flex-shrink-0"
+              style="width: 18px; height: 18px; accent-color: #2962FF; cursor: pointer;"
+            />
+            <label for="consentimiento" class="text-sm font-body" style="color: #484848; cursor: pointer;">
+              ${consentLabel}
+              <a href="${privacidadUrl}" target="_blank" rel="noopener noreferrer" style="color: #2962FF; text-decoration: underline;">${consentLinkText}</a>.
+            </label>
+          </div>
+
+          <button
+            type="submit"
             class="w-full text-white font-display font-bold py-4 px-8 rounded-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 mt-4"
             style="background-color: #2962FF; box-shadow: 0 4px 0 #0039CB;"
             onmouseover="this.style.backgroundColor='#768FFF'"
@@ -153,7 +174,16 @@ function createFooter() {
         </div>
         -->
 
-        <p class="mt-8 text-xs font-body" style="color: #9E9E9E;">
+        <!-- Enlaces del sitio -->
+        <nav class="mt-8 flex justify-center gap-x-5 gap-y-2 flex-wrap text-sm font-body" aria-label="Enlaces del pie de página">
+          <a href="index.html#proyectos" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Proyectos</a>
+          <a href="profes.html" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Hablando con profes</a>
+          <a href="biblioteca.html" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Biblioteca</a>
+          <a href="agenda.html" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Agendar reunión</a>
+          <a href="${privacidadUrl}" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Política de privacidad</a>
+        </nav>
+
+        <p class="mt-6 text-xs font-body" style="color: #9E9E9E;">
           &copy; ${currentYear} PhyMaC | ${region}
         </p>
       </div>

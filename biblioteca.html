@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Biblioteca PhyMaC: guías y materiales descargables para docentes, creados a partir de los episodios de Hablando con profes.">
+  <title>Biblioteca - PhyMaC</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="imagenes/logo.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'phymac': {
+              'white': '#F5F5F5',
+              'blue': '#2962FF',
+              'blue-dark': '#0039CB',
+              'blue-light': '#768FFF',
+              'orange': '#FF6D00',
+              'orange-dark': '#C43E00',
+              'orange-light': '#FF9E40',
+              'carbon': '#212121',
+              'carbon-light': '#484848',
+            }
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'system-ui', 'sans-serif'],
+            'body': ['Open Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos PhyMaC -->
+  <link rel="stylesheet" href="phymac-styles.css">
+
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+    .scroll-animate { opacity: 0; }
+
+    /* Modal de descarga */
+    #modal-descarga[hidden] { display: none; }
+    #modal-descarga {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(33, 33, 33, 0.6);
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    #modal-descarga .modal-caja {
+      width: 100%;
+      max-width: 640px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    #modal-cerrar {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.95);
+      color: #212121;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    #modal-cerrar:hover { background: #FF6D00; color: white; }
+  </style>
+</head>
+<body class="min-h-screen bg-phymac-white font-body text-phymac-carbon">
+
+  <!-- HEADER CONTAINER (se llena dinámicamente) -->
+  <div id="header-container"></div>
+
+  <!-- HERO -->
+  <section class="relative pt-28 pb-16 md:pt-40 md:pb-20 overflow-hidden bg-phymac-blue text-white text-center">
+    <div class="absolute inset-0 hero-pattern"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-phymac-blue/80 via-phymac-blue to-phymac-blue-dark"></div>
+
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <h1 class="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6 text-white">
+        Biblioteca PhyMaC
+      </h1>
+      <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed font-body">
+        Guías, plantillas y materiales listos para llevar al aula. Cada episodio de
+        <a href="profes.html" style="color: #FFD9BD; text-decoration: underline;">Hablando con profes</a>
+        deja algo concreto aquí.
+      </p>
+    </div>
+  </section>
+
+  <div style="height: 4px; background-color: #FF6D00;"></div>
+
+  <!-- MATERIALES -->
+  <section class="py-16 bg-phymac-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Filtros por tema -->
+      <div id="biblioteca-filtros" class="flex flex-wrap gap-3 mb-12 justify-center"></div>
+
+      <!-- Contenedor de materiales -->
+      <div id="biblioteca-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+      <!-- Mensaje cuando un filtro no arroja resultados -->
+      <p id="biblioteca-vacio" class="hidden text-center font-body py-12" style="color: #484848;">
+        No hay materiales con ese tema todavía.
+      </p>
+    </div>
+  </section>
+
+  <!-- MODAL DE DESCARGA -->
+  <div id="modal-descarga" hidden role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="modal-caja">
+      <button type="button" id="modal-cerrar" aria-label="Cerrar">&times;</button>
+      <div id="modal-contenido"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER CONTAINER (se llena dinámicamente) -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="components/analytics.js"></script>
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="components/lead-form.js"></script>
+  <script src="main.js"></script>
+  <script src="episodios-data.js"></script>
+  <script src="episodios.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var container = document.getElementById('biblioteca-container');
+      var filtrosEl = document.getElementById('biblioteca-filtros');
+      var vacioEl = document.getElementById('biblioteca-vacio');
+      var modal = document.getElementById('modal-descarga');
+      var modalContenido = document.getElementById('modal-contenido');
+      var modalCerrar = document.getElementById('modal-cerrar');
+
+      if (!container) return;
+
+      var materiales = typeof epGetMateriales === 'function' ? epGetMateriales() : [];
+      var ultimoFoco = null;
+
+      // --- Estado vacío global: aún no hay ningún material publicado ---
+      if (!materiales.length) {
+        container.className = '';
+        container.innerHTML =
+          '<div class="max-w-xl mx-auto text-center py-12 px-6 rounded-2xl" style="background-color: white; border: 2px solid #E0E0E0;">' +
+            '<p class="font-display text-xl font-extrabold mb-2" style="color: #212121;">La Biblioteca está por abrir</p>' +
+            '<p class="font-body mb-6" style="color: #484848;">' +
+              'Estamos preparando las primeras guías. Cada episodio nuevo suma material aquí.' +
+            '</p>' +
+            '<a href="profes.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-display font-bold" ' +
+               'style="background-color: #2962FF; box-shadow: 0 3px 0 #0039CB; text-decoration: none;">Ver la serie</a>' +
+          '</div>';
+        return;
+      }
+
+      // --- Filtros por tema ---
+      var temas = typeof epGetTemasDeMateriales === 'function' ? epGetTemasDeMateriales() : [];
+
+      function pintarFiltros(activo) {
+        if (!filtrosEl || !temas.length) return;
+
+        var botones = [{ valor: 'all', texto: 'Todos' }].concat(
+          temas.map(function (t) { return { valor: t, texto: t }; })
+        );
+
+        filtrosEl.innerHTML = botones.map(function (b) {
+          var esActivo = b.valor === activo;
+          return '<button type="button" class="filtro-tema px-5 py-2.5 rounded-full text-sm font-display font-bold transition-all" ' +
+                   'data-tema="' + epEscape(b.valor) + '" ' +
+                   'aria-pressed="' + (esActivo ? 'true' : 'false') + '" ' +
+                   'style="border: none; cursor: pointer; ' +
+                     (esActivo
+                       ? 'background-color:#2962FF; color:#FFFFFF; box-shadow:0 3px 0 #0039CB;'
+                       : 'background-color:#EEEEEE; color:#484848;') +
+                   '">' + epEscape(b.texto) + '</button>';
+        }).join('');
+      }
+
+      function filtrar(tema) {
+        var visibles = 0;
+        container.querySelectorAll('.material-card').forEach(function (card) {
+          var cardTemas = (card.getAttribute('data-temas') || '').split('|');
+          var coincide = tema === 'all' || cardTemas.indexOf(tema) !== -1;
+          card.style.display = coincide ? '' : 'none';
+          if (coincide) visibles++;
+        });
+        if (vacioEl) vacioEl.classList.toggle('hidden', visibles > 0);
+        pintarFiltros(tema);
+      }
+
+      // --- Render de materiales ---
+      container.innerHTML = materiales.map(epMaterialCard).join('');
+      pintarFiltros('all');
+
+      if (filtrosEl) {
+        filtrosEl.addEventListener('click', function (e) {
+          var btn = e.target.closest('.filtro-tema');
+          if (btn) filtrar(btn.getAttribute('data-tema'));
+        });
+      }
+
+      // --- Modal de descarga (email-gated) ---
+      function abrirModal(slug) {
+        var ep = epFindBySlug(slug);
+        if (!ep || !ep.guia || !ep.guia.archivo) return;
+
+        var opts = {
+          id: 'modal-lead-' + ep.slug,
+          guiaTitulo: ep.guia.titulo,
+          guiaDescripcion: ep.guia.descripcion,
+          guiaPortada: ep.guia.portada,
+          guiaArchivo: ep.guia.archivo,
+          episodioSlug: ep.slug,
+          episodioTitulo: ep.titulo
+        };
+
+        ultimoFoco = document.activeElement;
+        modalContenido.innerHTML = createLeadForm(opts);
+        initLeadForm(opts);
+
+        var titulo = modalContenido.querySelector('h2');
+        if (titulo) titulo.id = 'modal-titulo';
+
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+
+        var primerCampo = modalContenido.querySelector('input, select');
+        if (primerCampo) primerCampo.focus();
+      }
+
+      function cerrarModal() {
+        modal.hidden = true;
+        modalContenido.innerHTML = '';
+        document.body.style.overflow = '';
+        if (ultimoFoco && typeof ultimoFoco.focus === 'function') ultimoFoco.focus();
+      }
+
+      container.addEventListener('click', function (e) {
+        var btn = e.target.closest('.btn-descargar');
+        if (btn) abrirModal(btn.getAttribute('data-slug'));
+      });
+
+      modalCerrar.addEventListener('click', cerrarModal);
+
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) cerrarModal();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.hidden) cerrarModal();
+      });
+
+      if (typeof initScrollAnimations === 'function') initScrollAnimations();
+    });
+  </script>
+
+</body>
+</html>

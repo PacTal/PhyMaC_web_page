@@ -26,9 +26,18 @@ const CONFIG = {
       defaultMessage: "Me encantaría participar",
       ctaText: "¡Acepta el reto!"
     },
-    email: "contacto@phymac.com",
+    email: "funphymac@gmail.com",
     formspree: {
-      endpoint: "https://formspree.io/f/xkgdzeda" // Reemplazar con tu ID de Formspree
+      // Endpoint general (formulario de contacto del footer)
+      endpoint: "https://formspree.io/f/xkgdzeda",
+
+      // Endpoints DEDICADOS para poder segmentar los leads en Formspree.
+      // Mientras estén vacíos se usa el endpoint general de arriba (todo sigue
+      // funcionando, pero los envíos llegan mezclados en la misma bandeja).
+      // Para separarlos: crea dos formularios nuevos en formspree.io y pega
+      // aquí sus URLs completas.
+      materiales: "", // Descargas de guías (Biblioteca y episodios)
+      agenda: ""      // Solicitudes de reunión (agenda.html)
     }
   },
 
@@ -49,11 +58,81 @@ const CONFIG = {
     items: [
       { text: "Inicio", href: "index.html" },
       { text: "El método", href: "index.html#metodo" },
-      { text: "Proyectos", href: "index.html#proyectos" },
       { text: "Servicios", href: "servicios.html" },
+      { text: "Hablando con profes", href: "profes.html" },
+      { text: "Biblioteca", href: "biblioteca.html" },
       { text: "Blog", href: "blog.html" },
       { text: "Publicaciones", href: "publicaciones.html" }
     ]
+  },
+
+  // ----------------------------------------------------------------------
+  // SERIE "HABLANDO CON PROFES"
+  // ----------------------------------------------------------------------
+  serie: {
+    nombre: "Hablando con profes",
+    tagline: "Una serie en video de la Fundación PhyMaC para charlar con franqueza sobre lo que de verdad pasa en el aula: reírnos de los días difíciles, celebrar lo que sí funciona y recordar por qué seguimos aquí.",
+    youtube: "", // Pega aquí la URL del canal cuando lo tengas
+    temas: [
+      { icono: "🤖", titulo: "La IA en el aula",        texto: "Cómo competir (o aliarnos) con la IA por la atención y la curiosidad de los estudiantes." },
+      { icono: "🧭", titulo: "Currículo vs. realidad",  texto: "Qué hacer cuando el programa parece escrito para otro planeta y el aula pide otra cosa." },
+      { icono: "🌱", titulo: "Aulas diversas",          texto: "Enseñar a grupos cada vez más distintos sin dejar a nadie atrás." },
+      { icono: "🔧", titulo: "Aprender haciendo",       texto: "Metodologías activas y laboratorios low-cost que sí funcionan en contextos reales." },
+      { icono: "💬", titulo: "Los días difíciles",      texto: "Reírnos de lo que salió mal y compartir cómo seguimos de pie." },
+      { icono: "⭐", titulo: "Lo que sí funciona",      texto: "Celebrar las pequeñas victorias que nos recuerdan por qué elegimos enseñar." }
+    ]
+  },
+
+  // ----------------------------------------------------------------------
+  // AGENDAMIENTO (agenda.html)
+  // ----------------------------------------------------------------------
+  agenda: {
+    // Cal.com es gratuito. Crea tu cuenta en cal.com y pega aquí SOLO el
+    // identificador del evento, sin el dominio. Ej: "phymac/30min"
+    // Mientras esté vacío, la página avisa y ofrece WhatsApp como alternativa.
+    calLink: "",
+    calOrigin: "https://cal.com",
+
+    // Regla de calificación. Un prospecto califica si cumple LAS TRES:
+    //   - su rol está en rolesValidos
+    //   - su plazo NO está en plazosExcluidos
+    //   - su presupuesto está en presupuestosValidos
+    // Ajusta estas listas para abrir o cerrar el filtro.
+    reglas: {
+      rolesValidos: ["decido", "recomiendo"],
+      plazosExcluidos: ["explorando"],
+      presupuestosValidos: ["si", "gestion"]
+    },
+
+    // Puntaje informativo (0-13) que viaja con el lead para priorizar el
+    // seguimiento comercial. No decide el filtro: eso lo hacen las reglas.
+    puntajes: {
+      rol:           { decido: 3, recomiendo: 2, consulto: 0 },
+      plazo:         { este_mes: 3, "1_3_meses": 2, explorando: 0 },
+      presupuesto:   { si: 3, gestion: 2, no: 0 },
+      participantes: { "1-20": 0, "21-50": 1, "51-150": 2, "mas-150": 2 },
+      organizacion:  { colegio_privado: 2, universidad: 2, empresa: 2, colegio_publico: 1, fundacion: 1, independiente: 0 }
+    }
+  },
+
+  // ----------------------------------------------------------------------
+  // ANALÍTICA
+  // ----------------------------------------------------------------------
+  // Deja los IDs vacíos para no cargar nada. Al llenarlos, los scripts se
+  // inyectan solos y los eventos de conversión empiezan a registrarse.
+  analytics: {
+    ga4Id: "",        // Ej: "G-XXXXXXXXXX"
+    metaPixelId: "",  // Ej: "1234567890123456"
+    debug: false      // true = imprime cada evento en la consola
+  },
+
+  // ----------------------------------------------------------------------
+  // LEGAL
+  // ----------------------------------------------------------------------
+  legal: {
+    privacidadUrl: "privacidad.html",
+    consentLabel: "Autorizo el tratamiento de mis datos personales conforme a la",
+    consentLinkText: "política de privacidad"
   },
 
   // ----------------------------------------------------------------------

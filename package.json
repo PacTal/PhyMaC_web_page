@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "PhyMaC website build tools",
   "scripts": {
+    "build": "npm run build:blog && npm run build:episodios",
     "build:blog": "node scripts/build-blog.js",
+    "build:episodios": "node scripts/build-episodios.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },

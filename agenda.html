@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agenda una reunión con la Fundación PhyMaC. Cuéntanos qué necesitas y te proponemos el siguiente paso.">
+  <title>Agenda una reunión - PhyMaC</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="imagenes/logo.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'phymac': {
+              'white': '#F5F5F5',
+              'blue': '#2962FF',
+              'blue-dark': '#0039CB',
+              'blue-light': '#768FFF',
+              'orange': '#FF6D00',
+              'orange-dark': '#C43E00',
+              'orange-light': '#FF9E40',
+              'carbon': '#212121',
+              'carbon-light': '#484848',
+            }
+          },
+          fontFamily: {
+            'display': ['Montserrat', 'system-ui', 'sans-serif'],
+            'body': ['Open Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos PhyMaC -->
+  <link rel="stylesheet" href="phymac-styles.css">
+
+  <style>
+    .campo {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #E0E0E0;
+      background-color: #F5F5F5;
+      border-radius: 0.75rem;
+      font-family: 'Open Sans', sans-serif;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .campo:focus {
+      border-color: #2962FF;
+      box-shadow: 0 0 0 3px rgba(41, 98, 255, 0.15);
+    }
+    .etiqueta {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      font-family: 'Open Sans', sans-serif;
+      color: #212121;
+    }
+    .requerido { color: #C43E00; }
+    #cal-inline { min-height: 620px; }
+  </style>
+</head>
+<body class="min-h-screen bg-phymac-white font-body text-phymac-carbon">
+
+  <!-- HEADER CONTAINER (se llena dinámicamente) -->
+  <div id="header-container"></div>
+
+  <!-- HERO -->
+  <section class="relative pt-28 pb-14 md:pt-40 md:pb-16 overflow-hidden bg-phymac-blue text-white text-center">
+    <div class="absolute inset-0 hero-pattern"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-phymac-blue/80 via-phymac-blue to-phymac-blue-dark"></div>
+
+    <div class="max-w-3xl mx-auto px-4 relative z-10">
+      <h1 class="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-5 text-white">
+        Hablemos de tu proyecto
+      </h1>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-white/90 leading-relaxed font-body">
+        Cuéntanos qué necesitas en dos minutos. Con eso preparamos la conversación y no te hacemos perder el tiempo.
+      </p>
+    </div>
+  </section>
+
+  <div style="height: 4px; background-color: #FF6D00;"></div>
+
+  <!-- CONTENIDO -->
+  <main class="py-14">
+    <div class="max-w-3xl mx-auto px-4">
+
+      <!-- PASO 1: FORMULARIO DE CALIFICACIÓN -->
+      <section id="paso-formulario">
+        <div class="rounded-2xl p-6 md:p-8" style="background-color: white; border: 2px solid #E0E0E0;">
+
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-display font-bold mb-3"
+                style="background-color: #E8EAF6; color: #2962FF;">Paso 1 de 2</span>
+
+          <h2 class="font-display text-2xl font-extrabold mb-2" style="color: #212121;">Cuéntanos de ti</h2>
+          <p class="font-body mb-6" style="color: #484848;">
+            Todos los campos marcados con <span class="requerido">*</span> son necesarios.
+          </p>
+
+          <form id="form-agenda" class="space-y-5" novalidate>
+
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="etiqueta" for="ag-nombre">Nombre completo <span class="requerido" aria-hidden="true">*</span></label>
+                <input class="campo" type="text" id="ag-nombre" name="nombre" required autocomplete="name" placeholder="Ej. Juan Pérez">
+              </div>
+              <div>
+                <label class="etiqueta" for="ag-email">Correo electrónico <span class="requerido" aria-hidden="true">*</span></label>
+                <input class="campo" type="email" id="ag-email" name="email" required autocomplete="email" placeholder="ejemplo@correo.com">
+              </div>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-whatsapp">WhatsApp <span class="requerido" aria-hidden="true">*</span></label>
+              <input class="campo" type="tel" id="ag-whatsapp" name="whatsapp" required autocomplete="tel" placeholder="Ej. 300 123 4567">
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-organizacion">Tipo de organización <span class="requerido" aria-hidden="true">*</span></label>
+              <select class="campo" id="ag-organizacion" name="organizacion" required>
+                <option value="">Selecciona una opción</option>
+                <option value="colegio_publico">Colegio público</option>
+                <option value="colegio_privado">Colegio privado</option>
+                <option value="fundacion">Fundación / ONG</option>
+                <option value="universidad">Universidad</option>
+                <option value="empresa">Empresa</option>
+                <option value="independiente">Independiente</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-rol">Tu rol en la decisión <span class="requerido" aria-hidden="true">*</span></label>
+              <select class="campo" id="ag-rol" name="rol" required>
+                <option value="">Selecciona una opción</option>
+                <option value="decido">Yo decido / apruebo</option>
+                <option value="recomiendo">Recomiendo a quien decide</option>
+                <option value="consulto">Solo estoy consultando</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-necesidad">¿Qué necesitas? <span class="requerido" aria-hidden="true">*</span></label>
+              <select class="campo" id="ag-necesidad" name="necesidad" required>
+                <option value="">Selecciona una opción</option>
+                <option value="talleres">Talleres para estudiantes</option>
+                <option value="capacitacion">Capacitación docente</option>
+                <option value="adultos">Programas para adultos mayores</option>
+                <option value="consultoria">Consultoría educativa</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-participantes">Cantidad de participantes <span class="requerido" aria-hidden="true">*</span></label>
+              <select class="campo" id="ag-participantes" name="participantes" required>
+                <option value="">Selecciona una opción</option>
+                <option value="1-20">1 a 20</option>
+                <option value="21-50">21 a 50</option>
+                <option value="51-150">51 a 150</option>
+                <option value="mas-150">Más de 150</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-plazo">¿Para cuándo? <span class="requerido" aria-hidden="true">*</span></label>
+              <select class="campo" id="ag-plazo" name="plazo" required>
+                <option value="">Selecciona una opción</option>
+                <option value="este_mes">Este mes</option>
+                <option value="1_3_meses">En 1 a 3 meses</option>
+                <option value="explorando">Solo estoy explorando</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-presupuesto">¿Cuentan con presupuesto asignado? <span class="requerido" aria-hidden="true">*</span></label>
+              <select class="campo" id="ag-presupuesto" name="presupuesto" required>
+                <option value="">Selecciona una opción</option>
+                <option value="si">Sí, ya está asignado</option>
+                <option value="gestion">En gestión</option>
+                <option value="no">Todavía no</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="ag-mensaje">Algo más que debamos saber <span style="color:#757575; font-weight:400;">(opcional)</span></label>
+              <textarea class="campo" id="ag-mensaje" name="mensaje" rows="3" placeholder="Contexto, fechas tentativas, objetivos..."></textarea>
+            </div>
+
+            <div class="flex items-start gap-3 pt-1">
+              <input type="checkbox" id="ag-consent" name="consentimiento" value="si" required
+                     class="mt-1 flex-shrink-0" style="width: 18px; height: 18px; accent-color: #2962FF; cursor: pointer;">
+              <label for="ag-consent" class="text-sm font-body" style="color: #484848; cursor: pointer;">
+                <span id="ag-consent-label">Autorizo el tratamiento de mis datos personales conforme a la</span>
+                <a id="ag-consent-link" href="privacidad.html" target="_blank" rel="noopener noreferrer"
+                   style="color: #2962FF; text-decoration: underline;">política de privacidad</a>.
+                <span class="requerido" aria-hidden="true">*</span>
+              </label>
+            </div>
+
+            <p id="ag-error" role="alert" aria-live="assertive" class="text-sm font-body hidden"
+               style="color: #C43E00; background-color: #FFEBEE; border: 1px solid #FFCDD2; border-radius: 10px; padding: 10px 14px;"></p>
+
+            <button type="submit" id="ag-submit"
+                    class="w-full text-white font-display font-bold py-4 px-8 rounded-xl transition-all transform hover:-translate-y-0.5"
+                    style="background-color: #FF6D00; box-shadow: 0 4px 0 #C43E00; border: none; cursor: pointer;"
+                    onmouseover="this.style.backgroundColor='#FF9E40'" onmouseout="this.style.backgroundColor='#FF6D00'">
+              Continuar
+            </button>
+
+          </form>
+        </div>
+      </section>
+
+      <!-- PASO 2A: CALIFICADO -> CALENDARIO -->
+      <section id="paso-calendario" class="hidden" tabindex="-1">
+        <div class="rounded-2xl p-6 md:p-8 mb-6" style="background-color: #E8F5E9; border: 2px solid #A5D6A7;">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-display font-bold mb-3"
+                style="background-color: #1B5E20; color: white;">Paso 2 de 2</span>
+          <h2 class="font-display text-2xl font-extrabold mb-2" style="color: #1B5E20;">
+            Perfecto, elige tu horario
+          </h2>
+          <p class="font-body" style="color: #2E7D32;">
+            Recibimos tus datos. Escoge el momento que mejor te sirva y nos vemos ahí.
+          </p>
+        </div>
+
+        <!-- Contenedor del embed de Cal.com -->
+        <div id="cal-inline" class="rounded-2xl overflow-hidden" style="background-color: white; border: 2px solid #E0E0E0;"></div>
+
+        <!-- Respaldo si aún no hay calendario configurado -->
+        <div id="cal-sin-configurar" class="hidden rounded-2xl p-6 md:p-8 text-center"
+             style="background-color: white; border: 2px solid #E0E0E0;">
+          <h3 class="font-display text-xl font-extrabold mb-2" style="color: #212121;">Te contactamos para coordinar</h3>
+          <p class="font-body mb-6" style="color: #484848;">
+            Ya tenemos tus datos. Escríbenos por WhatsApp y agendamos de una vez.
+          </p>
+          <a id="cal-wa-fallback" href="#" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-display font-bold"
+             style="background-color: #FF6D00; box-shadow: 0 4px 0 #C43E00; text-decoration: none;">
+            💬 Escribir por WhatsApp
+          </a>
+        </div>
+      </section>
+
+      <!-- PASO 2B: NO CALIFICADO -> RUTA ALTERNATIVA -->
+      <section id="paso-alternativa" class="hidden" tabindex="-1">
+        <div class="rounded-2xl p-6 md:p-8" style="background-color: white; border: 2px solid #E0E0E0;">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-display font-bold mb-3"
+                style="background-color: #E8EAF6; color: #2962FF;">Recibido</span>
+
+          <h2 class="font-display text-2xl font-extrabold mb-3" style="color: #212121;">
+            ¡Gracias! Ya tenemos tus datos
+          </h2>
+          <p class="font-body mb-6 leading-relaxed" style="color: #484848;">
+            Por lo que nos cuentas, estás explorando posibilidades: eso está perfecto. Te dejamos material para que
+            veas cómo trabajamos y, cuando quieras dar el siguiente paso, escríbenos y coordinamos una reunión.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <a href="biblioteca.html"
+               class="flex flex-col gap-1 p-5 rounded-xl transition-all"
+               style="background-color: #F5F5F5; border: 2px solid #E0E0E0; text-decoration: none;">
+              <span class="font-display font-bold" style="color: #2962FF;">📚 Biblioteca</span>
+              <span class="font-body text-sm" style="color: #484848;">Guías y materiales descargables gratis.</span>
+            </a>
+            <a href="servicios.html"
+               class="flex flex-col gap-1 p-5 rounded-xl transition-all"
+               style="background-color: #F5F5F5; border: 2px solid #E0E0E0; text-decoration: none;">
+              <span class="font-display font-bold" style="color: #2962FF;">🧪 Servicios</span>
+              <span class="font-body text-sm" style="color: #484848;">Qué hacemos y cómo lo hacemos.</span>
+            </a>
+          </div>
+
+          <div class="mt-6 text-center">
+            <a id="alt-wa" href="#" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-display font-bold"
+               style="background-color: #FF6D00; box-shadow: 0 4px 0 #C43E00; text-decoration: none;">
+              💬 Prefiero hablar ahora
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER CONTAINER (se llena dinámicamente) -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="components/analytics.js"></script>
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var form = document.getElementById('form-agenda');
+      if (!form) return;
+
+      var errorEl = document.getElementById('ag-error');
+      var submitEl = document.getElementById('ag-submit');
+      var pasoForm = document.getElementById('paso-formulario');
+      var pasoCal = document.getElementById('paso-calendario');
+      var pasoAlt = document.getElementById('paso-alternativa');
+
+      var agendaCfg = (typeof CONFIG !== 'undefined' && CONFIG.agenda) ? CONFIG.agenda : {};
+      var reglas = agendaCfg.reglas || {
+        rolesValidos: ['decido', 'recomiendo'],
+        plazosExcluidos: ['explorando'],
+        presupuestosValidos: ['si', 'gestion']
+      };
+      var puntajes = agendaCfg.puntajes || {};
+
+      // --- Textos legales desde config ---
+      if (typeof CONFIG !== 'undefined' && CONFIG.legal) {
+        var lbl = document.getElementById('ag-consent-label');
+        var lnk = document.getElementById('ag-consent-link');
+        if (lbl && CONFIG.legal.consentLabel) lbl.textContent = CONFIG.legal.consentLabel;
+        if (lnk) {
+          if (CONFIG.legal.privacidadUrl) lnk.href = CONFIG.legal.privacidadUrl;
+          if (CONFIG.legal.consentLinkText) lnk.textContent = CONFIG.legal.consentLinkText;
+        }
+      }
+
+      /** Endpoint dedicado de agenda, con respaldo al general. */
+      function endpointAgenda() {
+        if (typeof CONFIG === 'undefined' || !CONFIG.contact || !CONFIG.contact.formspree) return '';
+        var fs = CONFIG.contact.formspree;
+        return fs.agenda || fs.endpoint || '';
+      }
+
+      /**
+       * Decide si el prospecto califica para ocupar la agenda.
+       * Las tres condiciones deben cumplirse (ver CONFIG.agenda.reglas).
+       */
+      function califica(datos) {
+        return reglas.rolesValidos.indexOf(datos.rol) !== -1
+          && reglas.plazosExcluidos.indexOf(datos.plazo) === -1
+          && reglas.presupuestosValidos.indexOf(datos.presupuesto) !== -1;
+      }
+
+      /** Puntaje informativo 0-13 para priorizar el seguimiento comercial. */
+      function calcularPuntaje(datos) {
+        function p(tabla, valor) {
+          return (puntajes[tabla] && puntajes[tabla][valor]) || 0;
+        }
+        return p('rol', datos.rol)
+          + p('plazo', datos.plazo)
+          + p('presupuesto', datos.presupuesto)
+          + p('participantes', datos.participantes)
+          + p('organizacion', datos.organizacion);
+      }
+
+      function mostrarError(msg, campoId) {
+        errorEl.textContent = msg;
+        errorEl.classList.remove('hidden');
+        var campo = campoId ? document.getElementById(campoId) : null;
+        if (campo) campo.focus();
+      }
+
+      function limpiarError() {
+        errorEl.textContent = '';
+        errorEl.classList.add('hidden');
+      }
+
+      /** Carga el embed de Cal.com y monta el calendario con datos prellenados. */
+      function montarCalendario(datos) {
+        var calLink = agendaCfg.calLink;
+        var contenedor = document.getElementById('cal-inline');
+        var respaldo = document.getElementById('cal-sin-configurar');
+
+        if (!calLink) {
+          // Sin calendario configurado: no dejamos al usuario en el vacío
+          if (contenedor) contenedor.classList.add('hidden');
+          if (respaldo) {
+            respaldo.classList.remove('hidden');
+            var wa = document.getElementById('cal-wa-fallback');
+            if (wa && typeof window.getWhatsAppLink === 'function') {
+              wa.href = window.getWhatsAppLink('Hola, acabo de llenar el formulario de agenda. Soy ' + datos.nombre + '.');
+            }
+          }
+          console.warn('[agenda] CONFIG.agenda.calLink está vacío. Crea tu evento en cal.com y pégalo ahí (ej: "phymac/30min").');
+          return;
+        }
+
+        /* Snippet oficial de Cal.com para embeds inline */
+        (function (C, A, L) {
+          var p = function (a, ar) { a.q.push(ar); };
+          var d = C.document;
+          C.Cal = C.Cal || function () {
+            var cal = C.Cal;
+            var ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              d.head.appendChild(d.createElement('script')).src = A;
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              var api = function () { p(api, arguments); };
+              var namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === 'string') {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ['initNamespace', namespace]);
+              } else {
+                p(cal, ar);
+              }
+              return;
+            }
+            p(cal, ar);
+          };
+        })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+        window.Cal('init', { origin: agendaCfg.calOrigin || 'https://cal.com' });
+
+        window.Cal('inline', {
+          elementOrSelector: '#cal-inline',
+          calLink: calLink,
+          config: {
+            layout: 'month_view',
+            name: datos.nombre,
+            email: datos.email
+          }
+        });
+
+        // Evento de conversión final
+        window.Cal('on', {
+          action: 'bookingSuccessful',
+          callback: function () {
+            if (typeof trackEvent === 'function') {
+              trackEvent('reunion_reservada', {
+                necesidad: datos.necesidad,
+                organizacion: datos.organizacion,
+                puntaje: datos.puntaje
+              });
+            }
+          }
+        });
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        limpiarError();
+
+        var datos = {
+          nombre: document.getElementById('ag-nombre').value.trim(),
+          email: document.getElementById('ag-email').value.trim(),
+          whatsapp: document.getElementById('ag-whatsapp').value.trim(),
+          organizacion: document.getElementById('ag-organizacion').value,
+          rol: document.getElementById('ag-rol').value,
+          necesidad: document.getElementById('ag-necesidad').value,
+          participantes: document.getElementById('ag-participantes').value,
+          plazo: document.getElementById('ag-plazo').value,
+          presupuesto: document.getElementById('ag-presupuesto').value,
+          mensaje: document.getElementById('ag-mensaje').value.trim(),
+          consent: document.getElementById('ag-consent').checked
+        };
+
+        // --- Validación con mensajes claros ---
+        if (!datos.nombre) return mostrarError('Escribe tu nombre para continuar.', 'ag-nombre');
+        if (!datos.email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(datos.email)) {
+          return mostrarError('Escribe un correo electrónico válido (ej. nombre@correo.com).', 'ag-email');
+        }
+        if (!datos.whatsapp) return mostrarError('Déjanos un número de WhatsApp para coordinar.', 'ag-whatsapp');
+        if (!datos.organizacion) return mostrarError('Cuéntanos qué tipo de organización representas.', 'ag-organizacion');
+        if (!datos.rol) return mostrarError('Indícanos tu rol en la decisión.', 'ag-rol');
+        if (!datos.necesidad) return mostrarError('Selecciona qué necesitas.', 'ag-necesidad');
+        if (!datos.participantes) return mostrarError('Dinos cuántos participantes serían, aunque sea aproximado.', 'ag-participantes');
+        if (!datos.plazo) return mostrarError('Indícanos para cuándo lo necesitas.', 'ag-plazo');
+        if (!datos.presupuesto) return mostrarError('Cuéntanos si ya cuentan con presupuesto.', 'ag-presupuesto');
+        if (!datos.consent) {
+          return mostrarError('Necesitamos tu autorización para tratar tus datos antes de continuar.', 'ag-consent');
+        }
+
+        datos.califica = califica(datos);
+        datos.puntaje = calcularPuntaje(datos);
+
+        // --- Envío del lead (calificado o no: todo se guarda) ---
+        var payload = new FormData();
+        payload.append('nombre', datos.nombre);
+        payload.append('email', datos.email);
+        payload.append('whatsapp', datos.whatsapp);
+        payload.append('organizacion', datos.organizacion);
+        payload.append('rol', datos.rol);
+        payload.append('necesidad', datos.necesidad);
+        payload.append('participantes', datos.participantes);
+        payload.append('plazo', datos.plazo);
+        payload.append('presupuesto', datos.presupuesto);
+        payload.append('mensaje', datos.mensaje);
+        payload.append('consentimiento', 'Sí, autorizó el tratamiento de datos');
+        payload.append('calificado', datos.califica ? 'SÍ' : 'NO');
+        payload.append('puntaje', String(datos.puntaje) + '/13');
+        payload.append('origen', window.location.href);
+        payload.append('_subject', (datos.califica ? '[CALIFICADO] ' : '[Seguimiento] ') +
+                                    'Solicitud de reunión: ' + datos.nombre);
+
+        submitEl.disabled = true;
+        submitEl.style.opacity = '0.7';
+        submitEl.textContent = 'Enviando...';
+
+        var endpoint = endpointAgenda();
+        var envio = endpoint
+          ? fetch(endpoint, { method: 'POST', body: payload, headers: { Accept: 'application/json' } })
+          : Promise.reject(new Error('Sin endpoint de Formspree configurado'));
+
+        envio
+          .then(function (res) {
+            if (!res.ok) throw new Error('Formspree respondió ' + res.status);
+            avanzar(datos);
+          })
+          .catch(function (err) {
+            console.error('Error enviando la solicitud de agenda:', err);
+            submitEl.disabled = false;
+            submitEl.style.opacity = '1';
+            submitEl.textContent = 'Continuar';
+            mostrarError('No pudimos enviar tus datos. Revisa tu conexión e inténtalo de nuevo.');
+          });
+      });
+
+      /** Ramifica según el resultado de la calificación. */
+      function avanzar(datos) {
+        pasoForm.classList.add('hidden');
+
+        if (datos.califica) {
+          pasoCal.classList.remove('hidden');
+          pasoCal.focus();
+          if (typeof trackEvent === 'function') {
+            trackEvent('agenda_calificado', {
+              necesidad: datos.necesidad,
+              organizacion: datos.organizacion,
+              plazo: datos.plazo,
+              puntaje: datos.puntaje
+            });
+          }
+          montarCalendario(datos);
+        } else {
+          pasoAlt.classList.remove('hidden');
+          pasoAlt.focus();
+          var wa = document.getElementById('alt-wa');
+          if (wa && typeof window.getWhatsAppLink === 'function') {
+            wa.href = window.getWhatsAppLink('Hola, me interesa saber más sobre los programas de PhyMaC.');
+          }
+          if (typeof trackEvent === 'function') {
+            trackEvent('agenda_no_calificado', {
+              necesidad: datos.necesidad,
+              organizacion: datos.organizacion,
+              plazo: datos.plazo,
+              puntaje: datos.puntaje
+            });
+          }
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>
