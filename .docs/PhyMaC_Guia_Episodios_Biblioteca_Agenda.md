@@ -11,7 +11,7 @@ Este documento es para ti, Johannes. Explica qué hay que configurar antes de pu
 ## Índice
 
 1. [Antes que nada: revisar y mezclar la rama](#1-antes-que-nada-revisar-y-mezclar-la-rama)
-2. [Configuración pendiente (4 valores)](#2-configuración-pendiente-4-valores)
+2. [Configuración pendiente](#2-configuración-pendiente)
 3. [Cómo crear un episodio nuevo](#3-cómo-crear-un-episodio-nuevo)
 4. [Cómo funciona la Biblioteca](#4-cómo-funciona-la-biblioteca)
 5. [Cómo ajustar el filtro de la agenda](#5-cómo-ajustar-el-filtro-de-la-agenda)
@@ -50,29 +50,32 @@ Netlify redespliega solo.
 
 ---
 
-## 2. Configuración pendiente (4 valores)
+## 2. Configuración pendiente
 
-Todo funciona hoy con respaldos razonables, pero hay cuatro campos vacíos en `config.js`. Ninguno rompe el sitio si lo dejas así; simplemente no aprovechas la funcionalidad completa.
+Los endpoints de Formspree ya están puestos. Quedan tres campos vacíos en `config.js`; ninguno rompe el sitio, pero sin ellos no aprovechas la funcionalidad completa.
 
-### 2.1 Endpoints de Formspree (recomendado, 5 minutos)
+### 2.1 Endpoints de Formspree — ✅ ya configurados
 
-Ahora mismo las descargas de guías y las solicitudes de reunión llegan **mezcladas** con los mensajes de contacto general, en la misma bandeja. Para separarlas:
+Los tres formularios están creados y conectados, cada uno a su propia bandeja:
 
-1. Entra a [formspree.io](https://formspree.io) con tu cuenta.
-2. Crea un formulario nuevo. Llámalo **"Materiales PhyMaC"**.
-3. Copia su URL completa (se ve así: `https://formspree.io/f/abcdwxyz`).
-4. Repite y crea otro llamado **"Agenda PhyMaC"**.
-5. En `config.js`, pega cada URL en su lugar:
+| Formulario | Endpoint | Qué recibe |
+|---|---|---|
+| Mensajes | `xvzeqnlz` | El panel "Correo" de `contacto.html` |
+| Materiales | `xpqvlebz` | Cada descarga de guía, con el episodio y el material |
+| Agenda | `xkodzayg` | Solicitudes de reunión, con `calificado` y `puntaje` |
 
-```js
-formspree: {
-  endpoint: "https://formspree.io/f/xkgdzeda",   // contacto general, no lo toques
-  materiales: "https://formspree.io/f/AQUI",     // ← pega el de Materiales
-  agenda: "https://formspree.io/f/AQUI"          // ← pega el de Agenda
-}
-```
+Así puedes responder de un vistazo qué episodio genera más descargas y separar
+los prospectos calificados de los que solo estaban explorando.
 
-**Por qué vale la pena:** sin esto no puedes responder "¿qué episodio genera más descargas?" ni filtrar los prospectos calificados de los que solo exploraban.
+**Falta probarlos.** Haz un envío real por cada uno y confirma que el correo
+llega a la bandeja correcta:
+
+1. **Mensajes** — `contacto.html` → tarjeta "Correo" → llena y envía.
+2. **Materiales** — necesitas primero un episodio con guía en PDF (ver sección 4). Luego descárgala desde la Biblioteca.
+3. **Agenda** — `contacto.html` → "Agendar reunión" → llena con *decido + este mes + presupuesto sí*.
+
+Formspree pide confirmar el correo la primera vez que un formulario recibe algo,
+así que revisa también la carpeta de spam.
 
 ### 2.2 Cal.com (necesario para que la agenda sirva)
 

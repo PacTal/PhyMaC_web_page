@@ -27,17 +27,14 @@ const CONFIG = {
       ctaText: "¡Acepta el reto!"
     },
     email: "funphymac@gmail.com",
+    // Un formulario de Formspree por tipo de envío, para poder segmentar:
+    // cada bandeja responde una pregunta distinta del negocio.
+    // Si alguno se deja vacío, cae de vuelta en `endpoint` y sigue funcionando,
+    // solo que los envíos llegan mezclados.
     formspree: {
-      // Endpoint general (formulario de contacto del footer)
-      endpoint: "https://formspree.io/f/xkgdzeda",
-
-      // Endpoints DEDICADOS para poder segmentar los leads en Formspree.
-      // Mientras estén vacíos se usa el endpoint general de arriba (todo sigue
-      // funcionando, pero los envíos llegan mezclados en la misma bandeja).
-      // Para separarlos: crea dos formularios nuevos en formspree.io y pega
-      // aquí sus URLs completas.
-      materiales: "", // Descargas de guías (Biblioteca y episodios)
-      agenda: ""      // Solicitudes de reunión (contacto.html)
+      endpoint:   "https://formspree.io/f/xvzeqnlz", // Mensajes (panel "Correo" de contacto.html)
+      materiales: "https://formspree.io/f/xpqvlebz", // Descargas de guías (Biblioteca y episodios)
+      agenda:     "https://formspree.io/f/xkodzayg"  // Solicitudes de reunión (contacto.html)
     }
   },
 

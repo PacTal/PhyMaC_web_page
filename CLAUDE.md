@@ -91,7 +91,7 @@ Styling uses TailwindCSS (CDN) for utilities + `phymac-styles.css` for brand-spe
 
 Downloads are email-gated: `components/lead-form.js` requires name, email, role and an explicit consent checkbox, POSTs to Formspree, then reveals the download link on screen. The same component powers the episode page block and the library modal.
 
-`CONFIG.contact.formspree` has three endpoints: `endpoint` (general contact), `materiales` and `agenda`. The last two fall back to the general one while empty, so the forms work before dedicated endpoints exist.
+`CONFIG.contact.formspree` has one endpoint per submission type — `endpoint` (messages), `materiales` (guide downloads) and `agenda` (meeting requests) — so each inbox answers a different question. An empty one falls back to `endpoint`.
 
 There is exactly one contact form on the site, on `contacto.html`. The footer used to carry a second one on every page; it now shows a short CTA pointing there instead. `contacto.html` drops even that CTA via `<div id="footer-container" data-cta="no">`.
 
