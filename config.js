@@ -37,7 +37,7 @@ const CONFIG = {
       // Para separarlos: crea dos formularios nuevos en formspree.io y pega
       // aquí sus URLs completas.
       materiales: "", // Descargas de guías (Biblioteca y episodios)
-      agenda: ""      // Solicitudes de reunión (agenda.html)
+      agenda: ""      // Solicitudes de reunión (contacto.html)
     }
   },
 
@@ -62,7 +62,8 @@ const CONFIG = {
       { text: "Hablando con profes", href: "profes.html" },
       { text: "Biblioteca", href: "biblioteca.html" },
       { text: "Blog", href: "blog.html" },
-      { text: "Publicaciones", href: "publicaciones.html" }
+      { text: "Publicaciones", href: "publicaciones.html" },
+      { text: "Contacto", href: "contacto.html" }
     ]
   },
 
@@ -84,7 +85,7 @@ const CONFIG = {
   },
 
   // ----------------------------------------------------------------------
-  // AGENDAMIENTO (agenda.html)
+  // AGENDAMIENTO (sección "Agenda" de contacto.html)
   // ----------------------------------------------------------------------
   agenda: {
     // Cal.com es gratuito. Crea tu cuenta en cal.com y pega aquí SOLO el
@@ -156,10 +157,6 @@ const CONFIG = {
       title: "Aprendizaje por retos",
       description: "Descubre la ciencia construyendo artefactos para resolver problemas. Nuestro ciclo STEM de tres fases —lo que haré, lo que necesito y lo que aplico— asegura un aprendizaje práctico en cualquier nivel educativo."
     },
-    proyectos: {
-      title: "Así luce la ciencia en acción.",
-      ctaText: "Ver más casos de éxito"
-    },
     publicaciones: {
       title: "Publicaciones",
       description: "Compartimos el conocimiento generado en nuestros laboratorios vivos. Investigaciones, artículos y hallazgos educativos."
@@ -169,48 +166,6 @@ const CONFIG = {
       subtitle: "Déjanos tus datos y nos pondremos en contacto contigo."
     }
   },
-
-  // ----------------------------------------------------------------------
-  // PROYECTOS/CASOS DE ÉXITO
-  // ----------------------------------------------------------------------
-  proyectos: [
-    {
-      id: 4,
-      title: "¡Acción y reacción en el Rosal!",
-      description: "Niños y jóvenes construyendo cohetes propulsados por aire en la Fundación CreSiendo.",
-      image: "imagenes/img1.jpeg",
-      category: "Estudiantes",
-      categoryColor: "cyan-400",
-      blogSlug: "accion-reaccion-rosal-fundacion-cresiendo"
-    },
-    {
-      id: 1,
-      title: "Física de Cohetes",
-      description: "Aprendiendo leyes de Newton lanzando proyectiles a 50 metros.",
-      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Estudiantes",
-      categoryColor: "cyan-400",
-      blogSlug: "propulsion-cohetes-leyes-newton"
-    },
-    {
-      id: 2,
-      title: "Didáctica Experimental",
-      description: "Capacitación en metodologías activas y diseño de laboratorios low-cost.",
-      image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Docentes",
-      categoryColor: "purple-400",
-      blogSlug: "capacitacion-docente-metodologias-activas-arduino"
-    },
-    {
-      id: 3,
-      title: "Gimnasia Cerebral STEM",
-      description: "Recuperando la plasticidad cerebral a través de proyectos maker.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Adulto Mayor",
-      categoryColor: "orange-400",
-      blogSlug: "gimnasia-cerebral-stem-adultos-mayores"
-    }
-  ],
 
   // ----------------------------------------------------------------------
   // PUBLICACIONES/LIBROS

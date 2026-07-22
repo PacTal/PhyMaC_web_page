@@ -176,10 +176,9 @@ function createFooter() {
 
         <!-- Enlaces del sitio -->
         <nav class="mt-8 flex justify-center gap-x-5 gap-y-2 flex-wrap text-sm font-body" aria-label="Enlaces del pie de página">
-          <a href="index.html#proyectos" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Proyectos</a>
           <a href="profes.html" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Hablando con profes</a>
           <a href="biblioteca.html" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Biblioteca</a>
-          <a href="agenda.html" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Agendar reunión</a>
+          <a href="contacto.html" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Contacto y agenda</a>
           <a href="${privacidadUrl}" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Política de privacidad</a>
         </nav>
 

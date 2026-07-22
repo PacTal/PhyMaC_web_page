@@ -52,9 +52,9 @@ function createHeader() {
           </a>
           
           <!-- MENÚ DE ESCRITORIO -->
-          <!-- Breakpoint lg (no md): con 7 secciones + CTA, el menú no cabe
-               entre 768px y 1024px y se montaba sobre el logo. -->
-          <div class="hidden lg:flex space-x-5 items-center text-sm font-semibold font-body">
+          <!-- Breakpoint xl (no md): con 8 secciones + CTA, el menú no cabe
+               por debajo de 1280px y se montaba sobre el logo. -->
+          <div class="hidden xl:flex space-x-5 items-center text-sm font-semibold font-body">
             ${menuItems.map(item => {
               let href = item.href;
               // Si el href empieza con #, agregar index.html antes para que funcione desde cualquier página
@@ -80,7 +80,7 @@ function createHeader() {
           </div>
 
           <!-- BOTÓN MENÚ MÓVIL -->
-          <div class="lg:hidden flex items-center">
+          <div class="xl:hidden flex items-center">
             <button id="menu-toggle" class="focus:outline-none transition-colors" style="color: #2962FF;">
               <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -97,7 +97,7 @@ function createHeader() {
       </div>
 
       <!-- MENÚ MÓVIL DESPLEGABLE -->
-      <div id="mobile-menu" class="hidden lg:hidden bg-white border-t-2 p-4 space-y-2 text-center" style="border-color: #E0E0E0;">
+      <div id="mobile-menu" class="hidden xl:hidden bg-white border-t-2 p-4 space-y-2 text-center" style="border-color: #E0E0E0;">
         ${menuItems.map(item => {
           let href = item.href;
           // Si el href empieza con #, agregar index.html antes para que funcione desde cualquier página

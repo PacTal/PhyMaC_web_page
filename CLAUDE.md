@@ -44,7 +44,7 @@ On DOMContentLoaded, `main.js` calls `initHeader()` and `initFooter()`, which in
 
 | File | Role |
 |------|------|
-| `config.js` | Master config: logo, contact, WhatsApp, menu, projects, publications, services, serie, agenda, analytics, legal |
+| `config.js` | Master config: logo, contact, WhatsApp, menu, publications, services, serie, agenda, analytics, legal |
 | `main.js` | Boot sequence: components, smooth scroll, scroll animations, `getWhatsAppLink()`, `formatDate()` |
 | `blog-data.js` / `episodios-data.js` | **Auto-generated — do not edit by hand** |
 | `blog.js` | Renders blog posts into `blog.html` |
@@ -58,11 +58,11 @@ On DOMContentLoaded, `main.js` calls `initHeader()` and `initFooter()`, which in
 
 ### Pages
 
-- `index.html` — Homepage: hero, STEM method, projects gallery
+- `index.html` — Homepage: hero, STEM method, window onto the 3 latest blog posts
 - `blog.html` / `post.html?slug=` — Blog listing and article
 - `profes.html` / `episodio.html?slug=` — "Hablando con profes" series landing and episode
 - `biblioteca.html` — Library of downloadable materials, built from the episodes collection
-- `agenda.html` — Qualification form gating a Cal.com calendar
+- `contacto.html` — Contact channels + qualification form gating a Cal.com calendar
 - `servicios.html` — Services page
 - `publicaciones.html` — Publications/books page
 - `privacidad.html` — Privacy policy (Ley 1581 de 2012)
@@ -77,7 +77,7 @@ Both `post.html` and `episodio.html` must render "not found" for an unknown slug
 - Lab White: `#F5F5F5` (backgrounds)
 - Fonts: Montserrat 800 (display) + Open Sans (body) via Google Fonts CDN
 
-Styling uses TailwindCSS (CDN) for utilities + `phymac-styles.css` for brand-specific components. Inline styles in components apply dynamic colors from `CONFIG`. The desktop nav switches to the mobile menu below `lg`, not `md` — the menu no longer fits at tablet widths.
+Styling uses TailwindCSS (CDN) for utilities + `phymac-styles.css` for brand-specific components. Inline styles in components apply dynamic colors from `CONFIG`. The desktop nav switches to the mobile menu below `xl`, not `md` — eight sections plus the CTA do not fit below 1280px.
 
 ### Content Systems
 
@@ -99,6 +99,6 @@ Every capture point must keep the consent checkbox and the link to `privacidad.h
 
 - **Decap CMS**: `/admin/`, backend `git-gateway` on `PacTal/PhyMaC_web_page`. Note: `media_folder` is deliberately global-only — Decap resolves collection-level `media_folder` relative to the entry file, which silently breaks upload paths.
 - **Formspree**: endpoints in `CONFIG.contact.formspree`
-- **Cal.com**: `CONFIG.agenda.calLink` (e.g. `"phymac/30min"`); the embed loads only for qualified prospects, and `agenda.html` falls back to WhatsApp when the link is empty
+- **Cal.com**: `CONFIG.agenda.calLink` (e.g. `"phymac/30min"`); the embed loads only for qualified prospects, and `contacto.html` falls back to WhatsApp when the link is empty
 - **WhatsApp**: `CONFIG.contact.whatsapp`; use `getWhatsAppLink()` from `main.js`
 - **Analytics**: `CONFIG.analytics.ga4Id` / `metaPixelId`. Events: `lead_material`, `agenda_calificado`, `agenda_no_calificado`, `reunion_reservada`

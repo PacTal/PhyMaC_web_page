@@ -34,7 +34,7 @@ npm run build
 python -m http.server 8000
 ```
 
-Abre `http://localhost:8000` y date una vuelta por las páginas nuevas: `/profes.html`, `/biblioteca.html`, `/agenda.html`, `/privacidad.html`.
+Abre `http://localhost:8000` y date una vuelta por las páginas nuevas: `/profes.html`, `/biblioteca.html`, `/contacto.html`, `/privacidad.html`.
 
 **Ojo:** yo no abrí un navegador real para verificar cómo se ve. Probé que el código corre, que los datos se generan bien y que las páginas responden, pero el aspecto visual necesita tu ojo. Si algo se ve raro, es más probable que sea un ajuste de estilo que un error de fondo.
 
@@ -224,16 +224,17 @@ Si alguna vez agregas un formulario nuevo, tiene que llevar la casilla de autori
 
 Una pasada rápida, sobre todo en celular:
 
-- [ ] El menú abre y cierra bien. Ahora el menú de hamburguesa aparece hasta 1024px de ancho (antes era 768px), porque con siete secciones ya no cabía en tablets.
+- [ ] El menú abre y cierra bien. Ahora el menú de hamburguesa aparece hasta 1280px de ancho (antes era 768px), porque con ocho secciones ya no cabe en pantallas medianas.
+- [ ] El inicio muestra la ventana "Lo más reciente" del blog en lugar de la galería de proyectos.
 - [ ] `profes.html` muestra el episodio de ejemplo que dejé cargado.
-- [ ] `episodio.html?slug=ep-01-ensenar-ciencia-hoy` se ve bien.
+- [ ] `episodio.html?slug=ep-01-hablando-con-profes` reproduce el video de la serie.
 - [ ] Un slug inventado (`episodio.html?slug=cualquier-cosa`) muestra "Episodio no encontrado".
-- [ ] `biblioteca.html` muestra el mensaje de "La Biblioteca está por abrir" — es correcto, el episodio de ejemplo todavía no tiene guía.
-- [ ] En `agenda.html`, prueba **los dos caminos**: uno que califique (decido + este mes + presupuesto sí) y otro que no (solo consultando + explorando + sin presupuesto).
+- [ ] `biblioteca.html` muestra el mensaje de "La Biblioteca está por abrir" — es correcto, el episodio 1 todavía no tiene guía.
+- [ ] En `contacto.html`, prueba **los dos caminos** del formulario de agenda: uno que califique (decido + este mes + presupuesto sí) y otro que no (solo consultando + explorando + sin presupuesto).
 - [ ] El formulario de contacto del footer ahora exige la casilla de autorización.
 - [ ] Revisa `privacidad.html`: los datos del responsable, el correo y los plazos son los que redacté a partir de la ley. **Léelos y confirma que reflejan cómo manejas los datos de verdad.** Es un documento legal con tu nombre.
 
-Sobre el episodio de ejemplo (`content/episodios/ep-01-ensenar-ciencia-hoy.md`): está ahí para que las páginas no se vean vacías. Edítalo con el contenido real de tu primer episodio o bórralo desde el CMS cuando tengas el verdadero.
+Sobre el episodio 1 (`content/episodios/ep-01-hablando-con-profes.md`): es contenido **real**, migrado del artículo del blog que tenías, con su video (`eRXzo_VgzlU`) y su texto. Si ese video es la presentación de la serie y no el episodio 1 propiamente, cambia el número y el título desde el CMS.
 
 ---
 

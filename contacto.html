@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Agenda una reunión con la Fundación PhyMaC. Cuéntanos qué necesitas y te proponemos el siguiente paso.">
-  <title>Agenda una reunión - PhyMaC</title>
+  <meta name="description" content="Contacta a la Fundación PhyMaC: escríbenos por WhatsApp o correo, o agenda una reunión contándonos qué necesitas.">
+  <title>Contacto y agenda - PhyMaC</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="imagenes/logo.svg">
@@ -84,18 +84,68 @@
 
     <div class="max-w-3xl mx-auto px-4 relative z-10">
       <h1 class="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-5 text-white">
-        Hablemos de tu proyecto
+        Hablemos
       </h1>
       <p class="mt-4 max-w-2xl mx-auto text-lg text-white/90 leading-relaxed font-body">
-        Cuéntanos qué necesitas en dos minutos. Con eso preparamos la conversación y no te hacemos perder el tiempo.
+        Escríbenos si tienes una pregunta rápida, o agenda una reunión si quieres llevar el laboratorio a tu institución.
       </p>
     </div>
   </section>
 
   <div style="height: 4px; background-color: #FF6D00;"></div>
 
+  <!-- CANALES DIRECTOS -->
+  <section class="py-14 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <p class="font-display font-bold text-sm uppercase tracking-widest mb-2" style="color: #FF6D00;">Contacto directo</p>
+        <h2 class="font-display text-2xl md:text-3xl font-extrabold" style="color: #212121;">¿Solo una pregunta?</h2>
+        <p class="font-body mt-3" style="color: #484848;">Escríbenos por donde te quede más cómodo. Respondemos en horario hábil.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-4">
+        <a id="canal-whatsapp" href="#" target="_blank" rel="noopener noreferrer"
+           class="flex flex-col items-center text-center gap-2 p-6 rounded-2xl transition-all transform hover:-translate-y-1"
+           style="background-color: #F5F5F5; border: 2px solid #E0E0E0; text-decoration: none;">
+          <span class="text-3xl" aria-hidden="true">💬</span>
+          <span class="font-display font-bold" style="color: #212121;">WhatsApp</span>
+          <span class="font-body text-sm" style="color: #484848;">La vía más rápida</span>
+        </a>
+
+        <a id="canal-email" href="mailto:funphymac@gmail.com"
+           class="flex flex-col items-center text-center gap-2 p-6 rounded-2xl transition-all transform hover:-translate-y-1"
+           style="background-color: #F5F5F5; border: 2px solid #E0E0E0; text-decoration: none;">
+          <span class="text-3xl" aria-hidden="true">✉️</span>
+          <span class="font-display font-bold" style="color: #212121;">Correo</span>
+          <span id="canal-email-texto" class="font-body text-sm break-all" style="color: #484848;">funphymac@gmail.com</span>
+        </a>
+
+        <a href="#agendar"
+           class="flex flex-col items-center text-center gap-2 p-6 rounded-2xl transition-all transform hover:-translate-y-1"
+           style="background-color: #FFF3E0; border: 2px solid #FFE0B2; text-decoration: none;">
+          <span class="text-3xl" aria-hidden="true">📅</span>
+          <span class="font-display font-bold" style="color: #C43E00;">Agendar reunión</span>
+          <span class="font-body text-sm" style="color: #E65100;">Para hablar del proyecto</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDAR -->
+  <section id="agendar" class="pt-14 pb-4" style="background-color: #F5F5F5;">
+    <div class="max-w-3xl mx-auto px-4 text-center mb-10">
+      <p class="font-display font-bold text-sm uppercase tracking-widest mb-2" style="color: #FF6D00;">Agenda</p>
+      <h2 class="font-display text-2xl md:text-3xl font-extrabold mb-3" style="color: #212121;">
+        Hablemos de tu proyecto
+      </h2>
+      <p class="font-body" style="color: #484848;">
+        Cuéntanos qué necesitas en dos minutos. Con eso preparamos la conversación y no te hacemos perder el tiempo.
+      </p>
+    </div>
+  </section>
+
   <!-- CONTENIDO -->
-  <main class="py-14">
+  <main class="pb-14" style="background-color: #F5F5F5;">
     <div class="max-w-3xl mx-auto px-4">
 
       <!-- PASO 1: FORMULARIO DE CALIFICACIÓN -->
@@ -325,6 +375,18 @@
         presupuestosValidos: ['si', 'gestion']
       };
       var puntajes = agendaCfg.puntajes || {};
+
+      // --- Canales directos de contacto ---
+      var canalWa = document.getElementById('canal-whatsapp');
+      if (canalWa && typeof window.getWhatsAppLink === 'function') {
+        canalWa.href = window.getWhatsAppLink();
+      }
+      if (typeof CONFIG !== 'undefined' && CONFIG.contact && CONFIG.contact.email) {
+        var canalEmail = document.getElementById('canal-email');
+        var canalEmailTexto = document.getElementById('canal-email-texto');
+        if (canalEmail) canalEmail.href = 'mailto:' + CONFIG.contact.email;
+        if (canalEmailTexto) canalEmailTexto.textContent = CONFIG.contact.email;
+      }
 
       // --- Textos legales desde config ---
       if (typeof CONFIG !== 'undefined' && CONFIG.legal) {
@@ -567,7 +629,10 @@
           }
         }
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Subimos hasta el inicio de la sección de agenda, no al tope de la
+        // página: el resultado queda justo debajo y no se pierde de vista.
+        var seccion = document.getElementById('agendar');
+        if (seccion) seccion.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   </script>
