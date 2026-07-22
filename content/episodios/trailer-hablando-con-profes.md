@@ -12,8 +12,8 @@ resumen: "Saber de ciencia, pedagogía y de didáctica ya no es suficiente; seam
   honestos: enseñar ciencia y tecnología hoy es como practicar un deporte de alto
   riesgo. Este es el tráiler de la serie: el primer episodio viene en camino."
 temas:
-  - IA en el aula
   - Vocación docente
+  - IA en el aula
   - Aulas diversas
 destacado: true
 guia_titulo: ""
