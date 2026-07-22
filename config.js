@@ -148,9 +148,11 @@ const CONFIG = {
   // TEXTO DEL SITIO
   // ----------------------------------------------------------------------
   content: {
+    // El hero de index.html se arma con estos tres campos: el título va en
+    // carbón y titleHighlight en naranja, en una segunda línea.
     hero: {
-      title: "Para entender el mundo tecnológico,",
-      titleHighlight: "resuelve retos reales",
+      title: "Descubre el mundo científico y tecnológico",
+      titleHighlight: "resolviendo retos de tu entorno",
       subtitle: "Siempre hay algo por descubrir, para hacerlo tú pones el ingenio, nosotros, la lúdica y los retos."
     },
     metodo: {

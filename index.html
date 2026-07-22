@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PhyMaC - Para entender el mundo tecnológico, resuelve retos reales. Aprendizaje por retos en STEM.">
+  <meta name="description" content="PhyMaC - Descubre el mundo científico y tecnológico resolviendo retos de tu entorno. Aprendizaje por retos en STEM.">
   <title>PhyMaC - Aprendizaje por Retos en STEM</title>
   
   <!-- Favicon -->
@@ -90,14 +90,15 @@
     <div class="absolute inset-0 bg-gradient-to-b from-phymac-blue/80 via-phymac-blue to-phymac-blue-dark"></div>
     
     <div class="max-w-5xl mx-auto px-4 relative z-10 animate-fade-in">
+      <!-- Texto desde CONFIG.content.hero -->
       <h1 class="font-display text-4xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6 text-white">
-        Para entender el mundo tecnológico,<br />
-        <span class="text-phymac-orange">
-          resuelve retos reales
+        <span id="hero-title">Descubre el mundo científico y tecnológico</span><br />
+        <span id="hero-highlight" class="text-phymac-orange">
+          resolviendo retos de tu entorno
         </span>
       </h1>
-      
-      <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed mb-10 font-body">
+
+      <p id="hero-subtitle" class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed mb-10 font-body">
         Siempre hay algo por descubrir, para hacerlo tú pones el ingenio, nosotros, la lúdica y los retos.
       </p>
       
@@ -251,6 +252,21 @@
   <!-- Ventana a lo más reciente del blog -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+
+      // --- Hero desde CONFIG (el HTML de arriba es solo el valor por defecto) ---
+      if (typeof CONFIG !== 'undefined' && CONFIG.content && CONFIG.content.hero) {
+        const hero = CONFIG.content.hero;
+        const campos = {
+          'hero-title': hero.title,
+          'hero-highlight': hero.titleHighlight,
+          'hero-subtitle': hero.subtitle
+        };
+        Object.keys(campos).forEach(function (id) {
+          const el = document.getElementById(id);
+          if (el && campos[id]) el.textContent = campos[id];
+        });
+      }
+
       const recientesContainer = document.getElementById('blog-reciente-container');
 
       if (recientesContainer && typeof BLOG_POSTS !== 'undefined') {
