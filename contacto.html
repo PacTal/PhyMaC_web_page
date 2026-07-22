@@ -137,10 +137,10 @@
     <div class="max-w-3xl mx-auto px-4 text-center mb-10">
       <p id="form-eyebrow" class="font-display font-bold text-sm uppercase tracking-widest mb-2" style="color: #FF6D00;">Agenda</p>
       <h2 id="form-titulo" class="font-display text-2xl md:text-3xl font-extrabold mb-3" style="color: #212121;">
-        Hablemos de tu proyecto
+        Cuéntanos de tu proyecto
       </h2>
       <p id="form-bajada" class="font-body" style="color: #484848;">
-        Cuéntanos qué necesitas en dos minutos. Con eso preparamos la conversación y no te hacemos perder el tiempo.
+        Entre más sepamos, mejor preparamos la conversación y menos te hacemos repetir.
       </p>
     </div>
   </section>
@@ -225,7 +225,9 @@
 
           <h2 class="font-display text-2xl font-extrabold mb-2" style="color: #212121;">Cuéntanos de ti</h2>
           <p class="font-body mb-6" style="color: #484848;">
-            Todos los campos marcados con <span class="requerido">*</span> son necesarios.
+            Te preguntamos esto para llegar a la reunión con algo concreto en la mano, no para filtrarte.
+            Si algo no lo tienes claro todavía, responde lo que mejor se acerque: lo demás lo resolvemos hablando.
+            Los campos con <span class="requerido">*</span> son los necesarios.
           </p>
 
           <form id="form-agenda" class="space-y-5" novalidate>
@@ -242,12 +244,12 @@
             </div>
 
             <div>
-              <label class="etiqueta" for="ag-whatsapp">WhatsApp <span class="requerido" aria-hidden="true">*</span></label>
-              <input class="campo" type="tel" id="ag-whatsapp" name="whatsapp" required autocomplete="tel" placeholder="Ej. 300 123 4567">
+              <label class="etiqueta" for="ag-whatsapp">WhatsApp <span style="color:#757575; font-weight:400;">(opcional, si prefieres que te escribamos por ahí)</span></label>
+              <input class="campo" type="tel" id="ag-whatsapp" name="whatsapp" autocomplete="tel" placeholder="Ej. 300 123 4567">
             </div>
 
             <div>
-              <label class="etiqueta" for="ag-organizacion">Tipo de organización <span class="requerido" aria-hidden="true">*</span></label>
+              <label class="etiqueta" for="ag-organizacion">¿Desde dónde nos escribes? <span class="requerido" aria-hidden="true">*</span></label>
               <select class="campo" id="ag-organizacion" name="organizacion" required>
                 <option value="">Selecciona una opción</option>
                 <option value="colegio_publico">Colegio público</option>
@@ -255,36 +257,36 @@
                 <option value="fundacion">Fundación / ONG</option>
                 <option value="universidad">Universidad</option>
                 <option value="empresa">Empresa</option>
-                <option value="independiente">Independiente</option>
+                <option value="independiente">A título personal</option>
               </select>
             </div>
 
             <div>
-              <label class="etiqueta" for="ag-rol">Tu rol en la decisión <span class="requerido" aria-hidden="true">*</span></label>
+              <label class="etiqueta" for="ag-rol">¿Cómo participas en esta decisión? <span class="requerido" aria-hidden="true">*</span></label>
               <select class="campo" id="ag-rol" name="rol" required>
                 <option value="">Selecciona una opción</option>
-                <option value="decido">Yo decido / apruebo</option>
-                <option value="recomiendo">Recomiendo a quien decide</option>
-                <option value="consulto">Solo estoy consultando</option>
+                <option value="decido">Yo puedo aprobarlo</option>
+                <option value="recomiendo">Lo propongo a quien decide</option>
+                <option value="consulto">Estoy explorando ideas por ahora</option>
               </select>
             </div>
 
             <div>
-              <label class="etiqueta" for="ag-necesidad">¿Qué necesitas? <span class="requerido" aria-hidden="true">*</span></label>
+              <label class="etiqueta" for="ag-necesidad">¿En qué te gustaría que trabajemos? <span class="requerido" aria-hidden="true">*</span></label>
               <select class="campo" id="ag-necesidad" name="necesidad" required>
                 <option value="">Selecciona una opción</option>
                 <option value="talleres">Talleres para estudiantes</option>
                 <option value="capacitacion">Capacitación docente</option>
                 <option value="adultos">Programas para adultos mayores</option>
                 <option value="consultoria">Consultoría educativa</option>
-                <option value="otro">Otro</option>
+                <option value="otro">Otra cosa / todavía no lo sé</option>
               </select>
             </div>
 
             <div>
-              <label class="etiqueta" for="ag-participantes">Cantidad de participantes <span class="requerido" aria-hidden="true">*</span></label>
-              <select class="campo" id="ag-participantes" name="participantes" required>
-                <option value="">Selecciona una opción</option>
+              <label class="etiqueta" for="ag-participantes">¿Cuántas personas participarían? <span style="color:#757575; font-weight:400;">(aproximado, no pasa nada si cambia)</span></label>
+              <select class="campo" id="ag-participantes" name="participantes">
+                <option value="">Prefiero no decirlo todavía</option>
                 <option value="1-20">1 a 20</option>
                 <option value="21-50">21 a 50</option>
                 <option value="51-150">51 a 150</option>
@@ -293,28 +295,28 @@
             </div>
 
             <div>
-              <label class="etiqueta" for="ag-plazo">¿Para cuándo? <span class="requerido" aria-hidden="true">*</span></label>
+              <label class="etiqueta" for="ag-plazo">¿Para cuándo lo tienes en mente? <span class="requerido" aria-hidden="true">*</span></label>
               <select class="campo" id="ag-plazo" name="plazo" required>
                 <option value="">Selecciona una opción</option>
                 <option value="este_mes">Este mes</option>
                 <option value="1_3_meses">En 1 a 3 meses</option>
-                <option value="explorando">Solo estoy explorando</option>
+                <option value="explorando">Sin fecha aún, estoy explorando</option>
               </select>
             </div>
 
             <div>
-              <label class="etiqueta" for="ag-presupuesto">¿Cuentan con presupuesto asignado? <span class="requerido" aria-hidden="true">*</span></label>
+              <label class="etiqueta" for="ag-presupuesto">¿Ya tienen presupuesto para esto? <span class="requerido" aria-hidden="true">*</span></label>
               <select class="campo" id="ag-presupuesto" name="presupuesto" required>
                 <option value="">Selecciona una opción</option>
-                <option value="si">Sí, ya está asignado</option>
-                <option value="gestion">En gestión</option>
-                <option value="no">Todavía no</option>
+                <option value="si">Sí, ya está definido</option>
+                <option value="gestion">Lo estamos gestionando</option>
+                <option value="no">Aún no, queremos saber costos primero</option>
               </select>
             </div>
 
             <div>
-              <label class="etiqueta" for="ag-mensaje">Algo más que debamos saber <span style="color:#757575; font-weight:400;">(opcional)</span></label>
-              <textarea class="campo" id="ag-mensaje" name="mensaje" rows="3" placeholder="Contexto, fechas tentativas, objetivos..."></textarea>
+              <label class="etiqueta" for="ag-mensaje">¿Algo más que nos ayude a entender tu contexto? <span style="color:#757575; font-weight:400;">(opcional)</span></label>
+              <textarea class="campo" id="ag-mensaje" name="mensaje" rows="3" placeholder="Qué te gustaría lograr, con qué grupo, qué han intentado antes..."></textarea>
             </div>
 
             <div class="flex items-start gap-3 pt-1">
@@ -734,17 +736,18 @@
         };
 
         // --- Validación con mensajes claros ---
+        // WhatsApp y participantes quedaron opcionales a propósito: con el
+        // correo basta para responder, y exigir un número de personas antes
+        // de haber hablado hacía el formulario más duro de lo necesario.
         if (!datos.nombre) return mostrarError('Escribe tu nombre para continuar.', 'ag-nombre');
         if (!datos.email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(datos.email)) {
           return mostrarError('Escribe un correo electrónico válido (ej. nombre@correo.com).', 'ag-email');
         }
-        if (!datos.whatsapp) return mostrarError('Déjanos un número de WhatsApp para coordinar.', 'ag-whatsapp');
-        if (!datos.organizacion) return mostrarError('Cuéntanos qué tipo de organización representas.', 'ag-organizacion');
-        if (!datos.rol) return mostrarError('Indícanos tu rol en la decisión.', 'ag-rol');
-        if (!datos.necesidad) return mostrarError('Selecciona qué necesitas.', 'ag-necesidad');
-        if (!datos.participantes) return mostrarError('Dinos cuántos participantes serían, aunque sea aproximado.', 'ag-participantes');
-        if (!datos.plazo) return mostrarError('Indícanos para cuándo lo necesitas.', 'ag-plazo');
-        if (!datos.presupuesto) return mostrarError('Cuéntanos si ya cuentan con presupuesto.', 'ag-presupuesto');
+        if (!datos.organizacion) return mostrarError('Cuéntanos desde dónde nos escribes.', 'ag-organizacion');
+        if (!datos.rol) return mostrarError('Cuéntanos cómo participas en esta decisión.', 'ag-rol');
+        if (!datos.necesidad) return mostrarError('Cuéntanos en qué te gustaría que trabajemos.', 'ag-necesidad');
+        if (!datos.plazo) return mostrarError('Cuéntanos para cuándo lo tienes en mente.', 'ag-plazo');
+        if (!datos.presupuesto) return mostrarError('Cuéntanos si ya tienen presupuesto para esto.', 'ag-presupuesto');
         if (!datos.consent) {
           return mostrarError('Necesitamos tu autorización para tratar tus datos antes de continuar.', 'ag-consent');
         }
