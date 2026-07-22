@@ -93,6 +93,8 @@ Downloads are email-gated: `components/lead-form.js` requires name, email, role 
 
 `CONFIG.contact.formspree` has three endpoints: `endpoint` (general contact), `materiales` and `agenda`. The last two fall back to the general one while empty, so the forms work before dedicated endpoints exist.
 
+The footer carries the general contact form on every page. A page that already has its own form suppresses it with `<div id="footer-container" data-formulario="no">` — otherwise two forms asking the same thing stack up, as they did on `contacto.html`.
+
 Every capture point must keep the consent checkbox and the link to `privacidad.html` — this is a legal requirement (Ley 1581 de 2012), not a UX choice.
 
 ### External Integrations

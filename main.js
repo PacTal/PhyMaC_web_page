@@ -47,7 +47,10 @@ function initHeader() {
 function initFooter() {
   const footerContainer = document.getElementById('footer-container');
   if (footerContainer && typeof createFooter === 'function') {
-    footerContainer.innerHTML = createFooter();
+    // Una página con su propio formulario marca data-formulario="no" para
+    // que el footer no encadene un segundo formulario que pide lo mismo.
+    const conFormulario = footerContainer.dataset.formulario !== 'no';
+    footerContainer.innerHTML = createFooter({ formulario: conFormulario });
     // Inicializar comportamiento del footer (formulario)
     if (typeof initFooterBehavior === 'function') {
       initFooterBehavior();

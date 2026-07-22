@@ -12,12 +12,20 @@
  * - Lab White: #F5F5F5 (fondo)
  */
 
-function createFooter() {
+/**
+ * @param {Object}  [opciones]
+ * @param {boolean} [opciones.formulario=true] Incluir el formulario de contacto.
+ *   Ponlo en false en páginas que ya tienen su propio formulario (contacto.html),
+ *   para no encadenar dos formularios que piden lo mismo.
+ */
+function createFooter(opciones) {
   // Verificar que CONFIG esté disponible
   if (typeof CONFIG === 'undefined') {
     console.error('CONFIG no está definido. Asegúrate de cargar config.js antes de footer.js');
     return '';
   }
+
+  const conFormulario = !opciones || opciones.formulario !== false;
 
   const formspreeEndpoint = CONFIG.contact.formspree.endpoint;
   const footerTitle = CONFIG.content.footer.title;
@@ -32,14 +40,12 @@ function createFooter() {
   const consentLabel = legal.consentLabel || 'Autorizo el tratamiento de mis datos personales conforme a la';
   const consentLinkText = legal.consentLinkText || 'política de privacidad';
 
-  return `
-    <footer id="contacto" class="py-16 text-center border-t-4" style="background-color: #F5F5F5; border-color: #2962FF;">
-      <div class="max-w-xl mx-auto px-4">
+  const bloqueFormulario = !conFormulario ? '' : `
         <div class="mb-8">
           <h2 class="font-display text-2xl font-extrabold mb-2" style="color: #2962FF;">${footerTitle}</h2>
           <p class="text-sm mt-2 font-body" style="color: #484848;">${footerSubtitle}</p>
         </div>
-        
+
         <!-- Formulario de Contacto -->
         <form id="contact-form" action="${formspreeEndpoint}" method="POST" class="p-6 md:p-8 rounded-2xl text-left space-y-4" style="background-color: white; border: 2px solid #E0E0E0;">
           <div>
@@ -130,6 +136,12 @@ function createFooter() {
             Enviar
           </button>
         </form>
+  `;
+
+  return `
+    <footer id="contacto" class="py-16 text-center border-t-4" style="background-color: #F5F5F5; border-color: #2962FF;">
+      <div class="max-w-xl mx-auto px-4">
+        ${bloqueFormulario}
 
         <!-- Redes Sociales -->
         <div class="mt-8 flex justify-center gap-5">
