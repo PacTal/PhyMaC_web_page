@@ -171,10 +171,6 @@ const CONFIG = {
       title: "Publicaciones",
       description: "Compartimos el conocimiento generado en nuestros laboratorios vivos. Investigaciones, artículos y hallazgos educativos."
     },
-    footer: {
-      title: "Llevamos el laboratorio a donde estés",
-      subtitle: "¿Hablamos? Escríbenos y te respondemos en horario hábil."
-    }
   },
 
   // ----------------------------------------------------------------------

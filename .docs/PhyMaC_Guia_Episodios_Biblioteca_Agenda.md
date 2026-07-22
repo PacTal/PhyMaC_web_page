@@ -241,7 +241,7 @@ Una pasada rápida, sobre todo en celular:
 - [ ] En `contacto.html`, las tarjetas **Correo** y **Agendar reunión** intercambian el formulario de abajo (WhatsApp sí sale del sitio).
 - [ ] El formulario de correo envía y muestra el mensaje de confirmación.
 - [ ] Prueba **los dos caminos** del formulario de agenda: uno que califique (decido + este mes + presupuesto sí) y otro que no (solo consultando + explorando + sin presupuesto).
-- [ ] El footer ya no lleva formulario en ninguna página: ahora muestra dos botones, "Escríbenos" (a Contacto) y WhatsApp. En `contacto.html` ni siquiera eso, porque ya estás ahí.
+- [ ] El footer quedó minimalista en todas las páginas: solo redes sociales, enlaces del sitio y créditos. Las llamadas a la acción viven donde tienen contexto (el botón "Contáctanos" al final de Servicios, por ejemplo).
 - [ ] Revisa `privacidad.html`: los datos del responsable, el correo y los plazos son los que redacté a partir de la ley. **Léelos y confirma que reflejan cómo manejas los datos de verdad.** Es un documento legal con tu nombre.
 
 Sobre el tráiler (`content/episodios/trailer-hablando-con-profes.md`): es contenido **real**, migrado del artículo del blog que tenías, con su video (`eRXzo_VgzlU`) y su texto. Va con número 0, así que en todo el sitio aparece como "Tráiler".

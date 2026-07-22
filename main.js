@@ -47,10 +47,7 @@ function initHeader() {
 function initFooter() {
   const footerContainer = document.getElementById('footer-container');
   if (footerContainer && typeof createFooter === 'function') {
-    // contacto.html marca data-cta="no": invitar a ir a contacto desde
-    // la propia página de contacto no tiene sentido.
-    const conCta = footerContainer.dataset.cta !== 'no';
-    footerContainer.innerHTML = createFooter({ cta: conCta });
+    footerContainer.innerHTML = createFooter();
     // Inicializar comportamiento del footer (formulario)
     if (typeof initFooterBehavior === 'function') {
       initFooterBehavior();

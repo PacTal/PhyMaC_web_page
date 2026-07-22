@@ -96,7 +96,7 @@ Downloads are email-gated: `components/lead-form.js` requires name, email, role 
 
 `CONFIG.contact.formspree` has one endpoint per submission type — `endpoint` (messages), `materiales` (guide downloads) and `agenda` (meeting requests) — so each inbox answers a different question. An empty one falls back to `endpoint`.
 
-There is exactly one contact form on the site, on `contacto.html`. The footer used to carry a second one on every page; it now shows a short CTA pointing there instead. `contacto.html` drops even that CTA via `<div id="footer-container" data-cta="no">`.
+There is exactly one contact form on the site, on `contacto.html`. The footer carries no call to action at all — just social links, site links and the copyright line. Calls to action belong where they have context (the button closing `servicios.html`), not repeated at the bottom of every page.
 
 Every capture point must keep the consent checkbox and the link to `privacidad.html` — this is a legal requirement (Ley 1581 de 2012), not a UX choice.
 
