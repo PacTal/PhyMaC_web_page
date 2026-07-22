@@ -70,7 +70,9 @@ const CONFIG = {
   serie: {
     nombre: "Hablando con profes",
     tagline: "Una serie en video de la Fundación PhyMaC para charlar con franqueza sobre lo que de verdad pasa en el aula: reírnos de los días difíciles, celebrar lo que sí funciona y recordar por qué seguimos aquí.",
-    youtube: "", // Pega aquí la URL del canal cuando lo tengas
+    // Codificado (%C3%B3 = ó) para que el enlace no dependa de cómo trate
+    // cada navegador las tildes en la URL.
+    youtube: "https://www.youtube.com/@Fundaci%C3%B3nPhyMaC",
     temas: [
       { icono: "🤖", titulo: "La IA en el aula",        texto: "Cómo competir (o aliarnos) con la IA por la atención y la curiosidad de los estudiantes." },
       { icono: "🧭", titulo: "Currículo vs. realidad",  texto: "Qué hacer cuando el programa parece escrito para otro planeta y el aula pide otra cosa." },
@@ -119,7 +121,7 @@ const CONFIG = {
   // Deja los IDs vacíos para no cargar nada. Al llenarlos, los scripts se
   // inyectan solos y los eventos de conversión empiezan a registrarse.
   analytics: {
-    ga4Id: "",        // Ej: "G-XXXXXXXXXX"
+    ga4Id: "G-ZHF7F3W5SJ",
     metaPixelId: "",  // Ej: "1234567890123456"
     debug: false      // true = imprime cada evento en la consola
   },

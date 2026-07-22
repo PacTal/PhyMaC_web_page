@@ -97,32 +97,34 @@ Si algún día cambias el enlace del evento en Cal.com, acuérdate de actualizar
 esta línea: si no coincide, el calendario no carga y la página cae al botón de
 WhatsApp sin avisar al visitante.
 
-### 2.3 Google Analytics (opcional)
+### 2.3 Google Analytics — ✅ ya configurado
 
-Sin esto no se carga **ningún** script de terceros y no se mide nada. Si quieres medir:
+Tu ID `G-ZHF7F3W5SJ` está puesto y GA4 se carga en **las diez páginas**.
 
-1. Entra a [analytics.google.com](https://analytics.google.com) → Administrar → Flujos de datos → Web.
-2. Copia el "ID de medición" (empieza con `G-`).
-3. Pégalo en `config.js`:
+Ojo con esto: las cinco páginas originales (inicio, blog, artículos, servicios y
+publicaciones) no cargaban el script de analítica. Se agregó, porque si no GA4
+solo habría medido las páginas nuevas y se habría perdido el grueso del tráfico.
 
-```js
-analytics: {
-  ga4Id: "G-XXXXXXXXXX",
-  metaPixelId: "",
-  debug: false        // ponlo en true para ver los eventos en la consola del navegador
-}
-```
+Eventos de conversión que se registran solos:
 
-Los eventos que se registran solos: `lead_material` (descarga de guía, con episodio y material), `agenda_calificado`, `agenda_no_calificado` y `reunion_reservada`.
+| Evento | Cuándo se dispara |
+|---|---|
+| `lead_material` | Alguien descarga una guía (incluye episodio, material y rol) |
+| `agenda_calificado` | El formulario de agenda califica al prospecto |
+| `agenda_no_calificado` | No califica (útil para ver cuánta gente filtras) |
+| `reunion_reservada` | Se confirma una reserva en Cal.com |
+| `contacto_mensaje` | Se envía el formulario de correo |
 
-### 2.4 Canal de YouTube (opcional)
+Para verlos en vivo mientras pruebas, pon `debug: true` en `CONFIG.analytics` y
+abre la consola del navegador: cada evento se imprime antes de enviarse.
 
-El botón "Ver en YouTube" de `profes.html` está oculto hasta que pongas la URL:
+Los eventos tardan hasta 24 h en aparecer en los informes normales de GA4, pero
+en **Informes → Tiempo real** se ven en segundos.
 
-```js
-serie: {
-  youtube: "https://www.youtube.com/@tucanal",
-```
+### 2.4 Canal de YouTube — ✅ ya configurado
+
+`https://www.youtube.com/@FundaciónPhyMaC` está conectado, así que el botón
+"Ver en YouTube" ya aparece en la página de la serie.
 
 ---
 
