@@ -84,6 +84,15 @@ function epThumb(ep) {
   return '';
 }
 
+/**
+ * Etiqueta de temporada/episodio. El número 0 está reservado para tráileres
+ * y avances: mostrar "Ep. 0" se lee mal, así que se rotula como tal.
+ */
+function epNumeroLabel(ep) {
+  if (Number(ep.numero) === 0) return 'Tráiler';
+  return 'T' + ep.temporada + ' · Ep. ' + ep.numero;
+}
+
 /** Etiqueta corta del estado, lista para pintar. */
 function epEstadoBadge(ep) {
   return ep.estado === 'publicado'
@@ -141,7 +150,7 @@ function epCard(ep) {
     '<div class="p-6" style="border-top:4px solid #FF6D00;">' +
       '<div class="flex items-center gap-2 mb-3 flex-wrap">' +
         '<span class="px-3 py-1 rounded-full text-xs font-display font-bold" style="background-color:#E8EAF6; color:#2962FF;">' +
-          'T' + epEscape(ep.temporada) + ' · Ep. ' + epEscape(ep.numero) +
+          epEscape(epNumeroLabel(ep)) +
         '</span>' +
         guiaChip +
         (ep.fecha ? '<span class="text-sm font-body" style="color:#757575;">' + epEscape(epFormatFecha(ep.fecha)) + '</span>' : '') +
@@ -195,7 +204,7 @@ function epMaterialCard(ep) {
     '</div>' +
     '<div class="p-6 flex flex-col flex-1" style="border-top:4px solid #FF6D00;">' +
       '<span class="inline-block self-start px-3 py-1 rounded-full text-xs font-display font-bold mb-3" style="background-color:#E8EAF6; color:#2962FF;">' +
-        'Ep. ' + epEscape(ep.numero) + ' · ' + epEscape(ep.titulo) +
+        epEscape(epNumeroLabel(ep)) + ' · ' + epEscape(ep.titulo) +
       '</span>' +
       '<h3 class="font-display text-lg font-extrabold mb-2" style="color:#212121;">' + epEscape(guia.titulo) + '</h3>' +
       (guia.descripcion ? '<p class="font-body text-sm mb-4 leading-relaxed flex-1" style="color:#484848;">' + epEscape(guia.descripcion) + '</p>' : '<div class="flex-1"></div>') +

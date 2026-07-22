@@ -138,7 +138,7 @@ Entra a la segunda y dale **New Episodio**. Los campos:
 |---|---|
 | **Título del episodio** | El título visible. Puede tener tildes y espacios. |
 | **Slug (URL)** | Sin espacios ni tildes, solo minúsculas y guiones: `ep-02-la-ia-en-el-aula`. El CMS te avisa si escribes algo inválido. |
-| **Número de episodio** | 1, 2, 3... Define el orden en el listado. |
+| **Número de episodio** | 1, 2, 3... Define el orden en el listado. **Usa 0 para un tráiler o avance**: se rotula como "Tráiler" en vez de "Ep. 0". |
 | **Temporada** | 1 por ahora. |
 | **Fecha de publicación** | La que corresponda. |
 | **Estado** | `Próximamente` mientras grabas; `Publicado` cuando tengas el video. |
@@ -235,7 +235,7 @@ Una pasada rápida, sobre todo en celular:
 - [ ] El menú abre y cierra bien. Quedó en 5 secciones (Servicios · Hablando con profes · Blog · Publicaciones · Contacto); Inicio lo cubre el logo, y El método y Biblioteca bajaron al footer. El hamburguesa aparece por debajo de 1024px.
 - [ ] El inicio muestra la ventana "Lo más reciente" del blog en lugar de la galería de proyectos.
 - [ ] `profes.html` muestra el episodio de ejemplo que dejé cargado.
-- [ ] `episodio.html?slug=ep-01-hablando-con-profes` reproduce el video de la serie.
+- [ ] `episodio.html?slug=trailer-hablando-con-profes` reproduce el tráiler.
 - [ ] Un slug inventado (`episodio.html?slug=cualquier-cosa`) muestra "Episodio no encontrado".
 - [ ] `biblioteca.html` muestra el mensaje de "La Biblioteca está por abrir" — es correcto, el episodio 1 todavía no tiene guía.
 - [ ] En `contacto.html`, las tarjetas **Correo** y **Agendar reunión** intercambian el formulario de abajo (WhatsApp sí sale del sitio).
@@ -244,7 +244,9 @@ Una pasada rápida, sobre todo en celular:
 - [ ] El footer ya no lleva formulario en ninguna página: ahora muestra dos botones, "Escríbenos" (a Contacto) y WhatsApp. En `contacto.html` ni siquiera eso, porque ya estás ahí.
 - [ ] Revisa `privacidad.html`: los datos del responsable, el correo y los plazos son los que redacté a partir de la ley. **Léelos y confirma que reflejan cómo manejas los datos de verdad.** Es un documento legal con tu nombre.
 
-Sobre el episodio 1 (`content/episodios/ep-01-hablando-con-profes.md`): es contenido **real**, migrado del artículo del blog que tenías, con su video (`eRXzo_VgzlU`) y su texto. Si ese video es la presentación de la serie y no el episodio 1 propiamente, cambia el número y el título desde el CMS.
+Sobre el tráiler (`content/episodios/trailer-hablando-con-profes.md`): es contenido **real**, migrado del artículo del blog que tenías, con su video (`eRXzo_VgzlU`) y su texto. Va con número 0, así que en todo el sitio aparece como "Tráiler".
+
+Cuando grabes el episodio 1, créalo en el CMS con número 1 y **desmarca "¿Destacado?" en el tráiler**: el orden pone primero los destacados y después el número más alto, así que el episodio nuevo queda arriba solo.
 
 ---
 

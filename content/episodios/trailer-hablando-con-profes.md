@@ -1,7 +1,7 @@
 ---
-titulo: Hablando con profes
-slug: ep-01-hablando-con-profes
-numero: 1
+titulo: Tráiler de la serie
+slug: trailer-hablando-con-profes
+numero: 0
 temporada: 1
 fecha: 2026-07-09T15:38:00.000-05:00
 estado: publicado
@@ -10,7 +10,7 @@ invitado: ""
 miniatura: /imagenes/blog/final.jpeg
 resumen: "Saber de ciencia, pedagogía y de didáctica ya no es suficiente; seamos
   honestos: enseñar ciencia y tecnología hoy es como practicar un deporte de alto
-  riesgo. Con este episodio abrimos la serie."
+  riesgo. Este es el tráiler de la serie: el primer episodio viene en camino."
 temas:
   - IA en el aula
   - Vocación docente

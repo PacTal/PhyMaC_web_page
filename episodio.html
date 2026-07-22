@@ -138,7 +138,7 @@
               '<div style="position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 1.5rem;">' +
                 '<div>' +
                   '<span style="display:inline-block; background-color:#FF6D00; color:white; font-family:Montserrat,sans-serif; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:5px 14px; border-radius:99px; margin-bottom:14px;">' +
-                    'Episodio ' + epEscape(ep.numero) + ' · Próximamente' +
+                    epEscape(Number(ep.numero) === 0 ? 'Próximamente' : 'Episodio ' + ep.numero + ' · Próximamente') +
                   '</span>' +
                   '<p class="font-display font-extrabold text-white" style="font-size: clamp(1.25rem, 3vw, 1.75rem);">Muy pronto</p>' +
                   '<p class="font-body text-white/80 mt-2">Estamos preparando esta conversación.</p>' +
@@ -181,14 +181,14 @@
           '<nav class="max-w-5xl mx-auto px-4 pt-24 pb-2 text-sm font-body" style="color: #9E9E9E;" aria-label="Breadcrumb">' +
             '<a href="profes.html" style="color: #2962FF; text-decoration: none;">Hablando con profes</a>' +
             ' <span aria-hidden="true">›</span> ' +
-            '<span style="color: #484848;">Episodio ' + epEscape(ep.numero) + '</span>' +
+            '<span style="color: #484848;">' + epEscape(epNumeroLabel(ep)) + '</span>' +
           '</nav>' +
 
           // Cabecera
           '<header class="max-w-3xl mx-auto px-4 pt-4 pb-6">' +
             '<div class="flex items-center gap-2 mb-4 flex-wrap">' +
               '<span class="px-3 py-1 rounded-full text-xs font-display font-bold" style="background-color:#E8EAF6; color:#2962FF;">' +
-                'Temporada ' + epEscape(ep.temporada) + ' · Episodio ' + epEscape(ep.numero) +
+                epEscape(Number(ep.numero) === 0 ? 'Tráiler' : 'Temporada ' + ep.temporada + ' · Episodio ' + ep.numero) +
               '</span>' +
               '<span class="px-3 py-1 rounded-full text-xs font-display font-bold" style="background-color:' + badge.bg + '; color:' + badge.color + ';">' +
                 badge.texto +

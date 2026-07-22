@@ -64,7 +64,12 @@ collections:
         hint: "Sin espacios ni tildes. Ej: ep-01-la-ia-en-el-aula. Este será el enlace del episodio y no debe cambiarse una vez publicado."
         pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', "Usa solo minúsculas, números y guiones (ej: ep-01-nombre)"]
 
-      - { label: Número de episodio, name: numero, widget: number, value_type: int, min: 1 }
+      - label: Número de episodio
+        name: numero
+        widget: number
+        value_type: int
+        min: 0
+        hint: "Usa 0 para un tráiler o avance: se muestra como \"Tráiler\" en vez de \"Ep. 0\"."
       - { label: Temporada, name: temporada, widget: number, value_type: int, default: 1, min: 1 }
       - { label: Fecha de publicación, name: fecha, widget: datetime }
 
