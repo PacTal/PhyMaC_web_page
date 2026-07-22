@@ -174,8 +174,11 @@ function createFooter() {
         </div>
         -->
 
-        <!-- Enlaces del sitio -->
+        <!-- Enlaces del sitio: aquí viven las secciones que no están en el
+             menú principal, para que el navbar se mantenga corto. -->
         <nav class="mt-8 flex justify-center gap-x-5 gap-y-2 flex-wrap text-sm font-body" aria-label="Enlaces del pie de página">
+          <a href="index.html" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Inicio</a>
+          <a href="index.html#metodo" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">El método</a>
           <a href="profes.html" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Hablando con profes</a>
           <a href="biblioteca.html" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Biblioteca</a>
           <a href="contacto.html" style="color: #757575;" onmouseover="this.style.color='#2962FF'" onmouseout="this.style.color='#757575'">Contacto y agenda</a>

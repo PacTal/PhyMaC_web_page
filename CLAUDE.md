@@ -77,7 +77,7 @@ Both `post.html` and `episodio.html` must render "not found" for an unknown slug
 - Lab White: `#F5F5F5` (backgrounds)
 - Fonts: Montserrat 800 (display) + Open Sans (body) via Google Fonts CDN
 
-Styling uses TailwindCSS (CDN) for utilities + `phymac-styles.css` for brand-specific components. Inline styles in components apply dynamic colors from `CONFIG`. The desktop nav switches to the mobile menu below `xl`, not `md` — eight sections plus the CTA do not fit below 1280px.
+Styling uses TailwindCSS (CDN) for utilities + `phymac-styles.css` for brand-specific components. Inline styles in components apply dynamic colors from `CONFIG`. The desktop nav switches to the mobile menu below `lg`, not `md` — five sections plus the CTA do not fit below 1024px. Keep the nav to page-level destinations only; secondary links (Inicio, El método, Biblioteca) live in the footer.
 
 ### Content Systems
 

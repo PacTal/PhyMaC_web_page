@@ -54,13 +54,13 @@ const CONFIG = {
   // ----------------------------------------------------------------------
   // MENÚ DE NAVEGACIÓN
   // ----------------------------------------------------------------------
+  // Solo secciones que son páginas propias. "Inicio" lo cubre el logo y
+  // "El método" es un ancla dentro del home, no un destino. Biblioteca se
+  // alcanza desde Hablando con profes y desde el footer.
   menu: {
     items: [
-      { text: "Inicio", href: "index.html" },
-      { text: "El método", href: "index.html#metodo" },
       { text: "Servicios", href: "servicios.html" },
       { text: "Hablando con profes", href: "profes.html" },
-      { text: "Biblioteca", href: "biblioteca.html" },
       { text: "Blog", href: "blog.html" },
       { text: "Publicaciones", href: "publicaciones.html" },
       { text: "Contacto", href: "contacto.html" }

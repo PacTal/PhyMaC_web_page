@@ -224,7 +224,7 @@ Si alguna vez agregas un formulario nuevo, tiene que llevar la casilla de autori
 
 Una pasada rápida, sobre todo en celular:
 
-- [ ] El menú abre y cierra bien. Ahora el menú de hamburguesa aparece hasta 1280px de ancho (antes era 768px), porque con ocho secciones ya no cabe en pantallas medianas.
+- [ ] El menú abre y cierra bien. Quedó en 5 secciones (Servicios · Hablando con profes · Blog · Publicaciones · Contacto); Inicio lo cubre el logo, y El método y Biblioteca bajaron al footer. El hamburguesa aparece por debajo de 1024px.
 - [ ] El inicio muestra la ventana "Lo más reciente" del blog en lugar de la galería de proyectos.
 - [ ] `profes.html` muestra el episodio de ejemplo que dejé cargado.
 - [ ] `episodio.html?slug=ep-01-hablando-con-profes` reproduce el video de la serie.
