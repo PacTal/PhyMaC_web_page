@@ -12,7 +12,7 @@ npm run build          # blog-data.js + episodios-data.js
 python -m http.server 8000
 ```
 
-Individual builds: `npm run build:blog`, `npm run build:episodios`. Tests: `npm test` (Jest, covers the build scripts).
+Individual builds: `npm run build:blog`, `npm run build:episodios`, `npm run build:sitemap`. The sitemap must run last — it reads the other two outputs. Tests: `npm test` (Jest, covers the build scripts).
 
 ## Architecture Overview
 
@@ -30,6 +30,7 @@ Two sources of truth:
 ```
 content/blog/*.md      → scripts/build-blog.js      → blog-data.js      (const BLOG_POSTS)
 content/episodios/*.md → scripts/build-episodios.js → episodios-data.js (const EPISODIOS)
+both data files        → scripts/build-sitemap.js   → sitemap.xml
 ```
 
 Script load order in each page:
@@ -46,7 +47,7 @@ On DOMContentLoaded, `main.js` calls `initHeader()` and `initFooter()`, which in
 |------|------|
 | `config.js` | Master config: logo, contact, WhatsApp, menu, publications, services, serie, agenda, analytics, legal |
 | `main.js` | Boot sequence: components, smooth scroll, scroll animations, `getWhatsAppLink()`, `formatDate()` |
-| `blog-data.js` / `episodios-data.js` | **Auto-generated — do not edit by hand** |
+| `blog-data.js` / `episodios-data.js` / `sitemap.xml` | **Auto-generated — do not edit by hand** |
 | `blog.js` | Renders blog posts into `blog.html` |
 | `episodios.js` | Render helpers for the series (`epGetAll`, `epFindBySlug`, `epGetMateriales`, `epCard`, `epMaterialCard`) |
 | `components/header.js` | Responsive navbar, reads from `CONFIG` |
@@ -66,6 +67,8 @@ On DOMContentLoaded, `main.js` calls `initHeader()` and `initFooter()`, which in
 - `servicios.html` — Services page
 - `publicaciones.html` — Publications/books page
 - `privacidad.html` — Privacy policy (Ley 1581 de 2012)
+
+`robots.txt` is static and hardcodes the domain; `sitemap.xml` is generated from `CONFIG.site.url`. Change the domain and both need updating.
 
 Both `post.html` and `episodio.html` must render "not found" for an unknown slug — never fall back to other content.
 

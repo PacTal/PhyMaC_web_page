@@ -219,7 +219,7 @@ Además de calificar o no, cada respuesta lleva un **puntaje de 0 a 13** que te 
 
 | Archivo | Por qué |
 |---|---|
-| `blog-data.js` y `episodios-data.js` | Se generan solos en cada despliegue. Cualquier cosa que edites ahí se pierde. El contenido real vive en `content/`. |
+| `blog-data.js`, `episodios-data.js` y `sitemap.xml` | Se generan solos en cada despliegue. Cualquier cosa que edites ahí se pierde. El contenido real vive en `content/`. |
 | El `slug` de un episodio publicado | Rompe todos los enlaces compartidos. |
 | El `media_folder` en `admin/config.yml` | Está comentado en el archivo. Decap resuelve ese campo relativo al archivo de la entrada, no a la raíz del repo, y cambiarlo rompe las subidas de imágenes en silencio. |
 | La casilla de consentimiento de cualquier formulario | Es requisito de la Ley 1581 de 2012, no una decisión de diseño. |
