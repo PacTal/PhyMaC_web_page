@@ -230,7 +230,9 @@ Una pasada rápida, sobre todo en celular:
 - [ ] `episodio.html?slug=ep-01-hablando-con-profes` reproduce el video de la serie.
 - [ ] Un slug inventado (`episodio.html?slug=cualquier-cosa`) muestra "Episodio no encontrado".
 - [ ] `biblioteca.html` muestra el mensaje de "La Biblioteca está por abrir" — es correcto, el episodio 1 todavía no tiene guía.
-- [ ] En `contacto.html`, prueba **los dos caminos** del formulario de agenda: uno que califique (decido + este mes + presupuesto sí) y otro que no (solo consultando + explorando + sin presupuesto).
+- [ ] En `contacto.html`, las tarjetas **Correo** y **Agendar reunión** intercambian el formulario de abajo (WhatsApp sí sale del sitio).
+- [ ] El formulario de correo envía y muestra el mensaje de confirmación.
+- [ ] Prueba **los dos caminos** del formulario de agenda: uno que califique (decido + este mes + presupuesto sí) y otro que no (solo consultando + explorando + sin presupuesto).
 - [ ] El formulario de contacto del footer ahora exige la casilla de autorización.
 - [ ] Revisa `privacidad.html`: los datos del responsable, el correo y los plazos son los que redacté a partir de la ley. **Léelos y confirma que reflejan cómo manejas los datos de verdad.** Es un documento legal con tu nombre.
 

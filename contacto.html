@@ -104,6 +104,7 @@
       </div>
 
       <div class="grid sm:grid-cols-3 gap-4">
+        <!-- WhatsApp sale del sitio; los otros dos cambian el formulario de abajo -->
         <a id="canal-whatsapp" href="#" target="_blank" rel="noopener noreferrer"
            class="flex flex-col items-center text-center gap-2 p-6 rounded-2xl transition-all transform hover:-translate-y-1"
            style="background-color: #F5F5F5; border: 2px solid #E0E0E0; text-decoration: none;">
@@ -112,33 +113,33 @@
           <span class="font-body text-sm" style="color: #484848;">La vía más rápida</span>
         </a>
 
-        <a id="canal-email" href="mailto:funphymac@gmail.com"
-           class="flex flex-col items-center text-center gap-2 p-6 rounded-2xl transition-all transform hover:-translate-y-1"
-           style="background-color: #F5F5F5; border: 2px solid #E0E0E0; text-decoration: none;">
+        <button type="button" id="canal-correo" class="canal-selector transition-all transform hover:-translate-y-1" data-modo="correo" aria-pressed="false"
+                aria-controls="panel-correo"
+                style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; padding: 1.5rem; border-radius: 1rem; cursor: pointer; background-color: #F5F5F5; border: 2px solid #E0E0E0;">
           <span class="text-3xl" aria-hidden="true">✉️</span>
           <span class="font-display font-bold" style="color: #212121;">Correo</span>
-          <span id="canal-email-texto" class="font-body text-sm break-all" style="color: #484848;">funphymac@gmail.com</span>
-        </a>
+          <span class="font-body text-sm" style="color: #484848;">Escríbenos un mensaje</span>
+        </button>
 
-        <a href="#agendar"
-           class="flex flex-col items-center text-center gap-2 p-6 rounded-2xl transition-all transform hover:-translate-y-1"
-           style="background-color: #FFF3E0; border: 2px solid #FFE0B2; text-decoration: none;">
+        <button type="button" id="canal-agenda" class="canal-selector transition-all transform hover:-translate-y-1" data-modo="agenda" aria-pressed="true"
+                aria-controls="panel-agenda"
+                style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; padding: 1.5rem; border-radius: 1rem; cursor: pointer; background-color: #FFF3E0; border: 2px solid #FFE0B2;">
           <span class="text-3xl" aria-hidden="true">📅</span>
           <span class="font-display font-bold" style="color: #C43E00;">Agendar reunión</span>
           <span class="font-body text-sm" style="color: #E65100;">Para hablar del proyecto</span>
-        </a>
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- AGENDAR -->
-  <section id="agendar" class="pt-14 pb-4" style="background-color: #F5F5F5;">
+  <!-- ENCABEZADO DEL FORMULARIO ACTIVO -->
+  <section id="formularios" class="pt-14 pb-4" style="background-color: #F5F5F5;">
     <div class="max-w-3xl mx-auto px-4 text-center mb-10">
-      <p class="font-display font-bold text-sm uppercase tracking-widest mb-2" style="color: #FF6D00;">Agenda</p>
-      <h2 class="font-display text-2xl md:text-3xl font-extrabold mb-3" style="color: #212121;">
+      <p id="form-eyebrow" class="font-display font-bold text-sm uppercase tracking-widest mb-2" style="color: #FF6D00;">Agenda</p>
+      <h2 id="form-titulo" class="font-display text-2xl md:text-3xl font-extrabold mb-3" style="color: #212121;">
         Hablemos de tu proyecto
       </h2>
-      <p class="font-body" style="color: #484848;">
+      <p id="form-bajada" class="font-body" style="color: #484848;">
         Cuéntanos qué necesitas en dos minutos. Con eso preparamos la conversación y no te hacemos perder el tiempo.
       </p>
     </div>
@@ -147,6 +148,73 @@
   <!-- CONTENIDO -->
   <main class="pb-14" style="background-color: #F5F5F5;">
     <div class="max-w-3xl mx-auto px-4">
+
+      <!-- PANEL CORREO: mensaje corto -->
+      <div id="panel-correo" class="hidden">
+        <div class="rounded-2xl p-6 md:p-8" style="background-color: white; border: 2px solid #E0E0E0;">
+          <h3 class="font-display text-2xl font-extrabold mb-2" style="color: #212121;">Escríbenos</h3>
+          <p class="font-body mb-6" style="color: #484848;">
+            Te respondemos al correo que nos dejes. Si prefieres escribir desde tu propio correo, es
+            <a id="correo-directo" href="mailto:funphymac@gmail.com" style="color: #2962FF; text-decoration: underline;">funphymac@gmail.com</a>.
+          </p>
+
+          <form id="form-correo" class="space-y-5" novalidate>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="etiqueta" for="co-nombre">Tu nombre <span class="requerido" aria-hidden="true">*</span></label>
+                <input class="campo" type="text" id="co-nombre" name="nombre" required autocomplete="name" placeholder="Ej. Juan Pérez">
+              </div>
+              <div>
+                <label class="etiqueta" for="co-email">Correo electrónico <span class="requerido" aria-hidden="true">*</span></label>
+                <input class="campo" type="email" id="co-email" name="email" required autocomplete="email" placeholder="ejemplo@correo.com">
+              </div>
+            </div>
+
+            <div>
+              <label class="etiqueta" for="co-asunto">Asunto <span style="color:#757575; font-weight:400;">(opcional)</span></label>
+              <input class="campo" type="text" id="co-asunto" name="asunto" placeholder="Ej. Taller para grado décimo">
+            </div>
+
+            <div>
+              <label class="etiqueta" for="co-mensaje">Mensaje <span class="requerido" aria-hidden="true">*</span></label>
+              <textarea class="campo" id="co-mensaje" name="mensaje" rows="5" required placeholder="Cuéntanos en qué podemos ayudarte."></textarea>
+            </div>
+
+            <div class="flex items-start gap-3 pt-1">
+              <input type="checkbox" id="co-consent" name="consentimiento" value="si" required
+                     class="mt-1 flex-shrink-0" style="width: 18px; height: 18px; accent-color: #2962FF; cursor: pointer;">
+              <label for="co-consent" class="text-sm font-body" style="color: #484848; cursor: pointer;">
+                <span class="consent-label">Autorizo el tratamiento de mis datos personales conforme a la</span>
+                <a class="consent-link" href="privacidad.html" target="_blank" rel="noopener noreferrer"
+                   style="color: #2962FF; text-decoration: underline;">política de privacidad</a>.
+                <span class="requerido" aria-hidden="true">*</span>
+              </label>
+            </div>
+
+            <p id="co-error" role="alert" aria-live="assertive" class="text-sm font-body hidden"
+               style="color: #C43E00; background-color: #FFEBEE; border: 1px solid #FFCDD2; border-radius: 10px; padding: 10px 14px;"></p>
+
+            <button type="submit" id="co-submit"
+                    class="w-full text-white font-display font-bold py-4 px-8 rounded-xl transition-all transform hover:-translate-y-0.5"
+                    style="background-color: #2962FF; box-shadow: 0 4px 0 #0039CB; border: none; cursor: pointer;"
+                    onmouseover="this.style.backgroundColor='#768FFF'" onmouseout="this.style.backgroundColor='#2962FF'">
+              Enviar mensaje
+            </button>
+          </form>
+
+          <div id="co-exito" class="hidden" tabindex="-1">
+            <div class="p-5 rounded-xl" style="background-color: #E8F5E9; border: 2px solid #A5D6A7;">
+              <p class="font-display font-bold mb-1" style="color: #1B5E20;">¡Mensaje enviado!</p>
+              <p class="font-body text-sm" style="color: #2E7D32;">
+                Te respondemos al correo que nos dejaste, en horario hábil. Si es urgente, escríbenos por WhatsApp.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL AGENDA -->
+      <div id="panel-agenda">
 
       <!-- PASO 1: FORMULARIO DE CALIFICACIÓN -->
       <section id="paso-formulario">
@@ -253,8 +321,8 @@
               <input type="checkbox" id="ag-consent" name="consentimiento" value="si" required
                      class="mt-1 flex-shrink-0" style="width: 18px; height: 18px; accent-color: #2962FF; cursor: pointer;">
               <label for="ag-consent" class="text-sm font-body" style="color: #484848; cursor: pointer;">
-                <span id="ag-consent-label">Autorizo el tratamiento de mis datos personales conforme a la</span>
-                <a id="ag-consent-link" href="privacidad.html" target="_blank" rel="noopener noreferrer"
+                <span class="consent-label">Autorizo el tratamiento de mis datos personales conforme a la</span>
+                <a class="consent-link" href="privacidad.html" target="_blank" rel="noopener noreferrer"
                    style="color: #2962FF; text-decoration: underline;">política de privacidad</a>.
                 <span class="requerido" aria-hidden="true">*</span>
               </label>
@@ -344,6 +412,8 @@
         </div>
       </section>
 
+      </div><!-- /#panel-agenda -->
+
     </div>
   </main>
 
@@ -376,28 +446,156 @@
       };
       var puntajes = agendaCfg.puntajes || {};
 
-      // --- Canales directos de contacto ---
+      // --- Canal de WhatsApp (los otros dos no salen del sitio) ---
       var canalWa = document.getElementById('canal-whatsapp');
       if (canalWa && typeof window.getWhatsAppLink === 'function') {
         canalWa.href = window.getWhatsAppLink();
       }
-      if (typeof CONFIG !== 'undefined' && CONFIG.contact && CONFIG.contact.email) {
-        var canalEmail = document.getElementById('canal-email');
-        var canalEmailTexto = document.getElementById('canal-email-texto');
-        if (canalEmail) canalEmail.href = 'mailto:' + CONFIG.contact.email;
-        if (canalEmailTexto) canalEmailTexto.textContent = CONFIG.contact.email;
+
+      // --- Textos legales desde config (aplican a los dos formularios) ---
+      if (typeof CONFIG !== 'undefined' && CONFIG.legal) {
+        if (CONFIG.legal.consentLabel) {
+          document.querySelectorAll('.consent-label').forEach(function (el) {
+            el.textContent = CONFIG.legal.consentLabel;
+          });
+        }
+        document.querySelectorAll('.consent-link').forEach(function (el) {
+          if (CONFIG.legal.privacidadUrl) el.href = CONFIG.legal.privacidadUrl;
+          if (CONFIG.legal.consentLinkText) el.textContent = CONFIG.legal.consentLinkText;
+        });
       }
 
-      // --- Textos legales desde config ---
-      if (typeof CONFIG !== 'undefined' && CONFIG.legal) {
-        var lbl = document.getElementById('ag-consent-label');
-        var lnk = document.getElementById('ag-consent-link');
-        if (lbl && CONFIG.legal.consentLabel) lbl.textContent = CONFIG.legal.consentLabel;
-        if (lnk) {
-          if (CONFIG.legal.privacidadUrl) lnk.href = CONFIG.legal.privacidadUrl;
-          if (CONFIG.legal.consentLinkText) lnk.textContent = CONFIG.legal.consentLinkText;
+      // ------------------------------------------------------------------
+      // SELECTOR DE CANAL: las tarjetas intercambian el formulario de abajo
+      // ------------------------------------------------------------------
+      var panelCorreo = document.getElementById('panel-correo');
+      var panelAgenda = document.getElementById('panel-agenda');
+      var seccionForms = document.getElementById('formularios');
+
+      var COPYS = {
+        correo: {
+          eyebrow: 'Correo',
+          titulo: 'Escríbenos un mensaje',
+          bajada: 'Cuéntanos tu duda y te respondemos al correo que nos dejes.'
+        },
+        agenda: {
+          eyebrow: 'Agenda',
+          titulo: 'Hablemos de tu proyecto',
+          bajada: 'Cuéntanos qué necesitas en dos minutos. Con eso preparamos la conversación y no te hacemos perder el tiempo.'
+        }
+      };
+
+      var ESTILOS_CANAL = {
+        activo:   { correo: { bg: '#E8EAF6', border: '#2962FF' }, agenda: { bg: '#FFF3E0', border: '#FF6D00' } },
+        inactivo: { correo: { bg: '#F5F5F5', border: '#E0E0E0' }, agenda: { bg: '#FFF8F2', border: '#FFE0B2' } }
+      };
+
+      function cambiarModo(modo, hacerScroll) {
+        panelCorreo.classList.toggle('hidden', modo !== 'correo');
+        panelAgenda.classList.toggle('hidden', modo !== 'agenda');
+
+        var copy = COPYS[modo];
+        document.getElementById('form-eyebrow').textContent = copy.eyebrow;
+        document.getElementById('form-titulo').textContent = copy.titulo;
+        document.getElementById('form-bajada').textContent = copy.bajada;
+
+        document.querySelectorAll('.canal-selector').forEach(function (btn) {
+          var suyo = btn.getAttribute('data-modo');
+          var activo = suyo === modo;
+          var est = ESTILOS_CANAL[activo ? 'activo' : 'inactivo'][suyo];
+          btn.setAttribute('aria-pressed', activo ? 'true' : 'false');
+          btn.style.backgroundColor = est.bg;
+          btn.style.borderColor = est.border;
+        });
+
+        if (hacerScroll && seccionForms) {
+          seccionForms.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
+
+      document.querySelectorAll('.canal-selector').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          cambiarModo(btn.getAttribute('data-modo'), true);
+        });
+      });
+
+      cambiarModo('agenda', false);
+
+      // ------------------------------------------------------------------
+      // FORMULARIO DE CORREO
+      // ------------------------------------------------------------------
+      var formCorreo = document.getElementById('form-correo');
+      var coError = document.getElementById('co-error');
+      var coSubmit = document.getElementById('co-submit');
+      var coExito = document.getElementById('co-exito');
+
+      var correoDirecto = document.getElementById('correo-directo');
+      if (correoDirecto && typeof CONFIG !== 'undefined' && CONFIG.contact && CONFIG.contact.email) {
+        correoDirecto.href = 'mailto:' + CONFIG.contact.email;
+        correoDirecto.textContent = CONFIG.contact.email;
+      }
+
+      formCorreo.addEventListener('submit', function (e) {
+        e.preventDefault();
+        coError.classList.add('hidden');
+
+        var nombre = document.getElementById('co-nombre').value.trim();
+        var email = document.getElementById('co-email').value.trim();
+        var asunto = document.getElementById('co-asunto').value.trim();
+        var mensaje = document.getElementById('co-mensaje').value.trim();
+        var consent = document.getElementById('co-consent').checked;
+
+        function errorCorreo(msg, id) {
+          coError.textContent = msg;
+          coError.classList.remove('hidden');
+          var campo = document.getElementById(id);
+          if (campo) campo.focus();
+        }
+
+        if (!nombre) return errorCorreo('Escribe tu nombre para continuar.', 'co-nombre');
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+          return errorCorreo('Escribe un correo electrónico válido (ej. nombre@correo.com).', 'co-email');
+        }
+        if (!mensaje) return errorCorreo('Cuéntanos en qué podemos ayudarte.', 'co-mensaje');
+        if (!consent) return errorCorreo('Necesitamos tu autorización para tratar tus datos antes de enviar.', 'co-consent');
+
+        var endpointGeneral = (typeof CONFIG !== 'undefined' && CONFIG.contact && CONFIG.contact.formspree)
+          ? CONFIG.contact.formspree.endpoint
+          : '';
+
+        if (!endpointGeneral) {
+          return errorCorreo('El formulario no está disponible. Escríbenos por WhatsApp mientras lo arreglamos.', 'co-nombre');
+        }
+
+        var cuerpo = new FormData();
+        cuerpo.append('nombre', nombre);
+        cuerpo.append('email', email);
+        cuerpo.append('asunto', asunto);
+        cuerpo.append('mensaje', mensaje);
+        cuerpo.append('consentimiento', 'Sí, autorizó el tratamiento de datos');
+        cuerpo.append('origen', window.location.href);
+        cuerpo.append('_subject', asunto ? ('Contacto: ' + asunto) : ('Contacto web de ' + nombre));
+
+        coSubmit.disabled = true;
+        coSubmit.style.opacity = '0.7';
+        coSubmit.textContent = 'Enviando...';
+
+        fetch(endpointGeneral, { method: 'POST', body: cuerpo, headers: { Accept: 'application/json' } })
+          .then(function (res) {
+            if (!res.ok) throw new Error('Formspree respondió ' + res.status);
+            formCorreo.classList.add('hidden');
+            coExito.classList.remove('hidden');
+            coExito.focus();
+            if (typeof trackEvent === 'function') trackEvent('contacto_mensaje', { asunto: asunto });
+          })
+          .catch(function (err) {
+            console.error('Error enviando el mensaje de contacto:', err);
+            coSubmit.disabled = false;
+            coSubmit.style.opacity = '1';
+            coSubmit.textContent = 'Enviar mensaje';
+            errorCorreo('No pudimos enviar tu mensaje. Revisa tu conexión e inténtalo de nuevo.', 'co-nombre');
+          });
+      });
 
       /** Endpoint dedicado de agenda, con respaldo al general. */
       function endpointAgenda() {
@@ -629,9 +827,9 @@
           }
         }
 
-        // Subimos hasta el inicio de la sección de agenda, no al tope de la
+        // Subimos hasta el encabezado del formulario, no al tope de la
         // página: el resultado queda justo debajo y no se pierde de vista.
-        var seccion = document.getElementById('agendar');
+        var seccion = document.getElementById('formularios');
         if (seccion) seccion.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
