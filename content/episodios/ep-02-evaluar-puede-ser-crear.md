@@ -7,6 +7,7 @@ fecha: 2026-08-05T20:03:00.000-05:00
 estado: publicado
 youtube_id: https://www.youtube.com/watch?v=DEpxipPjApA
 invitado: Nidia Danigza Lugo López
+miniatura: /imagenes/blog/miniatura_b_cocreacion.png
 resumen: >
   Un salón de la Universidad Distrital. Estudiantes de licenciatura en física,
   en el curso Contextos Educativos 1, tenían que demostrar que habían entendido
@@ -28,7 +29,7 @@ temas:
   - docentes
   - formación de profesores
 destacado: true
-guia_portada: /imagenes/blog/miniatura_b_cocreacion.png
+guia_portada: ""
 guia_archivo: /imagenes/blog/guia_hablando_con_profes_nidia_lugo.pdf
 guia_publica: true
 ---
