@@ -1,5 +1,5 @@
 ---
-titulo: Cómo uso la IA en clase sin que piense por mis estudiantes
+titulo: ¿Cómo evitar que la IA piense por tus estudiantes? | John Díaz
 slug: ep-04-ai-estudiantes-piense
 numero: 4
 temporada: 1
