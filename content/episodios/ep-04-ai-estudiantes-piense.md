@@ -3,7 +3,7 @@ titulo: ¿Cómo evitar que la IA piense por tus estudiantes? | John Díaz
 slug: ep-04-ai-estudiantes-piense
 numero: 4
 temporada: 1
-fecha: 2026-09-03T15:42:00.000-05:00
+fecha: 2026-09-03T15:53:00.000-05:00
 estado: publicado
 youtube_id: https://www.youtube.com/watch?v=XbPRXu_dVHo
 invitado: " John Díaz"
