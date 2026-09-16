@@ -1,6 +1,6 @@
 ---
 titulo: ¿Por qué se te olvida lo que aprendes?
-slug: ep-05-olvidar
+slug: ep-05-olvidar-lo-que-se-aprende
 numero: 5
 temporada: 1
 fecha: 2026-09-17T18:00:00.000-05:00
