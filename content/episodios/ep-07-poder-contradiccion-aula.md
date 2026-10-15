@@ -14,7 +14,7 @@ resumen: >-
   enseñanza de la física en el aula.
 
 
-  En este episodio de Hablando con Profes (Episodio 06), conversamos con el Dr. Luis Hernando Barbosa (Doctor en Física Educativa) sobre el uso de experimentos discrepantes y ciencia recreativa en la educación STEM. Descubre cómo llevar la disonancia cognitiva, el método científico y la física divertida desde primaria hasta la universidad, usando la duda como la mejor herramienta pedagógica.
+  En este episodio de Hablando con Profes, conversamos con el Dr. Luis Hernando Barbosa (Doctor en Física Educativa) sobre el uso de experimentos discrepantes y ciencia recreativa en la educación STEM. Descubre cómo llevar la disonancia cognitiva, el método científico y la física divertida desde primaria hasta la universidad, usando la duda como la mejor herramienta pedagógica.
 destacado: false
 guia_archivo: /imagenes/blog/guia_luis_h.pdf
 guia_publica: true
