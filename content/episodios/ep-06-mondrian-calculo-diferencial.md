@@ -7,7 +7,7 @@ fecha: 2026-10-01T08:49:00.000-05:00
 estado: publicado
 youtube_id: https://youtu.be/XX--uXq782k
 invitado: Margarita María Zuluaga Martínez
-miniatura: /imagenes/blog/miniatura_b.png
+miniatura: /imagenes/blog/miniatura_b_margarita.png
 resumen: >-
   Un curso de cálculo diferencial en la Universidad Distrital. Toca la línea
   recta: pendiente, punto de corte, rectas positivas y negativas. Es un tema que
