@@ -3,8 +3,8 @@ titulo: "7 años sin examen: así evalúa un profe de física"
 slug: ep-09-7-sin-examen-profe-fisica
 numero: 9
 temporada: 1
-fecha: 2026-11-12T19:08:00.000-05:00
-estado: proximamente
+fecha: 2026-11-12T19:15:00.000-05:00
+estado: publicado
 youtube_id: https://youtu.be/ZStuut3hpic
 resumen: >+
   Durante años, el curso de Electrodinámica de César Herreño tuvo fama de ser
