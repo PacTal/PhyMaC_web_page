@@ -1,7 +1,7 @@
 ---
 titulo: " Enseñar astronomía: del planetario al aula"
 slug: ep-08-ensenar-astronomia-planetario-aula
-numero: 0
+numero: 8
 temporada: 1
 fecha: 2026-10-29T16:20:00.000-05:00
 estado: publicado
